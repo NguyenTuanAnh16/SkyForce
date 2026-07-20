@@ -1,5 +1,45 @@
 # depslib dependency file v1.0
-1783908087 source:d:\bt game\game2 c++\game\game.cpp
-	<iostream>
+1784509191 source:d:\bt game\game2 c++\game\game.cpp
+	"Game.h"
+	"Config.h"
+	<string>
+
+1784509050 d:\bt game\game2 c++\game\game.h
+	"ResourceManager.h"
+	"BackGround.h"
+	"Starship.h"
+	"Bullet.h"
+
+1784509108 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+	"ResourceManager.h"
+
+1784507933 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
+	<SDL_image.h>
+
+1784368275 source:d:\bt game\game2 c++\game\main.cpp
+	"Game.h"
+
+1784508708 source:d:\bt game\game2 c++\game\background.cpp
+	"BackGround.h"
+	"Config.h"
+
+1784508701 d:\bt game\game2 c++\game\background.h
+	<SDL.h>
+
+1784508631 d:\bt game\game2 c++\game\config.h
+
+1784464161 source:d:\bt game\game2 c++\game\starship.cpp
+	"Starship.h"
+
+1784463042 d:\bt game\game2 c++\game\starship.h
+	<SDL.h>
+	"Config.h"
+
+1784509317 source:d:\bt game\game2 c++\game\bullet.cpp
+	"Bullet.h"
+
+1784508670 d:\bt game\game2 c++\game\bullet.h
+	<SDL.h>
+	"Config.h"
 
