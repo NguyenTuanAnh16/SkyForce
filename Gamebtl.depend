@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1784794365 source:d:\btl ltnc\gamebtl\game.cpp
+	<iostream>
+	"Game.h"
+	"background.h"
+	"enemies.h"
+	"level.cpp"
+	<SDL_image.h>
+
+1784690442 d:\btl ltnc\gamebtl\include\game.h
+	<iostream>
+	<SDL.h>
+
+1784793205 d:\btl ltnc\gamebtl\background.h
+	<SDL.h>
+	<string>
+
+1784793754 source:d:\btl ltnc\gamebtl\background.cpp
+	"background.h"
+	<SDL_image.h>
+	<iostream>
+
+1784796400 source:d:\btl ltnc\gamebtl\enemies.cpp
+	"enemies.h"
+	<cmath>
+	<cstdlib>
+
+1784797440 d:\btl ltnc\gamebtl\enemies.h
+	<SDL.h>
+	<vector>
+	"enemiesbullet.h"
+
+1784796735 source:d:\btl ltnc\gamebtl\level.cpp
+	"enemies.h"
+	<vector>
+	<cstdlib>
+	<iostream>
+	<SDL_image.h>
+	<algorithm>
+
+1784796735 d:\btl ltnc\gamebtl\level.cpp
+	"enemies.h"
+	<vector>
+	<cstdlib>
+	<iostream>
+	<SDL_image.h>
+	<algorithm>
+
+1784797440 d:\btl ltnc\gamebtl\enemiesbullet.h
+	<SDL.h>
+
+1784797440 source:d:\btl ltnc\gamebtl\enemiesbullet.cpp
+	"enemiesbullet.h"
+
+1784797898 source:d:\btl ltnc\gamebtl\enemiesmovement.cpp
+	"enemiesmovement.h"
+	<cmath>
+
+1784797711 d:\btl ltnc\gamebtl\enemiesmovement.h
+
+1784797907 source:d:\btl ltnc\gamebtl\enemiesshooting.cpp
+	"enemiesshooting.h"
+
+1784797760 d:\btl ltnc\gamebtl\enemiesshooting.h
+	<vector>
+	"enemiesbullet.h"
+
