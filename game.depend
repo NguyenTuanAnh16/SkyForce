@@ -1,19 +1,21 @@
 # depslib dependency file v1.0
-1784509191 source:d:\bt game\game2 c++\game\game.cpp
+1784883476 source:d:\bt game\game2 c++\game\game.cpp
 	"Game.h"
-	"Config.h"
 	<string>
 
-1784509050 d:\bt game\game2 c++\game\game.h
+1784878299 d:\bt game\game2 c++\game\game.h
 	"ResourceManager.h"
 	"BackGround.h"
 	"Starship.h"
-	"Bullet.h"
+	"WeaponSystem.h"
+	"EnemySystem.h"
+	"SpawnManager.h"
+	"Player.h"
 
-1784509108 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+1784880795 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 
-1784507933 d:\bt game\game2 c++\game\resourcemanager.h
+1784880713 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 
@@ -27,14 +29,15 @@
 1784508701 d:\bt game\game2 c++\game\background.h
 	<SDL.h>
 
-1784508631 d:\bt game\game2 c++\game\config.h
+1784695655 d:\bt game\game2 c++\game\config.h
 
-1784464161 source:d:\bt game\game2 c++\game\starship.cpp
+1784881862 source:d:\bt game\game2 c++\game\starship.cpp
 	"Starship.h"
 
-1784463042 d:\bt game\game2 c++\game\starship.h
+1784881236 d:\bt game\game2 c++\game\starship.h
 	<SDL.h>
 	"Config.h"
+	<vector>
 
 1784509317 source:d:\bt game\game2 c++\game\bullet.cpp
 	"Bullet.h"
@@ -42,4 +45,52 @@
 1784508670 d:\bt game\game2 c++\game\bullet.h
 	<SDL.h>
 	"Config.h"
+
+1784881862 source:d:\bt game\game2 c++\game\player.cpp
+	"Player.h"
+
+1784882717 source:d:\bt game\game2 c++\game\weapon.cpp
+	"Weapon.h"
+
+1784880795 d:\bt game\game2 c++\game\weapon.h
+	<SDL.h>
+	"Config.h"
+
+1784881107 source:d:\bt game\game2 c++\game\weaponsystem.cpp
+	"WeaponSystem.h"
+
+1784880960 d:\bt game\game2 c++\game\weaponsystem.h
+	<SDL.h>
+	<vector>
+	"Weapon.h"
+
+1784883430 source:d:\bt game\game2 c++\game\enemy.cpp
+	"Enemy.h"
+
+1784883358 source:d:\bt game\game2 c++\game\enemysystem.cpp
+	"EnemySystem.h"
+
+1784884359 d:\bt game\game2 c++\game\enemysystem.h
+	<SDL.h>
+	<vector>
+	"Enemy.h"
+	"WeaponSystem.h"
+
+1784875624 d:\bt game\game2 c++\game\enemy.h
+	<SDL.h>
+	<vector>
+	"Weapon.h"
+
+1784884438 source:d:\bt game\game2 c++\game\spawnmanager.cpp
+	"SpawnManager.h"
+	<cstdlib>
+
+1784884499 d:\bt game\game2 c++\game\spawnmanager.h
+	"EnemySystem.h"
+	"Config.h"
+
+1784881267 d:\bt game\game2 c++\game\player.h
+	<SDL.h>
+	"Starship.h"
+	"WeaponSystem.h"
 

@@ -35,12 +35,19 @@
 		<Unit filename="BackGround.cpp" />
 		<Unit filename="BackGround.h" />
 		<Unit filename="Config.h" />
+		<Unit filename="Enemy.cpp" />
+		<Unit filename="Enemy.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
 		<Unit filename="ResourceManager.cpp" />
 		<Unit filename="ResourceManager.h" />
 		<Unit filename="Starship.cpp" />
 		<Unit filename="Starship.h" />
+		<Unit filename="Weapon.h" />
+		<Unit filename="WeaponSystem.cpp" />
+		<Unit filename="WeaponSystem.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

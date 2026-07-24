@@ -11,10 +11,18 @@ SDL_Texture* nibiru;
 SDL_Texture* asteroid;
 
 // tau vu tru
-SDL_Texture* starship;
+SDL_Texture* starshipone;
+SDL_Texture* starshiptwo;
+SDL_Texture* starshipthree;
 
 // dan
-SDL_Texture* bulletplayer;
+SDL_Texture* bulletOne;
+SDL_Texture* bulletTwo;
+
+// dich
+SDL_Texture* enemyOne;
+SDL_Texture* enemyTwo;
+SDL_Texture* enemyThree;
 
 void Load(SDL_Renderer* renderer);
 void Free();

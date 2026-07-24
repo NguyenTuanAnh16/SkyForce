@@ -4,7 +4,11 @@
 #include "ResourceManager.h"
 #include "BackGround.h"
 #include "Starship.h"
-#include "Bullet.h"
+#include "WeaponSystem.h"
+#include "EnemySystem.h"
+#include "SpawnManager.h"
+#include "Player.h"
+
 struct Game {
 // cua so
 SDL_Window* window;
@@ -17,10 +21,20 @@ ResourceManager resource;
 BackGround background;
 
 // tau vu tru
-Starship starship;
+StarshipDataBase starshipdata;
+
+// dich
+EnemySystem enemysystem;
+
+
+// random dich
+SpawnManager spawnmanager;
+
+// nguoi choi
+Player player;
 
 // dan
-BulletPlayer bulletplayer;
+WeaponSystem weaponSystem;
 
 // fps
 Uint32 frameStart = 0;
@@ -29,6 +43,8 @@ int frameDelay;
 
 // thoi gian
 float deltaTime;
+float shootTimer = 0;
+float shootDelay = 0.15f;
 
 // check
 bool running = true;

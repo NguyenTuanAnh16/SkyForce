@@ -7,10 +7,18 @@ nibiru = IMG_LoadTexture(renderer,"ResourceManager/Nibiru.png");
 asteroid = IMG_LoadTexture(renderer,"ResourceManager/Asteroid.png");
 
 // tau vu tru
-starship = IMG_LoadTexture(renderer,"ResourceManager/Starship.png");
+starshipone = IMG_LoadTexture(renderer,"ResourceManager/StarshipOne.png");
+starshiptwo = IMG_LoadTexture(renderer,"ResourceManager/StarshipTwo.png");
+starshipthree = IMG_LoadTexture(renderer,"ResourceManager/StarshipThree.png");
 
 // dan
-bulletplayer = IMG_LoadTexture(renderer,"ResourceManager/BulletPlayer.png");
+bulletOne = IMG_LoadTexture(renderer,"ResourceManager/BulletOne.png");
+bulletTwo = IMG_LoadTexture(renderer,"ResourceManager/BulletTwo.png");
+
+// dich
+enemyOne = IMG_LoadTexture(renderer,"ResourceManager/EnemyOne.png");
+enemyTwo = IMG_LoadTexture(renderer,"ResourceManager/EnemyTwo.png");
+enemyThree = IMG_LoadTexture(renderer,"ResourceManager/EnemyThree.png");
 }
 
 void ResourceManager:: Free(){

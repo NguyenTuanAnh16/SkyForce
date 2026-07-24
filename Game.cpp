@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "Config.h"
 #include <string>
+
 void Game::Init(){
   // tao cua so
   SDL_Init(SDL_INIT_VIDEO);
@@ -16,7 +16,7 @@ void Game::Init(){
     renderer = SDL_CreateRenderer(
     window,
     -1,
-    SDL_RENDERER_ACCELERATED
+    SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
     );
 
     SDL_RenderSetLogicalSize(
@@ -29,11 +29,23 @@ void Game::Init(){
     resource.Load(renderer);
 
     // nen
-    background.Init(resource.backGround, resource.nibiru, resource.asteroid);
+    background.Init(resource.backGround,
+                     resource.nibiru,
+                      resource.asteroid);
     // may bay
-    starship.Init(resource.starship);
+    starshipdata.Init(resource.starshipone,
+                      resource.starshiptwo,
+                      resource.starshipthree);
+    player.ChangeStarship(starshipdata.starshipthree);
+
     // dan
-    bulletplayer.Init(resource.bulletplayer);
+    weaponSystem.Init(resource.bulletOne,resource.bulletTwo);
+
+    // dich
+    enemysystem.Init(resource.enemyOne,
+                     resource.enemyTwo,
+                     resource.enemyThree);
+
 }
 
 
@@ -55,12 +67,12 @@ void Game::Run()
 
 }
 
-
 void Game::Render(){
 SDL_RenderClear(renderer);
 background.Render(renderer);
-starship.Render(renderer);
-bulletplayer.Render(renderer);
+player.Render(renderer);
+weaponSystem.Render(renderer);
+enemysystem.Render(renderer);
 SDL_RenderPresent(renderer);
 
 }
@@ -68,8 +80,14 @@ SDL_RenderPresent(renderer);
 
 void Game::Update(){
  background.Update(deltaTime);
- starship.Update(deltaTime);
- bulletplayer.Update(deltaTime);
+
+player.Update(deltaTime, &weaponSystem);
+
+weaponSystem.Update(deltaTime);
+
+spawnmanager.Update(deltaTime,40,5,enemysystem);
+
+enemysystem.Update(deltaTime,&weaponSystem);
 }
 
 void Game::capFPS()

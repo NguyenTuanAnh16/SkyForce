@@ -13,14 +13,8 @@ const float PLANET_SPEED = 25;
 // toc do thien thach
 const float ASTEROID_SPEED = 1000;
 
-// toc do may bay
-const float STARSHIP_SPEED = 1000;
-
-// toc do dan
-const float BULLETPLAYER_SPEED = 500;
-const float BULLETPLAYER_DAME = 30;
 
 // fps
-const int FPS = 120;
+const int FPS = 300;
 
 #endif
