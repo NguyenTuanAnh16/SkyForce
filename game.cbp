@@ -34,17 +34,23 @@
 		</Compiler>
 		<Unit filename="BackGround.cpp" />
 		<Unit filename="BackGround.h" />
+		<Unit filename="CollisionSystem.cpp" />
+		<Unit filename="CollisionSystem.h" />
 		<Unit filename="Config.h" />
 		<Unit filename="Enemy.cpp" />
 		<Unit filename="Enemy.h" />
+		<Unit filename="EnemySystem.cpp" />
+		<Unit filename="EnemySystem.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
 		<Unit filename="ResourceManager.cpp" />
 		<Unit filename="ResourceManager.h" />
+		<Unit filename="SpawnManager.cpp" />
 		<Unit filename="Starship.cpp" />
 		<Unit filename="Starship.h" />
+		<Unit filename="Weapon.cpp" />
 		<Unit filename="Weapon.h" />
 		<Unit filename="WeaponSystem.cpp" />
 		<Unit filename="WeaponSystem.h" />

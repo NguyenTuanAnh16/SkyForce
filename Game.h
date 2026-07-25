@@ -3,11 +3,12 @@
 
 #include "ResourceManager.h"
 #include "BackGround.h"
-#include "Starship.h"
-#include "WeaponSystem.h"
-#include "EnemySystem.h"
-#include "SpawnManager.h"
 #include "Player.h"
+#include "EnemySystem.h"
+#include "WeaponSystem.h"
+#include "Weapon.h"
+#include "SpawnManager.h"
+#include "CollisionSystem.h"
 
 struct Game {
 // cua so
@@ -20,21 +21,25 @@ ResourceManager resource;
 // background
 BackGround background;
 
-// tau vu tru
-StarshipDataBase starshipdata;
+// nguoi choi
+Player player;
+StarshipDataBase starship;
 
 // dich
 EnemySystem enemysystem;
-
+EnemyDataBase enemy;
 
 // random dich
 SpawnManager spawnmanager;
 
-// nguoi choi
-Player player;
+
 
 // dan
 WeaponSystem weaponSystem;
+//WeaponDataBase weapon;
+
+// va cham
+CollisionSystem collisionSystem;
 
 // fps
 Uint32 frameStart = 0;

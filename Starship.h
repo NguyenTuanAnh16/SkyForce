@@ -2,8 +2,9 @@
 #define _Starship_H
 
 #include <SDL.h>
-#include "Config.h"
 #include <vector>
+#include "Config.h"
+#include "ResourceManager.h"
 
 struct GunPoint
 {
@@ -14,14 +15,15 @@ struct GunPoint
 struct Starship
 {
     SDL_Texture* texture;
+    SDL_FRect rect;
+
 
     float speed;
-    int hp;
-    SDL_FRect rect;
+    float hpMax,hpNow;
+    SDL_FRect rectHpMax,rectHpNow;
 
     std::vector<GunPoint> guns;
     float shootdelay;
-    int dame;
     int gunType;
 
     void Update(float deltaTime);
@@ -30,12 +32,10 @@ struct Starship
 
 struct StarshipDataBase
 {
-    Starship starshipone;
-    Starship starshiptwo;
-    Starship starshipthree;
-    void Init(SDL_Texture* starshipone,
-               SDL_Texture* starshiptwo,
-               SDL_Texture* starshipthree);
+    Starship one;
+    Starship two;
+    Starship three;
+    void Init(StarshipRes& res);
 };
 
 #endif

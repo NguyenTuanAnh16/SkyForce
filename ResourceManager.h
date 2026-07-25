@@ -4,28 +4,53 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-struct ResourceManager {
-// nen
-SDL_Texture* backGround;
-SDL_Texture* nibiru;
-SDL_Texture* asteroid;
+// menu
+struct MenuRes{
+
+};
+
+//  game
+struct BackgroundRes
+{
+    SDL_Texture* backGround;
+    SDL_Texture* nibiru;
+    SDL_Texture* asteroid;
+};
 
 // tau vu tru
-SDL_Texture* starshipone;
-SDL_Texture* starshiptwo;
-SDL_Texture* starshipthree;
+struct StarshipRes
+{
+    SDL_Texture* one;
+    SDL_Texture* two;
+    SDL_Texture* three;
+};
 
-// dan
-SDL_Texture* bulletOne;
-SDL_Texture* bulletTwo;
+// tai nguyen dich
+struct EnemyRes
+{
+    SDL_Texture* one;
+    SDL_Texture* two;
+    SDL_Texture* three;
+};
 
-// dich
-SDL_Texture* enemyOne;
-SDL_Texture* enemyTwo;
-SDL_Texture* enemyThree;
 
-void Load(SDL_Renderer* renderer);
-void Free();
+// tài nguyên đạn
+struct WeaponRes
+{
+    SDL_Texture* playerOne;
+    SDL_Texture* enemyOne;
+};
+
+
+
+struct ResourceManager {
+  MenuRes menu;
+  BackgroundRes background;
+  StarshipRes starship;
+  EnemyRes enemy;
+  WeaponRes weapon;
+  void Load(SDL_Renderer* renderer);
+  void Free();
 };
 
 #endif

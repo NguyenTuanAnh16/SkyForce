@@ -1,50 +1,45 @@
 #include "Enemy.h"
 
-void EnemyDataBase::Init(SDL_Texture* enemyOne,
-                          SDL_Texture* enemyTwo,
-                          SDL_Texture* enemyThree){
+void EnemyDataBase::Init(EnemyRes& res){
     // one
-          this->enemyOne.texture = enemyOne;
-          this->enemyOne.speed = 200;
-          this->enemyOne.hp = 200;
-          this->enemyOne.dame = 30;
-          this->enemyOne.width = 48;
-          this->enemyOne.height = 54;
-          this->enemyOne.moveType = 1;
-          this->enemyOne.guns = {{21,55}};
-          this->enemyOne.shootType = 2;
-          this->enemyOne.shootDelay = 0.3f;
+          this->one.texture = res.one;
+          this->one.speed = 200;
+          this->one.hpMax = 200;
+          this->one.width = 48;
+          this->one.height = 54;
+          this->one.moveType = 1;
+          this->one.guns = {{21,55}};
+          this->one.shootType = 2;
+          this->one.shootDelay = 0.3f;
 
     // two
-          this->enemyTwo.texture = enemyTwo;
-          this->enemyTwo.speed = 600;
-          this->enemyTwo.hp = 200;
-          this->enemyTwo.dame = 30;
-          this->enemyTwo.width = 66;
-          this->enemyTwo.height = 70;
-          this->enemyTwo.moveType = 1;
-          this->enemyTwo.guns = {{0,0}};
-          this->enemyTwo.shootType = 2;
-          this->enemyTwo.shootDelay = 0.3f;
+          this->two.texture = res.two;
+          this->two.speed = 600;
+          this->two.hpMax = 200;
+          this->two.width = 66;
+          this->two.height = 70;
+          this->two.moveType = 1;
+          this->two.guns = {{0,0}};
+          this->two.shootType = 2;
+          this->two.shootDelay = 0.3f;
 
     // three
-          this->enemyThree.texture = enemyThree;
-          this->enemyThree.speed = 600;
-          this->enemyThree.hp = 200;
-          this->enemyThree.dame = 30;
-          this->enemyThree.width = 66;
-          this->enemyThree.height = 70;
-          this->enemyThree.moveType = 1;
-          this->enemyThree.guns = {{0,0}};
-          this->enemyThree.shootType = 2;
-          this->enemyThree.shootDelay = 0.3f;
+          this->three.texture = res.three;
+          this->three.speed = 600;
+          this->three.hpMax = 200;
+          this->three.width = 66;
+          this->three.height = 70;
+          this->three.moveType = 1;
+          this->three.guns = {{0,0}};
+          this->three.shootType = 2;
+          this->three.shootDelay = 0.3f;
 
 }
 
 EnemyData EnemyDataBase::Enemy(int type){
-    if(type == 0) return enemyOne;
-    if(type == 1) return enemyTwo;
-    if(type == 2) return enemyThree;
+    if(type == 0) return one;
+    if(type == 1) return two;
+    if(type == 2) return three;
     return EnemyData();
 
 }

@@ -1,27 +1,53 @@
 #include "ResourceManager.h"
 
 void ResourceManager:: Load(SDL_Renderer* renderer){
-// nen
-backGround = IMG_LoadTexture(renderer,"ResourceManager/BackGround.jpg");
-nibiru = IMG_LoadTexture(renderer,"ResourceManager/Nibiru.png");
-asteroid = IMG_LoadTexture(renderer,"ResourceManager/Asteroid.png");
+
+// game
+background.backGround = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BackGround.jpg");
+background.nibiru = IMG_LoadTexture(renderer,"ResourceManager/BackGround/Nibiru.png");
+background.asteroid = IMG_LoadTexture(renderer,"ResourceManager/BackGround/Asteroid.png");
 
 // tau vu tru
-starshipone = IMG_LoadTexture(renderer,"ResourceManager/StarshipOne.png");
-starshiptwo = IMG_LoadTexture(renderer,"ResourceManager/StarshipTwo.png");
-starshipthree = IMG_LoadTexture(renderer,"ResourceManager/StarshipThree.png");
-
-// dan
-bulletOne = IMG_LoadTexture(renderer,"ResourceManager/BulletOne.png");
-bulletTwo = IMG_LoadTexture(renderer,"ResourceManager/BulletTwo.png");
+starship.one = IMG_LoadTexture(renderer,"ResourceManager/Starship/One.png");
+starship.two = IMG_LoadTexture(renderer,"ResourceManager/Starship/Two.png");
+starship.three = IMG_LoadTexture(renderer,"ResourceManager/Starship/Three.png");
 
 // dich
-enemyOne = IMG_LoadTexture(renderer,"ResourceManager/EnemyOne.png");
-enemyTwo = IMG_LoadTexture(renderer,"ResourceManager/EnemyTwo.png");
-enemyThree = IMG_LoadTexture(renderer,"ResourceManager/EnemyThree.png");
+enemy.one = IMG_LoadTexture(renderer,"ResourceManager/Enemy/One.png");
+enemy.two = IMG_LoadTexture(renderer,"ResourceManager/Enemy/Two.png");
+enemy.three = IMG_LoadTexture(renderer,"ResourceManager/Enemy/Three.png");
+
+
+// dan
+weapon.playerOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Player/One.png");
+weapon.enemyOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Enemy/One.png");
+
 }
 
-void ResourceManager:: Free(){
-SDL_DestroyTexture(backGround);
-SDL_DestroyTexture(nibiru);
+void ResourceManager::Free()
+{
+    // background
+    SDL_DestroyTexture(background.backGround);
+    SDL_DestroyTexture(background.nibiru);
+    SDL_DestroyTexture(background.asteroid);
+
+
+    // starship
+    SDL_DestroyTexture(starship.one);
+    SDL_DestroyTexture(starship.two);
+    SDL_DestroyTexture(starship.three);
+
+
+    // enemy
+    SDL_DestroyTexture(enemy.one);
+    SDL_DestroyTexture(enemy.two);
+    SDL_DestroyTexture(enemy.three);
+
+
+    // weapon
+    SDL_DestroyTexture(weapon.playerOne);
+    SDL_DestroyTexture(weapon.enemyOne);
+
+
+    // menu (sau thêm ảnh thì thêm ở đây)
 }

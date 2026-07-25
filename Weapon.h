@@ -3,6 +3,7 @@
 
 #include<SDL.h>
 #include "Config.h"
+#include "ResourceManager.h"
 
 struct WeaponData{
 
@@ -13,10 +14,10 @@ float dame;
 };
 
 struct WeaponDataBase{
-     WeaponData bulletOne;
-     WeaponData bulletTwo;
+     WeaponData playerOne;
+     WeaponData enemyOne;
 
-     void Init(SDL_Texture* bulletOne,SDL_Texture* bulletTwo);
+     void Init(WeaponRes& res);
      WeaponData weapon(int type);
 
 };
@@ -25,6 +26,7 @@ struct Weapon{
 bool active = false;
 SDL_FRect rect;
 int type;
+char owner;
 };
 
 

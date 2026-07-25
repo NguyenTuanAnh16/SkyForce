@@ -2,10 +2,10 @@
 #include "Config.h"
 
 
-void BackGround::Init(SDL_Texture* backGround, SDL_Texture* nibiru, SDL_Texture* asteroid){
-  bgTexture = backGround;
-  ptTexture = nibiru;
-  adTexture = asteroid;
+void BackGround::Init(BackgroundRes& res){
+  bgTexture = res.backGround;
+  ptTexture = res.nibiru;
+  adTexture = res.asteroid;
   SDL_SetTextureColorMod(bgTexture, 180, 180, 180);
   SDL_SetTextureColorMod(ptTexture, 255, 255, 255);
 }

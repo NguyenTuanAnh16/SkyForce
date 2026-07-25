@@ -17,8 +17,7 @@ struct EnemyData
     SDL_Texture* texture;
 
     float speed;
-    int hp;
-    int dame;
+    float hpMax;
     float width,height;
 
     int moveType;
@@ -37,6 +36,11 @@ int type;
 bool active = false;
 SDL_FRect rect;
 
+// hp
+float hpNow;
+SDL_FRect rectHpMax;
+SDL_FRect rectHp;
+
 // dan
 float shoottime = 0;
 WeaponData* weapon;
@@ -46,13 +50,10 @@ WeaponData* weapon;
 
 struct EnemyDataBase
 {
-    EnemyData enemyOne;
-    EnemyData enemyTwo;
-    EnemyData enemyThree;
-    void Init(SDL_Texture* enemyOne,
-              SDL_Texture* enemyTwo,
-              SDL_Texture* enemyThree);
-    void Render(SDL_Renderer* renderer);
+    EnemyData one;
+    EnemyData two;
+    EnemyData three;
+    void Init(EnemyRes& res);
     EnemyData Enemy(int type);
 };
 

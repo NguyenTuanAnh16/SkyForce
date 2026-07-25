@@ -13,7 +13,7 @@ struct Player
 
     float shoottime = 0;
 
-    void ChangeStarship(Starship ship);
+    void ChangeStarship(Starship& ship);
 
     void Update(float deltaTime,WeaponSystem* weaponSystem);
 

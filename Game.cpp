@@ -18,6 +18,8 @@ void Game::Init(){
     -1,
     SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
     );
+    // cho phep lam mo
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
     SDL_RenderSetLogicalSize(
     renderer,
@@ -29,22 +31,18 @@ void Game::Init(){
     resource.Load(renderer);
 
     // nen
-    background.Init(resource.backGround,
-                     resource.nibiru,
-                      resource.asteroid);
+    background.Init(resource.background);
+
     // may bay
-    starshipdata.Init(resource.starshipone,
-                      resource.starshiptwo,
-                      resource.starshipthree);
-    player.ChangeStarship(starshipdata.starshipthree);
+    starship.Init(resource.starship);
+    player.ChangeStarship(starship.three);
 
     // dan
-    weaponSystem.Init(resource.bulletOne,resource.bulletTwo);
-
+    //weapon.Init(resource.weapon);
+    weaponSystem.Init(100,resource.weapon);
     // dich
-    enemysystem.Init(resource.enemyOne,
-                     resource.enemyTwo,
-                     resource.enemyThree);
+    enemy.Init(resource.enemy);
+    enemysystem.Init(100,&enemy);
 
 }
 
@@ -88,6 +86,8 @@ weaponSystem.Update(deltaTime);
 spawnmanager.Update(deltaTime,40,5,enemysystem);
 
 enemysystem.Update(deltaTime,&weaponSystem);
+
+collisionSystem.Update(player,enemysystem,weaponSystem);
 }
 
 void Game::capFPS()

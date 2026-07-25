@@ -9,7 +9,7 @@ void SpawnManager::Update(float deltaTime,int spacing, int sum, EnemySystem& ene
     {
         int amount = 1 + rand() % sum;
         int x = rand() %(SCREEN_WIDTH
-                         - amount*(int)enemySystem.data.Enemy(0).width
+                         - amount*(int)enemySystem.data->Enemy(0).width
                          - (amount -1) * spacing);
 
         enemySystem.Spawn(x, -50,0, amount);

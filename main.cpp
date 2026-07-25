@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[])
 {
-    Game game;
+Game game;
 game.Init();
 game.Run();
 game.Clean();

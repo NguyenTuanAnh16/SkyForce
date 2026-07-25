@@ -2,6 +2,7 @@
 #define _BackGround_H
 
 #include <SDL.h>
+#include "ResourceManager.h"
 
 struct BackGround
 {
@@ -22,9 +23,7 @@ struct BackGround
     SDL_FRect adRect;
 
 
-    void Init(SDL_Texture* backGround,
-              SDL_Texture* nibiru,
-              SDL_Texture* asteroid);
+    void Init(BackgroundRes& res);
     void Update(float deltaTime);
     void Render(SDL_Renderer* renderer);
 

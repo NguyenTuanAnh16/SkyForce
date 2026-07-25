@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-void Player::ChangeStarship(Starship ship)
+void Player::ChangeStarship(Starship& ship)
 {
         starship = ship;
 }
@@ -47,6 +47,8 @@ void Player::Update(float deltaTime,WeaponSystem* weaponSystem)
         if(starship.rect.y + starship.rect.h > SCREEN_HEIGHT)
             starship.rect.y = SCREEN_HEIGHT - starship.rect.h;
     }
+// mau
+      starship.rectHpNow.w = (starship.hpNow / starship.hpMax) * starship.rectHpMax.w;
 
 
 // ban
@@ -59,7 +61,8 @@ void Player::Update(float deltaTime,WeaponSystem* weaponSystem)
             weaponSystem->Shoot(
                 starship.rect.x + gun.x,
                 starship.rect.y + gun.y,
-                starship.gunType);
+                starship.gunType,
+                'P');
         }
 
         shoottime = 0;
@@ -71,5 +74,16 @@ void Player::Update(float deltaTime,WeaponSystem* weaponSystem)
 
 void Player::Render(SDL_Renderer* renderer)
 {
-    starship.Render(renderer);
+    SDL_RenderCopyF(renderer,starship.texture,nullptr,&starship.rect);
+
+    // khung mau
+    SDL_SetRenderDrawColor(renderer,255,255,255,100);
+    SDL_RenderFillRectF(renderer,
+                        &starship.rectHpMax);
+
+    // máu còn lại
+    SDL_SetRenderDrawColor(renderer,255,0,0,200);
+    SDL_RenderFillRectF(renderer,
+                        &starship.rectHpNow);
+
 }

@@ -1,15 +1,16 @@
 #include "WeaponSystem.h"
 
-void WeaponSystem::Init(SDL_Texture* bulletOne,SDL_Texture* bulletTwo){
-    data.Init(bulletOne,bulletTwo);
-    weapons.resize(50);
+void WeaponSystem::Init(int sum,WeaponRes& res){
+    data.Init(res);
+    weapons.resize(sum);
 }
 
-void WeaponSystem::Shoot(float x, float y, int type){
+void WeaponSystem::Shoot(float x, float y, int type, char owner){
    for(auto& weapon : weapons){
      if(!weapon.active){
        weapon.active = true;
        weapon.type = type;
+       weapon.owner = owner;
        weapon.rect.x = x;
        weapon.rect.y = y;
        weapon.rect.w = data.weapon(type).width;
