@@ -2,37 +2,37 @@
 
 void EnemyDataBase::Init(EnemyRes& res){
     // one
-          this->one.texture = res.one;
-          this->one.speed = 200;
-          this->one.hpMax = 200;
-          this->one.width = 48;
-          this->one.height = 54;
-          this->one.moveType = 1;
-          this->one.guns = {{21,55}};
-          this->one.shootType = 2;
-          this->one.shootDelay = 0.3f;
+          one.texture = res.one;
+          one.speed = 200;
+          one.hpMax = 200;
+          one.width = 48;
+          one.height = 54;
+          one.moveType = 1;
+          one.guns = {{21,55}};
+          one.shootType = 2;
+          one.shootDelay = 0.3f;
 
     // two
-          this->two.texture = res.two;
-          this->two.speed = 600;
-          this->two.hpMax = 200;
-          this->two.width = 66;
-          this->two.height = 70;
-          this->two.moveType = 1;
-          this->two.guns = {{0,0}};
-          this->two.shootType = 2;
-          this->two.shootDelay = 0.3f;
+          two.texture = res.two;
+          two.speed = 600;
+          two.hpMax = 200;
+          two.width = 66;
+          two.height = 70;
+          two.moveType = 1;
+          two.guns = {{0,0}};
+          two.shootType = 2;
+          two.shootDelay = 0.3f;
 
     // three
-          this->three.texture = res.three;
-          this->three.speed = 600;
-          this->three.hpMax = 200;
-          this->three.width = 66;
-          this->three.height = 70;
-          this->three.moveType = 1;
-          this->three.guns = {{0,0}};
-          this->three.shootType = 2;
-          this->three.shootDelay = 0.3f;
+          three.texture = res.three;
+          three.speed = 600;
+          three.hpMax = 200;
+          three.width = 66;
+          three.height = 70;
+          three.moveType = 1;
+          three.guns = {{0,0}};
+          three.shootType = 2;
+          three.shootDelay = 0.3f;
 
 }
 

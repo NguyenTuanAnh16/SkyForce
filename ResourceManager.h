@@ -5,43 +5,61 @@
 #include <SDL_image.h>
 
 // menu
-struct MenuRes{
-
+struct MenuRes
+{
+   SDL_Texture* backGround = nullptr;
+   SDL_Texture* logo = nullptr;
+   SDL_Texture* playGame = nullptr;
+   SDL_Texture* selectShip = nullptr;
+   SDL_Texture* settings = nullptr;
+   SDL_Texture* exit = nullptr;
+   SDL_Texture* goBack = nullptr;
+   SDL_Texture* right = nullptr;
+   SDL_Texture* left = nullptr;
+   SDL_Texture* shipInfo = nullptr;
 };
 
 //  game
 struct BackgroundRes
 {
-    SDL_Texture* backGround;
-    SDL_Texture* nibiru;
-    SDL_Texture* asteroid;
+    SDL_Texture* backGround = nullptr;
+    SDL_Texture* nibiru = nullptr;
+    SDL_Texture* asteroid = nullptr;
 };
 
 // tau vu tru
 struct StarshipRes
 {
-    SDL_Texture* one;
-    SDL_Texture* two;
-    SDL_Texture* three;
+    SDL_Texture* one = nullptr;
+    SDL_Texture* nameOne = nullptr;
+    SDL_Texture* two = nullptr;
+    SDL_Texture* nameTwo = nullptr;
+    SDL_Texture* three = nullptr;
+    SDL_Texture* nameThree = nullptr;
 };
 
 // tai nguyen dich
 struct EnemyRes
 {
-    SDL_Texture* one;
-    SDL_Texture* two;
-    SDL_Texture* three;
+    SDL_Texture* one = nullptr;
+    SDL_Texture* two = nullptr;
+    SDL_Texture* three = nullptr;
 };
 
 
 // tài nguyên đạn
 struct WeaponRes
 {
-    SDL_Texture* playerOne;
-    SDL_Texture* enemyOne;
+    SDL_Texture* playerOne = nullptr;
+    SDL_Texture* enemyOne = nullptr;
 };
 
-
+struct EffectRes
+{
+    SDL_Texture* one = nullptr;
+    SDL_Texture* two = nullptr;
+    SDL_Texture* shipOne = nullptr;
+};
 
 struct ResourceManager {
   MenuRes menu;
@@ -49,6 +67,7 @@ struct ResourceManager {
   StarshipRes starship;
   EnemyRes enemy;
   WeaponRes weapon;
+  EffectRes effect;
   void Load(SDL_Renderer* renderer);
   void Free();
 };

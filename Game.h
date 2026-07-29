@@ -2,21 +2,34 @@
 #define _Game_H
 
 #include "ResourceManager.h"
+#include "GameState.h"
+#include "Menu.h"
+#include "SelectShip.h"
 #include "BackGround.h"
 #include "Player.h"
 #include "EnemySystem.h"
+#include "SpawnManager.h"
 #include "WeaponSystem.h"
 #include "Weapon.h"
-#include "SpawnManager.h"
 #include "CollisionSystem.h"
+#include "EffectSystem.h"
 
 struct Game {
 // cua so
-SDL_Window* window;
-SDL_Renderer* renderer;
+SDL_Window* window = nullptr;
+SDL_Renderer* renderer = nullptr;
 
 // tai nguyen
 ResourceManager resource;
+
+// trang thai
+GameState state = GameState::MENU;
+
+// menu
+Menu menu;
+
+// doi may bay
+SelectShip selectShip;
 
 // background
 BackGround background;
@@ -24,6 +37,7 @@ BackGround background;
 // nguoi choi
 Player player;
 StarshipDataBase starship;
+
 
 // dich
 EnemySystem enemysystem;
@@ -35,11 +49,16 @@ SpawnManager spawnmanager;
 
 
 // dan
+WeaponDataBase weapon;
 WeaponSystem weaponSystem;
 //WeaponDataBase weapon;
 
 // va cham
 CollisionSystem collisionSystem;
+
+// hieu ung
+EffectSystem effectSystem;
+EffectDataBase effect;
 
 // fps
 Uint32 frameStart = 0;

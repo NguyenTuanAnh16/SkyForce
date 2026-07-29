@@ -7,17 +7,17 @@
 struct BackGround
 {
     // nen
-    SDL_Texture*  bgTexture;
+    SDL_Texture*  bgTexture = nullptr;
     float bgX = 0,bgY = 0;
     SDL_FRect bgRect1,bgRect2;
 
     // hanh tinh
-    SDL_Texture* ptTexture;
+    SDL_Texture* ptTexture = nullptr;
     float ptX = 0,ptY = 0;
     SDL_FRect ptRect;
 
     // sao
-    SDL_Texture* adTexture;
+    SDL_Texture* adTexture = nullptr;
     float adX = 0,adY = 0;
     float time;
     SDL_FRect adRect;

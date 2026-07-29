@@ -1,5 +1,5 @@
 #include "CollisionSystem.h"
-#include <iostream>
+
 
 bool CollisionSystem::Check(const SDL_FRect& a,
                             const SDL_FRect& b)
@@ -8,38 +8,68 @@ bool CollisionSystem::Check(const SDL_FRect& a,
 }
 
 void CollisionSystem::HandlePlayerEnemy(Player& player,
-                                        EnemySystem& enemySystem)
+                                        EnemySystem& enemySystem,
+                                        EffectSystem& effectSystem)
 {
     for(auto& enemy : enemySystem.enemys){
-        if(enemy.active && Check(player.starship.rect,enemy.rect)){
-                enemy.active = false;
-                player.starship.hpNow = player.starship.hpNow - enemy.hpNow;
-        }
-    }
-}
+        if(enemy.active){
+                for(auto& hit : player.starship->hitboxes){
+                     SDL_FRect box = {player.starship->rect.x + hit.x,
+                                      player.starship->rect.y + hit.y,
+                                      hit.w, hit.h};
+                    if(Check(box,enemy.rect)){
+                        enemy.active = false;
+                        player.starship->hpNow = player.starship->hpNow - enemy.hpNow;
+                        effectSystem.AddBlast(enemy.rect.x + enemy.rect.w / 2,
+                                         enemy.rect.y + enemy.rect.h / 2,
+                                         1, enemy.rect.w * 1.2);
+                        break;
+                        }
+                  }
+           }
+       }
+ }
 
 void CollisionSystem::HandlePlayerWeapon(Player& player,
-                                        WeaponSystem& weaponSystem)
+                                        WeaponSystem& weaponSystem,
+                                        EffectSystem& effectSystem)
 {
-    for(auto& weapon : weaponSystem.weapons)
-        {  if(weapon.owner != 'P' && weapon.active && Check(player.starship.rect,weapon.rect))
-              {
-                  weapon.active = false;
-                  player.starship.hpNow = player.starship.hpNow - weaponSystem.data.weapon(weapon.type).dame;
+    for(auto& weapon : weaponSystem.weapons){
+            if(weapon.owner != 'P' && weapon.active){
+              for(auto& hit : player.starship->hitboxes){
+                     SDL_FRect box = {player.starship->rect.x + hit.x,
+                                      player.starship->rect.y + hit.y,
+                                      hit.w, hit.h};
+                    if(Check(box, weapon.rect)){
+                        weapon.active = false;
+                        player.starship->hpNow = player.starship->hpNow - weaponSystem.data->weapon(weapon.type).dame;
+                        effectSystem.AddBlast(weapon.rect.x + weapon.rect.w / 2,
+                                         weapon.rect.y + weapon.rect.h, 2,15);
+                        break;
+                        }
+                  }
               }
         }
 }
 
 void CollisionSystem::HandleEnemyWeapon(EnemySystem& enemySystem,
-                                        WeaponSystem& weaponSystem)
+                                        WeaponSystem& weaponSystem,
+                                        EffectSystem& effectSystem)
 {
     for(auto& enemy : enemySystem.enemys){
         for(auto& weapon : weaponSystem.weapons){
             if(weapon.owner != 'E' && enemy.active && weapon.active && Check(enemy.rect,weapon.rect) )
             {
+                effectSystem.AddBlast(weapon.rect.x + weapon.rect.w / 2,
+                                 weapon.rect.y ,2,6);
                 weapon.active = false;
-                enemy.hpNow = enemy.hpNow - weaponSystem.data.weapon(weapon.type).dame;
-                if(enemy.hpNow <= 0) enemy.active = false;
+
+                enemy.hpNow = enemy.hpNow - weaponSystem.data->weapon(weapon.type).dame;
+                if(enemy.hpNow <= 0){
+                        enemy.active = false;
+                   effectSystem.AddBlast(enemy.rect.x + enemy.rect.w / 2,
+                                    enemy.rect.y + enemy.rect.h / 2,1,enemy.rect.w);
+                }
             }
         }
     }
@@ -47,9 +77,10 @@ void CollisionSystem::HandleEnemyWeapon(EnemySystem& enemySystem,
 
 void CollisionSystem::Update(Player& player,
                              EnemySystem& enemySystem,
-                             WeaponSystem& weaponSystem)
+                             WeaponSystem& weaponSystem,
+                             EffectSystem& effectSystem)
 {
-    HandlePlayerEnemy(player,enemySystem);
-    HandlePlayerWeapon(player,weaponSystem);
-    HandleEnemyWeapon(enemySystem,weaponSystem);
+    HandlePlayerEnemy(player,enemySystem,effectSystem);
+    HandlePlayerWeapon(player,weaponSystem,effectSystem);
+    HandleEnemyWeapon(enemySystem,weaponSystem,effectSystem);
 }

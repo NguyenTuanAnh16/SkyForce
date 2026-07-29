@@ -3,18 +3,18 @@
 void WeaponDataBase::Init(WeaponRes& res){
 
     //  dan player
-            this->playerOne.texture = res.playerOne;
-            this->playerOne.speed = 1000;
-            this->playerOne.width = 8;
-            this->playerOne.height = 16;
-            this->playerOne.dame = 60;
+            playerOne.texture = res.playerOne;
+            playerOne.speed = 1000;
+            playerOne.width = 8;
+            playerOne.height = 16;
+            playerOne.dame = 60;
 
     // dan dich
-            this->enemyOne.texture = res.enemyOne;
-            this->enemyOne.speed = - 400;
-            this->enemyOne.width = 6;
-            this->enemyOne.height = 6;
-            this->enemyOne.dame = 10;
+            enemyOne.texture = res.enemyOne;
+            enemyOne.speed = - 400;
+            enemyOne.width = 6;
+            enemyOne.height = 6;
+            enemyOne.dame = 10;
 
 }
 

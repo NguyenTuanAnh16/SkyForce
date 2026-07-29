@@ -9,7 +9,7 @@
 
 struct EnemySystem
 {
-    EnemyDataBase* data;
+    EnemyDataBase* data = nullptr;
 
     std::vector<Enemy> enemys;
 

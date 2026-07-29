@@ -30,19 +30,33 @@ void Game::Init(){
     // tai nguyen
     resource.Load(renderer);
 
+    // hieu ung
+    effect.Init(resource.effect);
+    effectSystem.Init(&effect);
+
+    // menu
+    menu.Init(resource.menu);
+
+
     // nen
     background.Init(resource.background);
 
     // may bay
     starship.Init(resource.starship);
-    player.ChangeStarship(starship.three);
+
+    // doi may bay
+    selectShip.Init(resource.menu,&starship);
+
+    player.ChangeStarship(selectShip,starship,effectSystem);
 
     // dan
     //weapon.Init(resource.weapon);
-    weaponSystem.Init(100,resource.weapon);
+    weapon.Init(resource.weapon);
+    weaponSystem.Init(100,&weapon);
     // dich
     enemy.Init(resource.enemy);
     enemysystem.Init(100,&enemy);
+
 
 }
 
@@ -56,6 +70,13 @@ void Game::Run()
                  if(event.type == SDL_QUIT){
                     running = false;
                     }
+                 if(state == GameState::MENU)
+                    menu.HandleEvent(event,state);
+                 else if(state == GameState::SELECT_SHIP)
+                 {
+                      selectShip.HandleEvent(event,state);
+                      if(state == GameState::PLAYING) player.ChangeStarship(selectShip,starship,effectSystem);
+                 }
                  }
      Update();
      Render();
@@ -65,29 +86,59 @@ void Game::Run()
 
 }
 
-void Game::Render(){
-SDL_RenderClear(renderer);
-background.Render(renderer);
-player.Render(renderer);
-weaponSystem.Render(renderer);
-enemysystem.Render(renderer);
-SDL_RenderPresent(renderer);
+void Game::Render()
+{
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
+    SDL_RenderClear(renderer);
 
+    if(state == GameState::MENU)
+    {
+        menu.Render(renderer);
+    }
+    else if(state == GameState::PLAYING)
+    {
+        background.Render(renderer);
+        player.Render(renderer);
+        weaponSystem.Render(renderer);
+        enemysystem.Render(renderer);
+        effectSystem.Render(renderer);
+    }
+    else if(state == GameState::SELECT_SHIP)
+    {
+        selectShip.Render(renderer);
+    }
+
+    SDL_RenderPresent(renderer);
 }
 
+void Game::Update()
+{
+    if(state == GameState::MENU)
+    {
+        menu.Update(deltaTime);
+    }
 
-void Game::Update(){
- background.Update(deltaTime);
+    else if(state == GameState::PLAYING)
+    {
+        background.Update(deltaTime);
 
-player.Update(deltaTime, &weaponSystem);
+        player.Update(deltaTime, weaponSystem, effectSystem);
 
-weaponSystem.Update(deltaTime);
+        weaponSystem.Update(deltaTime);
 
-spawnmanager.Update(deltaTime,40,5,enemysystem);
+        spawnmanager.Update(deltaTime,40,5,enemysystem);
 
-enemysystem.Update(deltaTime,&weaponSystem);
+        enemysystem.Update(deltaTime,&weaponSystem);
 
-collisionSystem.Update(player,enemysystem,weaponSystem);
+        effectSystem.Update(deltaTime);
+
+        collisionSystem.Update(player,enemysystem,weaponSystem,effectSystem);
+    }
+
+    else if(state == GameState::SELECT_SHIP)
+    {
+        selectShip.Update(deltaTime);
+    }
 }
 
 void Game::capFPS()

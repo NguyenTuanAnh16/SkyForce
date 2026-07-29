@@ -5,6 +5,7 @@ void EnemySystem::Init(int sum, EnemyDataBase* data){
     enemys.resize(sum);
 }
 
+// ren dich
 void EnemySystem::Spawn(float x, float y,int type, int amount){
     int sumenemy = 0;
    for(auto& enemy : enemys){

@@ -6,7 +6,7 @@
 #include "Config.h"
 #include "ResourceManager.h"
 
-struct GunPoint
+struct Offset
 {
     float x;
     float y;
@@ -14,20 +14,27 @@ struct GunPoint
 
 struct Starship
 {
-    SDL_Texture* texture;
+    // Render
+    SDL_Texture* texture = nullptr;
     SDL_FRect rect;
+    SDL_Texture* nameTexture = nullptr;
 
+    // va cham
+    std::vector<SDL_FRect> hitboxes;
 
+    // trang thai
     float speed;
     float hpMax,hpNow;
     SDL_FRect rectHpMax,rectHpNow;
 
-    std::vector<GunPoint> guns;
+    // vu khi
+    std::vector<Offset> guns;
     float shootdelay;
     int gunType;
 
-    void Update(float deltaTime);
-    void Render(SDL_Renderer* renderer);
+    // dong co
+    std::vector<Offset> engines;
+    float engineSize;
 };
 
 struct StarshipDataBase

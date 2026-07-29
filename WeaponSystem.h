@@ -7,9 +7,9 @@
 
 struct WeaponSystem
 {
-    WeaponDataBase data;
+    WeaponDataBase* data;
     std::vector<Weapon> weapons;
-    void Init(int sum,WeaponRes& res);
+    void Init(int sum,WeaponDataBase* data);
     void Shoot(float x, float y, int type, char owner);
     void Update(float dt);
     void Render(SDL_Renderer* renderer);

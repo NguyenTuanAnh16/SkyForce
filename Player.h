@@ -4,18 +4,20 @@
 #include <SDL.h>
 #include "Starship.h"
 #include "WeaponSystem.h"
+#include "SelectShip.h"
+#include "EffectSystem.h"
 
 struct Player
 {
-    const Uint8* key;
+    const Uint8* key = nullptr;
 
-    Starship starship;
+    Starship* starship = nullptr;
 
     float shoottime = 0;
 
-    void ChangeStarship(Starship& ship);
+    void ChangeStarship(SelectShip& ship,StarshipDataBase& data, EffectSystem& effectSystem);
 
-    void Update(float deltaTime,WeaponSystem* weaponSystem);
+    void Update(float deltaTime,WeaponSystem& weaponSystem, EffectSystem& effectSystem);
 
     void Render(SDL_Renderer* renderer);
 };

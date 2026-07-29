@@ -14,7 +14,7 @@ struct GunPointEnemy
 
 struct EnemyData
 {
-    SDL_Texture* texture;
+    SDL_Texture* texture = nullptr;
 
     float speed;
     float hpMax;
