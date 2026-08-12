@@ -3,43 +3,30 @@
 void EnemyDataBase::Init(EnemyRes& res){
     // one
           one.texture = res.one;
-          one.speed = 200;
+          one.speed = 300;
           one.hpMax = 200;
-          one.width = 48;
-          one.height = 54;
-          one.moveType = 1;
+          one.rect = {0,0,48,54};
+          one.weaponType = 2;
           one.guns = {{21,55}};
-          one.shootType = 2;
-          one.shootDelay = 0.3f;
-
+          one.shootDelay = 0.5f;
+          one.score = 1;
     // two
           two.texture = res.two;
           two.speed = 600;
           two.hpMax = 200;
-          two.width = 66;
-          two.height = 70;
-          two.moveType = 1;
-          two.guns = {{0,0}};
-          two.shootType = 2;
+          two.rect = {0,0,56,60};
+          two.guns = {{28,62}};
+          two.weaponType = 2;
           two.shootDelay = 0.3f;
-
+          two.score = 2;
     // three
           three.texture = res.three;
           three.speed = 600;
           three.hpMax = 200;
-          three.width = 66;
-          three.height = 70;
-          three.moveType = 1;
-          three.guns = {{0,0}};
-          three.shootType = 2;
+          three.rect = {0,0,66,70};
+          three.guns = {{33,72}};
+          three.weaponType = 2;
           three.shootDelay = 0.3f;
-
+          three.score = 3;
 }
 
-EnemyData EnemyDataBase::Enemy(int type){
-    if(type == 0) return one;
-    if(type == 1) return two;
-    if(type == 2) return three;
-    return EnemyData();
-
-}

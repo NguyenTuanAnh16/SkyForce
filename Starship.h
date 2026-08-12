@@ -25,7 +25,6 @@ struct Starship
     // trang thai
     float speed;
     float hpMax,hpNow;
-    SDL_FRect rectHpMax,rectHpNow;
 
     // vu khi
     std::vector<Offset> guns;

@@ -17,12 +17,26 @@ struct MenuRes
    SDL_Texture* right = nullptr;
    SDL_Texture* left = nullptr;
    SDL_Texture* shipInfo = nullptr;
+   SDL_Texture* levelOne = nullptr;
+   SDL_Texture* levelTwo = nullptr;
+   SDL_Texture* levelThree = nullptr;
+   SDL_Texture* box = nullptr;
+   SDL_Texture* pauseLogo = nullptr;
 };
 
+struct PlayerRes
+{
+    SDL_Texture* score = nullptr;
+    SDL_Texture* hp = nullptr;
+    SDL_Texture* number = nullptr;
+    SDL_Texture* pause  = nullptr;
+};
 //  game
 struct BackgroundRes
 {
-    SDL_Texture* backGround = nullptr;
+    SDL_Texture* sceneryOne = nullptr;
+    SDL_Texture* sceneryTwo = nullptr;
+    SDL_Texture* sceneryThree = nullptr;
     SDL_Texture* nibiru = nullptr;
     SDL_Texture* asteroid = nullptr;
 };
@@ -63,6 +77,7 @@ struct EffectRes
 
 struct ResourceManager {
   MenuRes menu;
+  PlayerRes player;
   BackgroundRes background;
   StarshipRes starship;
   EnemyRes enemy;

@@ -14,14 +14,19 @@ struct GunPointEnemy
 
 struct EnemyData
 {
+    // anh
     SDL_Texture* texture = nullptr;
 
+    // thong so dich
     float speed;
     float hpMax;
-    float width,height;
+    SDL_FRect rect;
 
-    int moveType;
-    int shootType;
+    // loai vu khi
+    int weaponType;
+
+    // diem tieu diet
+    int score;
 
     std::vector<GunPointEnemy> guns;
     float shootDelay;
@@ -30,7 +35,10 @@ struct EnemyData
 
 struct Enemy{
 // loai dich
-int type;
+EnemyData* data = nullptr;
+
+// di chuyen
+int moveType;
 
 // may bay dich
 bool active = false;
@@ -43,7 +51,7 @@ SDL_FRect rectHp;
 
 // dan
 float shoottime = 0;
-WeaponData* weapon;
+
 
 };
 
@@ -54,7 +62,6 @@ struct EnemyDataBase
     EnemyData two;
     EnemyData three;
     void Init(EnemyRes& res);
-    EnemyData Enemy(int type);
 };
 
 

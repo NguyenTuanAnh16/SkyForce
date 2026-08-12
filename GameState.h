@@ -5,6 +5,7 @@ enum class GameState
 {
     MENU,
     PLAYING,
+    SELECT_LEVEL,
     SELECT_SHIP,
     PAUSE,
     GAMEOVER,

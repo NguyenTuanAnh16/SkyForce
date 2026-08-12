@@ -2,30 +2,49 @@
 #define _BackGround_H
 
 #include <SDL.h>
+#include "Config.h"
 #include "ResourceManager.h"
+
+struct BackGroundData
+{
+    SDL_Texture* sceneryTex = nullptr;
+    SDL_FRect sceneryStart;
+    float scenerySpeed = 0;
+
+    SDL_Texture* planetTex = nullptr;
+    SDL_FRect planetStart;
+    float planetSpeed = 0;
+
+    SDL_Texture* meteorTex = nullptr;
+    SDL_FRect meteorStart;
+    float meteorSpeed = 0;
+    float meteorVelocityX = 0;
+    float meteorVelocityY = 0;
+    float meteorAngle = 0;
+};
 
 struct BackGround
 {
-    // nen
-    SDL_Texture*  bgTexture = nullptr;
-    float bgX = 0,bgY = 0;
-    SDL_FRect bgRect1,bgRect2;
+    BackGroundData* data = nullptr;
 
-    // hanh tinh
-    SDL_Texture* ptTexture = nullptr;
-    float ptX = 0,ptY = 0;
-    SDL_FRect ptRect;
+    // scenery
+    SDL_FRect sceneryRectOne;
+    SDL_FRect sceneryRectTwo;
 
-    // sao
-    SDL_Texture* adTexture = nullptr;
-    float adX = 0,adY = 0;
-    float time;
-    SDL_FRect adRect;
+    // planet
+    SDL_FRect planetRect;
 
-
-    void Init(BackgroundRes& res);
-    void Update(float deltaTime);
-    void Render(SDL_Renderer* renderer);
+    // mereor
+    SDL_FRect meteorRect;
 
 };
+
+struct BackGroundDataBase
+{
+    BackGroundData one;
+    BackGroundData two;
+    BackGroundData three;
+    void Init(BackgroundRes& res);
+};
+
 #endif

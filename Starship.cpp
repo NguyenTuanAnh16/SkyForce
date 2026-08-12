@@ -24,8 +24,6 @@ void StarshipDataBase::Init(StarshipRes& res)
    // trang thai
     one.speed = 1000;
     one.hpMax = 100;
-    one.rectHpMax = {0,0,100,20};
-    one.rectHpNow = {0,0,100,20};
 
   // vu khi
     one.guns = {{(145-13) / 2, -25}};
@@ -56,8 +54,6 @@ void StarshipDataBase::Init(StarshipRes& res)
     two.speed = 900;
     two.hpMax = 150;
     two.hpNow = 100;
-    two.rectHpMax = {0,0,100,20};
-    two.rectHpNow = {0,0,100,20};
 
     // vu khi
     two.guns ={{53, -25},{97, -25}};
@@ -96,8 +92,6 @@ void StarshipDataBase::Init(StarshipRes& res)
     three.speed = 700;
     three.hpMax = 200;
     three.hpNow = 100;
-    three.rectHpMax = {0,0,200,20};
-    three.rectHpNow = {0,0,200,20};
 
     // sung
     three.guns ={{50, -25 + 17},{83, -25},{115, -25 + 17}};

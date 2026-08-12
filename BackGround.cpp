@@ -1,44 +1,60 @@
 #include "BackGround.h"
-#include "Config.h"
+
+void BackGroundDataBase::Init(BackgroundRes& res)
+{
+// man 1
+    // nen
+    one.sceneryTex  = res.sceneryOne;
+    one.sceneryStart = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
+    one.scenerySpeed = 250;
+
+    //hanh tinh
+    one.planetTex = res.nibiru;
+    one.planetStart = {900,0,180,180};
+    one.planetSpeed = 25;
+
+    // sao
+    one.meteorTex = res.asteroid;
+    one.meteorStart = {0,0,30,30};
+    one.meteorSpeed = 1000;
+    one.meteorVelocityX = 1.0f;
+    one.meteorVelocityY = 0.35f;
+    one.meteorAngle = -40;
 
 
-void BackGround::Init(BackgroundRes& res){
-  bgTexture = res.backGround;
-  ptTexture = res.nibiru;
-  adTexture = res.asteroid;
-  SDL_SetTextureColorMod(bgTexture, 180, 180, 180);
-  SDL_SetTextureColorMod(ptTexture, 255, 255, 255);
-}
-void BackGround::Update(float deltaTime){
-   // cuon nen
-   bgY = bgY + BACKGROUND_SPEED * deltaTime;
-   if(bgY >= SCREEN_HEIGHT)  bgY = 0;
+// man 2
+    // nen
+    two.sceneryTex  = res.sceneryTwo;
+    two.sceneryStart = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
+    two.scenerySpeed = 250;
 
-   // cuon hanh tinh
-   ptY = ptY + PLANET_SPEED * deltaTime;
-   if(ptY >= SCREEN_HEIGHT)  ptY = -300;
+    //hanh tinh
+    two.planetTex = res.nibiru;
+    two.planetStart = {0,0,180,180};
+    two.planetSpeed = 25;
 
-   // bay thien thach
-   time = time + deltaTime;
-   adX = adX + ASTEROID_SPEED * deltaTime;
-   adY = adY + (ASTEROID_SPEED / 2.86) * deltaTime;
-   if(time >= 3){adX = rand() % SCREEN_WIDTH;adY = 0; time = rand()%3;}
+    // sao
+    two.meteorTex = res.asteroid;
+    two.meteorStart = {0,0,30,30};
+    two.meteorSpeed = 1000;
+    two.meteorVelocityX = 1.0f;
+    two.meteorVelocityY = 0.35f;
 
-}
-void BackGround::Render(SDL_Renderer* renderer){
+// man 3
+    // nen
+    three.sceneryTex  = res.sceneryThree;
+    three.sceneryStart = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
+    three.scenerySpeed = 250;
 
-// ve nen
-   bgRect1 = {bgX,bgY,SCREEN_WIDTH,SCREEN_HEIGHT};
-   bgRect2 = {bgX,bgY-SCREEN_HEIGHT,SCREEN_WIDTH,SCREEN_HEIGHT};
-   SDL_RenderCopyF(renderer,bgTexture,nullptr,&bgRect1);
-   SDL_RenderCopyF(renderer,bgTexture,nullptr,&bgRect2);
+    //hanh tinh
+    three.planetTex = res.nibiru;
+    three.planetStart = {0,0,180,180};
+    three.planetSpeed = 25;
 
-
-// ve hanh tinh
-   ptRect = {ptX+1000,ptY,180,180};
-   SDL_RenderCopyF(renderer,ptTexture,nullptr,&ptRect);
-
-// ve sao
-   adRect = {adX,adY,30,30};
-   SDL_RenderCopyExF(renderer,adTexture,NULL,&adRect,-40,NULL,SDL_FLIP_NONE);
+    // sao
+    three.meteorTex = res.asteroid;
+    three.meteorStart = {0,0,30,30};
+    three.meteorSpeed = 1000;
+    three.meteorVelocityX = 1.0f;
+    three.meteorVelocityY = 0.35f;
 }

@@ -1,4 +1,5 @@
 #include "EnemySystem.h"
+#include <cmath>
 
 void EnemySystem::Init(int sum, EnemyDataBase* data){
     this->data = data;
@@ -6,47 +7,68 @@ void EnemySystem::Init(int sum, EnemyDataBase* data){
 }
 
 // ren dich
-void EnemySystem::Spawn(float x, float y,int type, int amount){
+void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType){
     int sumenemy = 0;
    for(auto& enemy : enemys){
      if(!enemy.active){
        enemy.active = true;
-       enemy.type = type;
-       enemy.rect = {x + sumenemy*(40 + data->Enemy(type).width),
+       enemy.data = enemyData;
+       enemy.rect = {x + sumenemy*(40 + enemyData->rect.w),
                      y,
-                     data->Enemy(type).width,
-                     data->Enemy(type).height};
+                     enemyData->rect.w,
+                     enemyData->rect.h};
 
+       enemy.moveType = moveType;
        enemy.rectHpMax = {enemy.rect.x,
                        enemy.rect.y - enemy.rect.h/10,
                        enemy.rect.w,
                        enemy.rect.h/10};
 
        enemy.rectHp = enemy.rectHpMax;
-       enemy.hpNow = data->Enemy(type).hpMax;
+       enemy.hpNow = enemyData->hpMax;
        sumenemy ++;
       }
     if(sumenemy == amount) return;
    }
 }
 
+
+// di chuyen
+void EnemySystem::Move(Enemy* enemy, float deltaTime)
+{
+    if(enemy->moveType == 0) enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
+    else if(enemy->moveType == 1)
+           {
+            enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
+            enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
+            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) enemy->moveType = 2;}
+    else if(enemy->moveType == 2)
+           {
+            enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
+            enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
+            if(enemy->rect.x <= 0) enemy->moveType = 1;}
+}
+
+
 void EnemySystem::Update(float deltatime, WeaponSystem* weaponSystem){
   for(auto& enemy : enemys){
     if(enemy.active){
-        enemy.rect.y = enemy.rect.y + data->Enemy(enemy.type).speed * deltatime;
+        Move(&enemy, deltatime);
+        enemy.rectHpMax.x = enemy.rect.x;
         enemy.rectHpMax.y = enemy.rect.y - enemy.rect.h/5;
+        enemy.rectHp.x = enemy.rectHpMax.x;
         enemy.rectHp.y = enemy.rectHpMax.y;
-        enemy.rectHp.w = (enemy.hpNow/data->Enemy(enemy.type).hpMax) * enemy.rectHpMax.w;
+        enemy.rectHp.w = (enemy.hpNow/enemy.data->hpMax) * enemy.rectHpMax.w;
 
         enemy.shoottime = deltatime + enemy.shoottime;
 
-        if(enemy.shoottime >= data->Enemy(enemy.type).shootDelay){
-            for(auto gun : data->Enemy(enemy.type).guns)
+        if(enemy.shoottime >= enemy.data->shootDelay){
+            for(auto gun : enemy.data->guns)
         {
             weaponSystem->Shoot(
                 enemy.rect.x + gun.x,
                 enemy.rect.y + gun.y,
-                data->Enemy(enemy.type).shootType,
+                enemy.data->weaponType,
                 'E');
         }
             enemy.shoottime = 0;
@@ -61,15 +83,15 @@ void EnemySystem::Render(SDL_Renderer* renderer){
       for(auto& enemy : enemys){
         if(enemy.active){
         // khung mau
-        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 120);
         SDL_RenderFillRectF(renderer, &enemy.rectHpMax);
 
         // mau
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 120);
         SDL_RenderFillRectF(renderer, &enemy.rectHp);
 
         // may bay
-        SDL_RenderCopyF(renderer,data->Enemy(enemy.type).texture, nullptr, &enemy.rect);
+        SDL_RenderCopyF(renderer,enemy.data->texture, nullptr, &enemy.rect);
 
         }
       }

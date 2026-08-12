@@ -1,14 +1,16 @@
 # depslib dependency file v1.0
-1785362837 source:d:\bt game\game2 c++\game\game.cpp
+1786451619 source:d:\bt game\game2 c++\game\game.cpp
 	"Game.h"
 	<string>
 
-1785283796 d:\bt game\game2 c++\game\game.h
+1786444736 d:\bt game\game2 c++\game\game.h
 	"ResourceManager.h"
 	"GameState.h"
 	"Menu.h"
+	"SelectLevel.h"
 	"SelectShip.h"
-	"BackGround.h"
+	"Pause.h"
+	"BackGroundSystem.h"
 	"Player.h"
 	"EnemySystem.h"
 	"SpawnManager.h"
@@ -17,30 +19,30 @@
 	"CollisionSystem.h"
 	"EffectSystem.h"
 
-1785349447 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+1786446673 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 
-1785349447 d:\bt game\game2 c++\game\resourcemanager.h
+1786446667 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 
 1785006233 source:d:\bt game\game2 c++\game\main.cpp
 	"Game.h"
 
-1785116792 source:d:\bt game\game2 c++\game\background.cpp
+1786155178 source:d:\bt game\game2 c++\game\background.cpp
 	"BackGround.h"
-	"Config.h"
 
-1785115668 d:\bt game\game2 c++\game\background.h
+1785463754 d:\bt game\game2 c++\game\background.h
 	<SDL.h>
+	"Config.h"
 	"ResourceManager.h"
 
-1785222668 d:\bt game\game2 c++\game\config.h
+1786160374 d:\bt game\game2 c++\game\config.h
 
-1785365621 source:d:\bt game\game2 c++\game\starship.cpp
+1786356624 source:d:\bt game\game2 c++\game\starship.cpp
 	"Starship.h"
 
-1785358378 d:\bt game\game2 c++\game\starship.h
+1786356592 d:\bt game\game2 c++\game\starship.h
 	<SDL.h>
 	<vector>
 	"Config.h"
@@ -53,10 +55,10 @@
 	<SDL.h>
 	"Config.h"
 
-1785363876 source:d:\bt game\game2 c++\game\player.cpp
+1786440889 source:d:\bt game\game2 c++\game\player.cpp
 	"Player.h"
 
-1785237567 source:d:\bt game\game2 c++\game\weapon.cpp
+1786442538 source:d:\bt game\game2 c++\game\weapon.cpp
 	"Weapon.h"
 
 1785004895 d:\bt game\game2 c++\game\weapon.h
@@ -72,50 +74,53 @@
 	<vector>
 	"Weapon.h"
 
-1785237762 source:d:\bt game\game2 c++\game\enemy.cpp
+1786442495 source:d:\bt game\game2 c++\game\enemy.cpp
 	"Enemy.h"
 
-1785281747 source:d:\bt game\game2 c++\game\enemysystem.cpp
+1786329903 source:d:\bt game\game2 c++\game\enemysystem.cpp
 	"EnemySystem.h"
+	<cmath>
 
-1785115668 d:\bt game\game2 c++\game\enemysystem.h
+1786327586 d:\bt game\game2 c++\game\enemysystem.h
 	<SDL.h>
 	<vector>
 	"ResourceManager.h"
 	"Enemy.h"
 	"WeaponSystem.h"
 
-1785115668 d:\bt game\game2 c++\game\enemy.h
+1786436475 d:\bt game\game2 c++\game\enemy.h
 	<SDL.h>
 	<vector>
 	"Weapon.h"
 
-1785007468 source:d:\bt game\game2 c++\game\spawnmanager.cpp
+1786327891 source:d:\bt game\game2 c++\game\spawnmanager.cpp
 	"SpawnManager.h"
 	<cstdlib>
 
-1784884499 d:\bt game\game2 c++\game\spawnmanager.h
+1786159344 d:\bt game\game2 c++\game\spawnmanager.h
 	"EnemySystem.h"
 	"Config.h"
 
-1785355633 d:\bt game\game2 c++\game\player.h
+1786440576 d:\bt game\game2 c++\game\player.h
 	<SDL.h>
+	"ResourceManager.h"
 	"Starship.h"
 	"WeaponSystem.h"
 	"SelectShip.h"
 	"EffectSystem.h"
+	"Menu.h"
 
-1785352980 source:d:\bt game\game2 c++\game\collisionsystem.cpp
+1786436692 source:d:\bt game\game2 c++\game\collisionsystem.cpp
 	"CollisionSystem.h"
 
-1785284085 d:\bt game\game2 c++\game\collisionsystem.h
+1786436685 d:\bt game\game2 c++\game\collisionsystem.h
 	<SDL.h>
 	"Player.h"
 	"EnemySystem.h"
 	"WeaponSystem.h"
 	"EffectSystem.h"
 
-1785206973 source:d:\bt game\game2 c++\game\menu.cpp
+1786442039 source:d:\bt game\game2 c++\game\menu.cpp
 	"Menu.h"
 
 1785207858 d:\bt game\game2 c++\game\menu.h
@@ -124,7 +129,7 @@
 	"ResourceManager.h"
 	"GameState.h"
 
-1785206746 d:\bt game\game2 c++\game\gamestate.h
+1785400579 d:\bt game\game2 c++\game\gamestate.h
 
 1785362830 d:\bt game\game2 c++\game\selectship.h
 	<SDL.h>
@@ -134,7 +139,7 @@
 	"Starship.h"
 	"Config.h"
 
-1785362875 source:d:\bt game\game2 c++\game\selectship.cpp
+1786352937 source:d:\bt game\game2 c++\game\selectship.cpp
 	"SelectShip.h"
 	"iostream"
 
@@ -145,13 +150,38 @@
 	<SDL.h>
 	"ResourceManager.h"
 
-1785364085 source:d:\bt game\game2 c++\game\effectsystem.cpp
+1785368543 source:d:\bt game\game2 c++\game\effectsystem.cpp
 	"EffectSystem.h"
 	"iostream"
 
-1785363856 d:\bt game\game2 c++\game\effectsystem.h
+1786155621 d:\bt game\game2 c++\game\effectsystem.h
 	<SDL.h>
 	<vector>
 	"Effect.h"
 	"Starship.h"
+
+1786351964 source:d:\bt game\game2 c++\game\selectlevel.cpp
+	"SelectLevel.h"
+
+1786351959 d:\bt game\game2 c++\game\selectlevel.h
+	<SDL.h>
+	"Menu.h"
+	"Config.h"
+
+1786160515 source:d:\bt game\game2 c++\game\backgroundsystem.cpp
+	"BackGroundSystem.h"
+	<iostream>
+
+1786450649 d:\bt game\game2 c++\game\backgroundsystem.h
+	<SDL.h>
+	"BackGround.h"
+
+1786450752 source:d:\bt game\game2 c++\game\pause.cpp
+	"Pause.h"
+	"iostream"
+
+1786448575 d:\bt game\game2 c++\game\pause.h
+	<SDL.h>
+	"Menu.h"
+	"Config.h"
 

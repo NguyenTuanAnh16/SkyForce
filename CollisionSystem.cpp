@@ -23,6 +23,7 @@ void CollisionSystem::HandlePlayerEnemy(Player& player,
                         effectSystem.AddBlast(enemy.rect.x + enemy.rect.w / 2,
                                          enemy.rect.y + enemy.rect.h / 2,
                                          1, enemy.rect.w * 1.2);
+                        player.score = player.score + enemy.data->score;
                         break;
                         }
                   }
@@ -52,7 +53,8 @@ void CollisionSystem::HandlePlayerWeapon(Player& player,
         }
 }
 
-void CollisionSystem::HandleEnemyWeapon(EnemySystem& enemySystem,
+void CollisionSystem::HandleEnemyWeapon(Player& player,
+                                        EnemySystem& enemySystem,
                                         WeaponSystem& weaponSystem,
                                         EffectSystem& effectSystem)
 {
@@ -69,6 +71,8 @@ void CollisionSystem::HandleEnemyWeapon(EnemySystem& enemySystem,
                         enemy.active = false;
                    effectSystem.AddBlast(enemy.rect.x + enemy.rect.w / 2,
                                     enemy.rect.y + enemy.rect.h / 2,1,enemy.rect.w);
+                   player.score = player.score + enemy.data->score;
+
                 }
             }
         }
@@ -82,5 +86,5 @@ void CollisionSystem::Update(Player& player,
 {
     HandlePlayerEnemy(player,enemySystem,effectSystem);
     HandlePlayerWeapon(player,weaponSystem,effectSystem);
-    HandleEnemyWeapon(enemySystem,weaponSystem,effectSystem);
+    HandleEnemyWeapon(player,enemySystem,weaponSystem,effectSystem);
 }

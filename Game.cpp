@@ -16,7 +16,7 @@ void Game::Init(){
     renderer = SDL_CreateRenderer(
     window,
     -1,
-    SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+    SDL_RENDERER_ACCELERATED// | SDL_RENDERER_PRESENTVSYNC0210
     );
     // cho phep lam mo
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -40,14 +40,24 @@ void Game::Init(){
 
     // nen
     background.Init(resource.background);
+    backGroundSystem.Init(&background);
 
     // may bay
     starship.Init(resource.starship);
+
+    // player
+    player.Init(resource.player);
 
     // doi may bay
     selectShip.Init(resource.menu,&starship);
 
     player.ChangeStarship(selectShip,starship,effectSystem);
+
+    // doi man
+    selectlevel.Init(resource.menu);
+
+    // pause
+    pause.Init(resource.menu);
 
     // dan
     //weapon.Init(resource.weapon);
@@ -56,10 +66,14 @@ void Game::Init(){
     // dich
     enemy.Init(resource.enemy);
     enemysystem.Init(100,&enemy);
-
+    spawnmanager.Init(&enemysystem);
 
 }
 
+void Game::InitLevel()
+{
+//  LevelData.
+}
 
 void Game::Run()
 {
@@ -67,7 +81,7 @@ void Game::Run()
     while (running){
            frameStart = SDL_GetTicks();
            while(SDL_PollEvent(&event)){
-                 if(event.type == SDL_QUIT){
+                 if(event.type == SDL_QUIT || state == GameState::EXIT){
                     running = false;
                     }
                  if(state == GameState::MENU)
@@ -75,7 +89,23 @@ void Game::Run()
                  else if(state == GameState::SELECT_SHIP)
                  {
                       selectShip.HandleEvent(event,state);
-                      if(state == GameState::PLAYING) player.ChangeStarship(selectShip,starship,effectSystem);
+                      if(state == GameState::SELECT_LEVEL) player.ChangeStarship(selectShip,starship,effectSystem);
+                 }
+                 else if(state == GameState::SELECT_LEVEL)
+                 {
+                     selectlevel.HandleEvent(event,state);
+                      if(state == GameState::PLAYING){
+                            backGroundSystem.Set(selectlevel.level);
+                            spawnmanager.Set(selectlevel.level);
+                      }
+                 }
+                 else if(state == GameState::PLAYING)
+                 {
+                     player.HandleEvent(event,state);
+                 }
+                 else if(state == GameState::PAUSE)
+                 {
+                     pause.HandleEvent(event,state);
                  }
                  }
      Update();
@@ -97,7 +127,7 @@ void Game::Render()
     }
     else if(state == GameState::PLAYING)
     {
-        background.Render(renderer);
+        backGroundSystem.Render(renderer);
         player.Render(renderer);
         weaponSystem.Render(renderer);
         enemysystem.Render(renderer);
@@ -106,6 +136,19 @@ void Game::Render()
     else if(state == GameState::SELECT_SHIP)
     {
         selectShip.Render(renderer);
+    }
+    else if(state == GameState::SELECT_LEVEL)
+    {
+        selectlevel.Render(renderer);
+    }
+    else if(state == GameState::PAUSE)
+    {
+        backGroundSystem.Render(renderer);
+        player.Render(renderer);
+        weaponSystem.Render(renderer);
+        enemysystem.Render(renderer);
+        effectSystem.Render(renderer);
+        pause.Render(renderer);
     }
 
     SDL_RenderPresent(renderer);
@@ -120,13 +163,13 @@ void Game::Update()
 
     else if(state == GameState::PLAYING)
     {
-        background.Update(deltaTime);
+        backGroundSystem.Update(deltaTime);
 
         player.Update(deltaTime, weaponSystem, effectSystem);
 
         weaponSystem.Update(deltaTime);
 
-        spawnmanager.Update(deltaTime,40,5,enemysystem);
+        spawnmanager.Update(deltaTime);
 
         enemysystem.Update(deltaTime,&weaponSystem);
 
@@ -138,6 +181,14 @@ void Game::Update()
     else if(state == GameState::SELECT_SHIP)
     {
         selectShip.Update(deltaTime);
+    }
+    else if(state == GameState::SELECT_LEVEL)
+    {
+        selectlevel.Update(deltaTime);
+    }
+    else if(state == GameState::PAUSE)
+    {
+        pause.Update(deltaTime);
     }
 }
 

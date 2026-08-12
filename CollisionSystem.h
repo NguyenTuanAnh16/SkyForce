@@ -20,7 +20,8 @@ struct CollisionSystem
                             WeaponSystem& weaponSystem,
                             EffectSystem& effectSystem);
 
-    void HandleEnemyWeapon(EnemySystem& enemySystem,
+    void HandleEnemyWeapon(Player& player,
+                           EnemySystem& enemySystem,
                            WeaponSystem& weaponSystem,
                            EffectSystem& effectSystem);
 

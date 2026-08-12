@@ -11,7 +11,7 @@ void WeaponDataBase::Init(WeaponRes& res){
 
     // dan dich
             enemyOne.texture = res.enemyOne;
-            enemyOne.speed = - 400;
+            enemyOne.speed = - 600;
             enemyOne.width = 6;
             enemyOne.height = 6;
             enemyOne.dame = 10;

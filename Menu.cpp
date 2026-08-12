@@ -81,9 +81,11 @@ void Menu::HandleEvent(SDL_Event& e, GameState& state)
         if(e.button.button == SDL_BUTTON_LEFT)
         {
             if(play.hover)
-                state = GameState::PLAYING;
+                state = GameState::SELECT_LEVEL;
             else if(select.hover)
                 state = GameState::SELECT_SHIP;
+            else if(exit.hover)
+                state = GameState::EXIT;
 
         }
     }

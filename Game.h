@@ -4,8 +4,10 @@
 #include "ResourceManager.h"
 #include "GameState.h"
 #include "Menu.h"
+#include "SelectLevel.h"
 #include "SelectShip.h"
-#include "BackGround.h"
+#include "Pause.h"
+#include "BackGroundSystem.h"
 #include "Player.h"
 #include "EnemySystem.h"
 #include "SpawnManager.h"
@@ -13,6 +15,7 @@
 #include "Weapon.h"
 #include "CollisionSystem.h"
 #include "EffectSystem.h"
+
 
 struct Game {
 // cua so
@@ -28,12 +31,18 @@ GameState state = GameState::MENU;
 // menu
 Menu menu;
 
+// doi man
+SelectLevel selectlevel;
+
 // doi may bay
 SelectShip selectShip;
 
-// background
-BackGround background;
+// pause
+Pause pause;
 
+// background
+BackGroundDataBase background;
+BackGroundSystem backGroundSystem;
 // nguoi choi
 Player player;
 StarshipDataBase starship;
@@ -61,8 +70,8 @@ EffectSystem effectSystem;
 EffectDataBase effect;
 
 // fps
-Uint32 frameStart = 0;
-Uint32 frameTime = 0;
+Uint64 frameStart = 0;
+Uint64 frameTime = 0;
 int frameDelay;
 
 // thoi gian
@@ -74,6 +83,7 @@ float shootDelay = 0.15f;
 bool running = true;
 
 void Init();
+void InitLevel();
 void Run();
 void Render();
 void Update();

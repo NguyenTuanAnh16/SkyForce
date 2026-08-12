@@ -12,9 +12,25 @@ menu.goBack = IMG_LoadTexture(renderer,"ResourceManager/Menu/Return.png");
 menu.right =  IMG_LoadTexture(renderer,"ResourceManager/Menu/Right.png");
 menu.left = IMG_LoadTexture(renderer,"ResourceManager/Menu/Left.png");
 menu.shipInfo = IMG_LoadTexture(renderer,"ResourceManager/Menu/Shipinfo.png");
+menu.levelOne = IMG_LoadTexture(renderer,"ResourceManager/Menu/LevelOne.png");
+menu.levelTwo = IMG_LoadTexture(renderer,"ResourceManager/Menu/LevelTwo.png");
+menu.levelThree = IMG_LoadTexture(renderer,"ResourceManager/Menu/LevelThree.png");
+menu.box = IMG_LoadTexture(renderer,"ResourceManager/Menu/Box.png");
+menu.pauseLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/PauseLogo.png");
+
+
+// player
+player.score = IMG_LoadTexture(renderer,"ResourceManager/Player/Score.png");
+player.hp = IMG_LoadTexture(renderer,"ResourceManager/Player/Hp.png");
+player.number = IMG_LoadTexture(renderer,"ResourceManager/Player/Number.png");
+player.pause = IMG_LoadTexture(renderer,"ResourceManager/Player/Pause.png");
+
 
 // game
-background.backGround = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BackGround.jpg");
+background.sceneryOne = IMG_LoadTexture(renderer,"ResourceManager/BackGround/SceneryOne.jpg");
+background.sceneryTwo = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGTwo.png");
+background.sceneryThree = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGThree.png");
+
 background.nibiru = IMG_LoadTexture(renderer,"ResourceManager/BackGround/Nibiru.png");
 background.asteroid = IMG_LoadTexture(renderer,"ResourceManager/BackGround/Asteroid.png");
 
@@ -48,7 +64,10 @@ void ResourceManager::Free()
 
 
     // background
-    SDL_DestroyTexture(background.backGround);
+    SDL_DestroyTexture(background.sceneryOne);
+    SDL_DestroyTexture(background.sceneryTwo);
+    SDL_DestroyTexture(background.sceneryTwo);
+
     SDL_DestroyTexture(background.nibiru);
     SDL_DestroyTexture(background.asteroid);
 

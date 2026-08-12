@@ -6,11 +6,19 @@
 
 struct SpawnManager
 {
+    EnemySystem* enemySystem;
+
     float timer = 0;
     float spawnTime = 1;
 
+    int rateEnemy[3];
+    int amountMax;
+    int moveType;
 
-    void Update(float deltaTime, int spacing, int sum, EnemySystem& enemySystem);
+    void Init(EnemySystem* enemySystem);
+    void Set(int type);
+    void RandomSpawn();
+    void Update(float deltaTime);
 };
 
 

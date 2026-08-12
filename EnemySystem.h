@@ -14,7 +14,8 @@ struct EnemySystem
     std::vector<Enemy> enemys;
 
     void Init(int sum,EnemyDataBase* data);
-    void Spawn(float x, float y,int type, int amount);
+    void Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType);
+    void Move (Enemy* enemy, float deltaTime);
     void Update(float deltatime,WeaponSystem* weaponSystem);
     void Render(SDL_Renderer* renderer);
 };

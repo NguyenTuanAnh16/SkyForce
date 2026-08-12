@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="BackGround.cpp" />
 		<Unit filename="BackGround.h" />
+		<Unit filename="BackGroundSystem.cpp" />
+		<Unit filename="BackGroundSystem.h" />
 		<Unit filename="CollisionSystem.cpp" />
 		<Unit filename="CollisionSystem.h" />
 		<Unit filename="Config.h" />
@@ -54,6 +56,8 @@
 		<Unit filename="Player.h" />
 		<Unit filename="ResourceManager.cpp" />
 		<Unit filename="ResourceManager.h" />
+		<Unit filename="SelectLevel.cpp" />
+		<Unit filename="SelectLevel.h" />
 		<Unit filename="SelectShip.cpp" />
 		<Unit filename="SelectShip.h" />
 		<Unit filename="SpawnManager.cpp" />

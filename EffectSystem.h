@@ -17,9 +17,13 @@ struct EffectSystem
 
     void Init(EffectDataBase* data);
 
+    // hieu ung no
     void AddBlast(float x, float y, int type,float effectSize);
 
+    // hieu ung dong co
     void AddEngine(int type,float effectSize);
+
+    // theo may bay
     void FollowEngine(Starship& starship);
     void ClearEngine();
 

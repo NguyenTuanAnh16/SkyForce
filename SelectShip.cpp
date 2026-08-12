@@ -77,7 +77,7 @@ void SelectShip::HandleEvent(SDL_Event& e, GameState& state)
     {
         if(e.button.button == SDL_BUTTON_LEFT)
         {
-            if(play.hover)  state = GameState::PLAYING;
+            if(play.hover)  state = GameState::SELECT_LEVEL;
             if(goBack.hover) state = GameState::MENU;
             if(rightShip.hover)
                  {  selectedShip++;
