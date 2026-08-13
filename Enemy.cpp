@@ -4,7 +4,7 @@ void EnemyDataBase::Init(EnemyRes& res){
     // one
           one.texture = res.one;
           one.speed = 300;
-          one.hpMax = 200;
+          one.hpMax = 30;
           one.rect = {0,0,48,54};
           one.weaponType = 2;
           one.guns = {{21,55}};
@@ -13,7 +13,7 @@ void EnemyDataBase::Init(EnemyRes& res){
     // two
           two.texture = res.two;
           two.speed = 600;
-          two.hpMax = 200;
+          two.hpMax = 50;
           two.rect = {0,0,56,60};
           two.guns = {{28,62}};
           two.weaponType = 2;
@@ -22,7 +22,7 @@ void EnemyDataBase::Init(EnemyRes& res){
     // three
           three.texture = res.three;
           three.speed = 600;
-          three.hpMax = 200;
+          three.hpMax = 80;
           three.rect = {0,0,66,70};
           three.guns = {{33,72}};
           three.weaponType = 2;

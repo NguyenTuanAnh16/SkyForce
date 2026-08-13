@@ -22,6 +22,11 @@ struct MenuRes
    SDL_Texture* levelThree = nullptr;
    SDL_Texture* box = nullptr;
    SDL_Texture* pauseLogo = nullptr;
+   SDL_Texture* continues = nullptr;
+   SDL_Texture* nextLever = nullptr;
+   SDL_Texture* winLogo = nullptr;
+   SDL_Texture* lostLogo = nullptr;
+   SDL_Texture* retry = nullptr;
 };
 
 struct PlayerRes

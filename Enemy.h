@@ -37,8 +37,8 @@ struct Enemy{
 // loai dich
 EnemyData* data = nullptr;
 
-// di chuyen
-int moveType;
+// nhom
+int groupId = -1;
 
 // may bay dich
 bool active = false;

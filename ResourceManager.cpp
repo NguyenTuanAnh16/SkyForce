@@ -17,7 +17,11 @@ menu.levelTwo = IMG_LoadTexture(renderer,"ResourceManager/Menu/LevelTwo.png");
 menu.levelThree = IMG_LoadTexture(renderer,"ResourceManager/Menu/LevelThree.png");
 menu.box = IMG_LoadTexture(renderer,"ResourceManager/Menu/Box.png");
 menu.pauseLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/PauseLogo.png");
-
+menu.continues = IMG_LoadTexture(renderer,"ResourceManager/Menu/Continue.png");
+menu.nextLever = IMG_LoadTexture(renderer,"ResourceManager/Menu/NextLever.png");
+menu.winLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/WinLogo.png");
+menu.lostLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/LostLogo.png");
+menu.retry = IMG_LoadTexture(renderer,"ResourceManager/Menu/Retry.png");
 
 // player
 player.score = IMG_LoadTexture(renderer,"ResourceManager/Player/Score.png");

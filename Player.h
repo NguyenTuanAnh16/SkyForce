@@ -25,6 +25,7 @@ struct Player
     SDL_FRect numberRect;
     int score = 0;
 
+
     // hp
     SDL_Texture* hpTex = nullptr;
     SDL_FRect hpRect;
@@ -43,6 +44,8 @@ struct Player
     void HandleEvent(SDL_Event& e, GameState& state);
 
     void Update(float deltaTime,WeaponSystem& weaponSystem, EffectSystem& effectSystem);
+
+    void Reset();
 
     void RenderScore(SDL_Renderer* renderer);
 

@@ -130,7 +130,15 @@ void Player::RenderScore(SDL_Renderer* renderer)
 }
 
 
+void Player::Reset()
+{
+    starship->rect.x = (SCREEN_WIDTH - starship->rect.w) / 2;
+    starship->rect.y =  SCREEN_HEIGHT * 0.8;
 
+    score = 0;
+    starship->hpNow = starship->hpMax;
+
+}
 
 void Player::Render(SDL_Renderer* renderer)
 {

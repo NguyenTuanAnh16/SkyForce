@@ -8,6 +8,8 @@ enum class GameState
     SELECT_LEVEL,
     SELECT_SHIP,
     PAUSE,
+    WIN,
+    LOST,
     GAMEOVER,
     EXIT
 };

@@ -52,6 +52,8 @@
 		<Unit filename="GameState.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="Pause.cpp" />
+		<Unit filename="Pause.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
 		<Unit filename="ResourceManager.cpp" />

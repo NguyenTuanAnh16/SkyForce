@@ -7,22 +7,39 @@
 
 struct Pause
 {
-    SDL_Texture* pauseLogoTex = nullptr;
-    SDL_FRect pauseLogoRect;
-
     SDL_Texture* boxTex = nullptr;
     SDL_FRect boxRect;
 
-    Button settings;
+    SDL_FRect rectAll;
+// pause
+    SDL_Texture* pauseLogoTex = nullptr;
+    SDL_FRect pauseLogoRect;
+
+    Button continueBt;
+
+// win
+    SDL_Texture* winLogoTex = nullptr;
+    SDL_FRect winLogoRect;
+
+    Button nextLever;
+
+// lost
+
+    SDL_Texture* lostLogoTex = nullptr;
+    SDL_FRect lostLogoRect;
+
+    Button retry;
+
     Button goBack;
+    Button exit;
 
     void Init(MenuRes& res);
 
-    void Update(float deltaTime);
+    void Update(float deltaTime,GameState& state);
 
     void HandleEvent(SDL_Event& e, GameState& state);
 
-    void Render(SDL_Renderer* renderer);
+    void Render(SDL_Renderer* renderer,GameState& state);
 };
 
 #endif

@@ -5,28 +5,49 @@ void Pause::Init(MenuRes& res)
 {
 
     boxTex = res.box;
-    boxRect = {(SCREEN_WIDTH - 355) / 2 , 150, 355, 510};
+    boxRect = {(SCREEN_WIDTH - 355) / 2 , 150, 355, 410};
 
+// pause
     pauseLogoTex = res.pauseLogo;
-    pauseLogoRect = {boxRect.x + (boxRect.w -170) / 2, boxRect.y  + 40, 170, 48};
+    pauseLogoRect = {boxRect.x + (boxRect.w -194) / 2, boxRect.y  + 40, 194, 55};
 
-    settings.texture = res.settings;
-    settings.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 160, 244, 50};
+    continueBt.texture = res.continues;
+    continueBt.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 150, 244, 50};
+
+// win
+    winLogoTex = res.winLogo;
+    winLogoRect = {boxRect.x + (boxRect.w - 214) / 2, boxRect.y  + 40, 214, 114};
+
+    nextLever.texture = res.nextLever;
+    nextLever.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 150, 244, 50};
+
+// lost
+
+    lostLogoTex = res.lostLogo;
+    lostLogoRect = {boxRect.x + (boxRect.w - 214) / 2, boxRect.y  + 40, 214, 114};
+
+    retry.texture = res.retry;
+    retry.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 150, 244, 50};
 
     goBack.texture = res.goBack;
-    goBack.rect = settings.rect;   goBack.rect.y = goBack.rect.y + 60;
+    goBack.rect = continueBt.rect;   goBack.rect.y = goBack.rect.y + 70;
 
+    exit.texture = res.exit;
+    exit.rect = goBack.rect; exit.rect.y = exit.rect.y + 70;
 
 }
 
 
-void Pause::Update(float deltaTime)
+void Pause::Update(float deltaTime, GameState& state)
 {
     int mouseX, mouseY;
 
     SDL_GetMouseState(&mouseX,&mouseY);
-    settings.Update(deltaTime, mouseX, mouseY);
+if(state == GameState::PAUSE)    continueBt.Update(deltaTime, mouseX, mouseY);
+else if(state == GameState::WIN) nextLever.Update(deltaTime, mouseX, mouseY);
+else if(state == GameState::LOST) retry.Update(deltaTime, mouseX, mouseY);
     goBack.Update(deltaTime, mouseX, mouseY);
+    exit.Update(deltaTime,mouseX,mouseY);
 
 }
 
@@ -37,22 +58,40 @@ void Pause::HandleEvent(SDL_Event& e, GameState& state)
      if(e.type == SDL_MOUSEBUTTONDOWN)
     {
         if(e.button.button == SDL_BUTTON_LEFT)
-        {   if(goBack.hover) state = GameState::MENU;
-            if(settings.hover) state = GameState::PLAYING;
+        {
+            if(state == GameState::PAUSE && continueBt.hover) state = GameState::PLAYING;
+            else if(state == GameState::WIN && nextLever.hover) state = GameState::PLAYING;
+            else if(state == GameState::LOST && retry.hover) state = GameState::PLAYING;
+            if(goBack.hover) state = GameState::MENU;
+            if(exit.hover) state = GameState::EXIT;
         }
     }
 }
 
 
-void Pause::Render(SDL_Renderer* renderer)
+void Pause::Render(SDL_Renderer* renderer, GameState& state)
 {
     SDL_RenderCopyF(renderer,boxTex,nullptr,&boxRect);
 
-
+if(state == GameState::PAUSE)
+{
     SDL_RenderCopyF(renderer,pauseLogoTex,nullptr,&pauseLogoRect);
+    continueBt.Render(renderer);
+}
+else if (state == GameState::WIN)
+{
+    SDL_RenderCopyF(renderer,winLogoTex,nullptr,&winLogoRect);
+    nextLever.Render(renderer);
+}
 
-    settings.Render(renderer);
+else if (state == GameState::LOST)
+{
+    SDL_RenderCopyF(renderer,lostLogoTex,nullptr,&lostLogoRect);
+    retry.Render(renderer);
+}
 
     goBack.Render(renderer);
+
+    exit.Render(renderer);
 
 }

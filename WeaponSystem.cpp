@@ -29,6 +29,11 @@ void WeaponSystem::Update(float deltaTime){
   }
 }
 
+void WeaponSystem::Reset()
+{
+     for(auto& weapon : weapons)  weapon.active = false;
+}
+
 void WeaponSystem::Render(SDL_Renderer* rerderer){
       for(auto& weapon : weapons){
         if(weapon.active){

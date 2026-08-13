@@ -12,11 +12,13 @@ struct EnemySystem
     EnemyDataBase* data = nullptr;
 
     std::vector<Enemy> enemys;
+    std::vector<int> moveGroups;
 
     void Init(int sum,EnemyDataBase* data);
     void Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType);
     void Move (Enemy* enemy, float deltaTime);
     void Update(float deltatime,WeaponSystem* weaponSystem);
+    void Reset();
     void Render(SDL_Renderer* renderer);
 };
 

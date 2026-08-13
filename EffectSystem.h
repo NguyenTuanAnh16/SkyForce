@@ -28,7 +28,7 @@ struct EffectSystem
     void ClearEngine();
 
     void Update(float dt);
-
+    void Reset();
     void Render(SDL_Renderer* renderer);
 };
 

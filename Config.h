@@ -21,6 +21,6 @@ const int MAX_SHIP_SPEED = 1000;
 const float MAX_SHOOT_DELAY = 0.15f;
 
 // fps
-const int FPS = 500;
+const int FPS = 300;
 
 #endif

@@ -4,28 +4,30 @@
 void EnemySystem::Init(int sum, EnemyDataBase* data){
     this->data = data;
     enemys.resize(sum);
+    moveGroups.reserve(sum);
 }
 
 // ren dich
 void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType){
-    int sumenemy = 0;
-   for(auto& enemy : enemys){
-     if(!enemy.active){
-       enemy.active = true;
-       enemy.data = enemyData;
-       enemy.rect = {x + sumenemy*(40 + enemyData->rect.w),
+    int sumenemy = 0;   int idGroud = -1;
+   for(size_t  i = 0; i < enemys.size(); i++){
+     if(!enemys[i].active){
+       if(sumenemy == 0) idGroud = i;
+       enemys[i].groupId = idGroud;
+       enemys[i].active = true;
+       enemys[i].data = enemyData;
+       enemys[i].rect = {x + sumenemy*(40 + enemyData->rect.w),
                      y,
                      enemyData->rect.w,
                      enemyData->rect.h};
+       moveGroups[enemys[i].groupId] = moveType;
+       enemys[i].rectHpMax = {enemys[i].rect.x,
+                       enemys[i].rect.y - enemys[i].rect.h/10,
+                       enemys[i].rect.w,
+                       enemys[i].rect.h/10};
 
-       enemy.moveType = moveType;
-       enemy.rectHpMax = {enemy.rect.x,
-                       enemy.rect.y - enemy.rect.h/10,
-                       enemy.rect.w,
-                       enemy.rect.h/10};
-
-       enemy.rectHp = enemy.rectHpMax;
-       enemy.hpNow = enemyData->hpMax;
+       enemys[i].rectHp = enemys[i].rectHpMax;
+       enemys[i].hpNow = enemyData->hpMax;
        sumenemy ++;
       }
     if(sumenemy == amount) return;
@@ -36,17 +38,17 @@ void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int m
 // di chuyen
 void EnemySystem::Move(Enemy* enemy, float deltaTime)
 {
-    if(enemy->moveType == 0) enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
-    else if(enemy->moveType == 1)
+    if(moveGroups[enemy->groupId] == 0) enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
+    else if(moveGroups[enemy->groupId] == 1)
            {
             enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
             enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) enemy->moveType = 2;}
-    else if(enemy->moveType == 2)
+            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) moveGroups[enemy->groupId] = 2;}
+    else if(moveGroups[enemy->groupId] == 2)
            {
             enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
             enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x <= 0) enemy->moveType = 1;}
+            if(enemy->rect.x <= 0) moveGroups[enemy->groupId] = 1;}
 }
 
 
@@ -78,6 +80,10 @@ void EnemySystem::Update(float deltatime, WeaponSystem* weaponSystem){
   }
 }
 
+void EnemySystem::Reset()
+{
+    for(auto& enemy : enemys) enemy.active = false;
+}
 
 void EnemySystem::Render(SDL_Renderer* renderer){
       for(auto& enemy : enemys){

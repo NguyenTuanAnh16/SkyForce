@@ -12,6 +12,7 @@ struct WeaponSystem
     void Init(int sum,WeaponDataBase* data);
     void Shoot(float x, float y, int type, char owner);
     void Update(float dt);
+    void Reset();
     void Render(SDL_Renderer* renderer);
 };
 

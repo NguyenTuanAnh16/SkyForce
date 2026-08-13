@@ -34,6 +34,15 @@ void SelectLevel::Update(float deltaTime)
     goBack.Update(deltaTime,mouseX,mouseY);
 }
 
+void SelectLevel::SetTargetScore()
+{
+    if(level == 1)
+        targetScore = 1;
+    else if(level == 2)
+        targetScore = 150;
+    else if(level == 3)
+        targetScore = 200;
+}
 
 void SelectLevel::HandleEvent(SDL_Event& e, GameState& state)
 {

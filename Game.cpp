@@ -72,7 +72,13 @@ void Game::Init(){
 
 void Game::InitLevel()
 {
-//  LevelData.
+  backGroundSystem.Set(selectlevel.level);
+  spawnmanager.Set(selectlevel.level);
+  enemysystem.Reset();
+  effectSystem.Reset();
+  weaponSystem.Reset();
+  player.Reset();
+  selectlevel.SetTargetScore();
 }
 
 void Game::Run()
@@ -81,32 +87,40 @@ void Game::Run()
     while (running){
            frameStart = SDL_GetTicks();
            while(SDL_PollEvent(&event)){
-                 if(event.type == SDL_QUIT || state == GameState::EXIT){
-                    running = false;
-                    }
-                 if(state == GameState::MENU)
-                    menu.HandleEvent(event,state);
+                 if(event.type == SDL_QUIT || state == GameState::EXIT)  running = false;
+                 else if(state == GameState::MENU) menu.HandleEvent(event,state);
                  else if(state == GameState::SELECT_SHIP)
-                 {
-                      selectShip.HandleEvent(event,state);
-                      if(state == GameState::SELECT_LEVEL) player.ChangeStarship(selectShip,starship,effectSystem);
-                 }
+                        {
+                            selectShip.HandleEvent(event,state);
+                            if(state == GameState::SELECT_LEVEL) player.ChangeStarship(selectShip,starship,effectSystem);
+                        }
                  else if(state == GameState::SELECT_LEVEL)
-                 {
-                     selectlevel.HandleEvent(event,state);
-                      if(state == GameState::PLAYING){
-                            backGroundSystem.Set(selectlevel.level);
-                            spawnmanager.Set(selectlevel.level);
-                      }
-                 }
+                        {
+                            selectlevel.HandleEvent(event,state);
+                            if(state == GameState::PLAYING)   InitLevel();
+                        }
                  else if(state == GameState::PLAYING)
-                 {
-                     player.HandleEvent(event,state);
-                 }
-                 else if(state == GameState::PAUSE)
-                 {
-                     pause.HandleEvent(event,state);
-                 }
+                        {
+                            player.HandleEvent(event,state);
+                            if(player.starship->hpNow <= 0) state = GameState::LOST;
+                        }
+                 else if(state == GameState::PAUSE)    pause.HandleEvent(event,state);
+                 else if(state == GameState::WIN)
+                        {
+                            pause.HandleEvent(event,state);
+                            if(state == GameState::PLAYING)
+                              {   selectlevel.level ++; if(selectlevel.level++ >=3) selectlevel.level = 3;
+                                  InitLevel();
+                              }
+
+                        }
+                else if(state == GameState::LOST)
+                {
+                    pause.HandleEvent(event,state);
+                    if(state == GameState::PLAYING)  InitLevel();
+
+                }
+
                  }
      Update();
      Render();
@@ -141,14 +155,14 @@ void Game::Render()
     {
         selectlevel.Render(renderer);
     }
-    else if(state == GameState::PAUSE)
+    else if(state == GameState::PAUSE || state == GameState::WIN || state == GameState::LOST)
     {
         backGroundSystem.Render(renderer);
         player.Render(renderer);
         weaponSystem.Render(renderer);
         enemysystem.Render(renderer);
         effectSystem.Render(renderer);
-        pause.Render(renderer);
+        pause.Render(renderer,state);
     }
 
     SDL_RenderPresent(renderer);
@@ -176,6 +190,8 @@ void Game::Update()
         effectSystem.Update(deltaTime);
 
         collisionSystem.Update(player,enemysystem,weaponSystem,effectSystem);
+
+        if(player.score >= selectlevel.targetScore)  state = GameState::WIN;
     }
 
     else if(state == GameState::SELECT_SHIP)
@@ -186,9 +202,9 @@ void Game::Update()
     {
         selectlevel.Update(deltaTime);
     }
-    else if(state == GameState::PAUSE)
+    else if(state == GameState::PAUSE || state == GameState::WIN || state == GameState::LOST)
     {
-        pause.Update(deltaTime);
+        pause.Update(deltaTime,state);
     }
 }
 

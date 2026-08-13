@@ -117,6 +117,11 @@ void EffectSystem::Update(float deltaTime)
     }
 }
 
+void EffectSystem::Reset()
+{
+    for(auto& blast : blasts)  blast.active = false;
+}
+
 void EffectSystem::Render(SDL_Renderer* renderer)
 {
     for(auto& blast : blasts)

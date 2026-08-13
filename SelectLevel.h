@@ -20,10 +20,13 @@ struct SelectLevel
     Button goBack;
 
     int level = 1;
+    int targetScore = 0;
 
     void Init(MenuRes& res);
 
     void Update(float deltaTime);
+
+    void SetTargetScore();
 
     void HandleEvent(SDL_Event& e, GameState& state);
 
