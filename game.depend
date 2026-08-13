@@ -77,11 +77,11 @@
 1786526858 source:d:\bt game\game2 c++\game\enemy.cpp
 	"Enemy.h"
 
-1786608966 source:d:\bt game\game2 c++\game\enemysystem.cpp
+1786610490 source:d:\bt game\game2 c++\game\enemysystem.cpp
 	"EnemySystem.h"
 	<cmath>
 
-1786608721 d:\bt game\game2 c++\game\enemysystem.h
+1786610266 d:\bt game\game2 c++\game\enemysystem.h
 	<SDL.h>
 	<vector>
 	"ResourceManager.h"

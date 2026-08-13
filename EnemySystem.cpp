@@ -9,25 +9,26 @@ void EnemySystem::Init(int sum, EnemyDataBase* data){
 
 // ren dich
 void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType){
-    int sumenemy = 0;   int idGroud = -1;
-   for(size_t  i = 0; i < enemys.size(); i++){
-     if(!enemys[i].active){
-       if(sumenemy == 0) idGroud = i;
-       enemys[i].groupId = idGroud;
-       enemys[i].active = true;
-       enemys[i].data = enemyData;
-       enemys[i].rect = {x + sumenemy*(40 + enemyData->rect.w),
+    int sumenemy = 0;
+    idGround++;
+    if(idGround > 99) idGround = 0;
+   for(auto& enemy : enemys){
+     if(!enemy.active){
+       enemy.groupId = idGround;
+       enemy.active = true;
+       enemy.data = enemyData;
+       enemy.rect = {x + sumenemy*(40 + enemyData->rect.w),
                      y,
                      enemyData->rect.w,
                      enemyData->rect.h};
-       moveGroups[enemys[i].groupId] = moveType;
-       enemys[i].rectHpMax = {enemys[i].rect.x,
-                       enemys[i].rect.y - enemys[i].rect.h/10,
-                       enemys[i].rect.w,
-                       enemys[i].rect.h/10};
+       moveGroups[enemy.groupId] = moveType;
+       enemy.rectHpMax = {enemy.rect.x,
+                       enemy.rect.y - enemy.rect.h/10,
+                       enemy.rect.w,
+                       enemy.rect.h/10};
 
-       enemys[i].rectHp = enemys[i].rectHpMax;
-       enemys[i].hpNow = enemyData->hpMax;
+       enemy.rectHp = enemy.rectHpMax;
+       enemy.hpNow = enemyData->hpMax;
        sumenemy ++;
       }
     if(sumenemy == amount) return;

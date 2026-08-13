@@ -13,7 +13,7 @@ struct EnemySystem
 
     std::vector<Enemy> enemys;
     std::vector<int> moveGroups;
-
+    int idGround  = 0;
     void Init(int sum,EnemyDataBase* data);
     void Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType);
     void Move (Enemy* enemy, float deltaTime);
