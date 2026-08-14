@@ -77,6 +77,7 @@ struct EnemyRes
 struct WeaponRes
 {
     SDL_Texture* playerOne = nullptr;
+    SDL_Texture* playerTwo = nullptr;
     SDL_Texture* enemyOne = nullptr;
 };
 
@@ -85,6 +86,11 @@ struct EffectRes
     SDL_Texture* one = nullptr;
     SDL_Texture* two = nullptr;
     SDL_Texture* shipOne = nullptr;
+    //hieu ung item
+    SDL_Texture* txtHeal = nullptr;         // Chữ Heal Up
+    SDL_Texture* txtShield = nullptr;       // Chữ Shield Up
+    SDL_Texture* txtChangeBullet = nullptr; // Chữ Change Bullet
+    SDL_Texture* shieldAura = nullptr;
 };
 
 struct MusicRes
@@ -94,7 +100,18 @@ struct MusicRes
     Mix_Chunk* win = nullptr;
     Mix_Chunk* lost = nullptr;
     Mix_Chunk* click = nullptr;
+    Mix_Chunk* item = nullptr;
 };
+
+// Tài nguyên Vật phẩm rơi ra
+struct ItemRes
+{
+    SDL_Texture* powerup = nullptr;
+    SDL_Texture* changeBullet = nullptr;
+    SDL_Texture* heal = nullptr;
+    SDL_Texture* shield = nullptr;
+};
+
 
 struct ResourceManager {
   MenuRes menu;
@@ -105,8 +122,10 @@ struct ResourceManager {
   WeaponRes weapon;
   EffectRes effect;
   MusicRes music;
+  ItemRes item;
   void Load(SDL_Renderer* renderer);
   void Free();
 };
+
 
 #endif

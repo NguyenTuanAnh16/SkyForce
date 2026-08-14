@@ -12,6 +12,9 @@ void Music::Init(MusicRes& res)
      lost = res.lost;
 
      click = res.click;
+
+     item = res.item;
+
 }
 
 void Music::PlayMusic()
@@ -43,4 +46,9 @@ void Music::PlayLost()
 void Music::PlayClick()
 {
   if(sound)  Mix_PlayChannel(-1, click, 0);
+}
+
+void Music::PlayItem()
+{
+    if (sound) Mix_PlayChannel(-1, item, 0);
 }

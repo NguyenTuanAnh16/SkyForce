@@ -104,7 +104,10 @@ void CollisionSystem::HandleEnemyWeapon(EnemySystem& enemySystem,
     }
 }
 
-void CollisionSystem::HandlePlayerItem(Player& player, ItemSystem& itemSystem, EffectSystem& effectSystem)
+void CollisionSystem::HandlePlayerItem(Player& player,
+                                       ItemSystem& itemSystem,
+                                       EffectSystem& effectSystem,
+                                       Music& music)
 {
     for (auto& item : itemSystem.items) {
         if (item.active) {
@@ -115,6 +118,7 @@ void CollisionSystem::HandlePlayerItem(Player& player, ItemSystem& itemSystem, E
 
                 if (Check(box, item.rect)) {
                     itemSystem.ApplyItemToPlayer(player, item, effectSystem);
+                    music.PlayItem();
                     break;
                 }
             }
@@ -132,5 +136,5 @@ void CollisionSystem::Update(Player& player,
     HandlePlayerEnemy(player, enemySystem, effectSystem, music);
     HandlePlayerWeapon(player, weaponSystem, effectSystem, music);
     HandleEnemyWeapon(enemySystem, weaponSystem, effectSystem, itemSystem, music);
-    HandlePlayerItem(player, itemSystem, effectSystem);
+    HandlePlayerItem(player, itemSystem, effectSystem, music);
 }

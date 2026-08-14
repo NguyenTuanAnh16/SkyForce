@@ -11,6 +11,7 @@ struct Music
     Mix_Chunk* win = nullptr;
     Mix_Chunk* lost = nullptr;
     Mix_Chunk* click = nullptr;
+    Mix_Chunk* item = nullptr;
 
     bool sound = true;
 
@@ -22,6 +23,7 @@ struct Music
     void PlayWin();
     void PlayLost();
     void PlayClick();
+    void PlayItem();
 };
 
 #endif
