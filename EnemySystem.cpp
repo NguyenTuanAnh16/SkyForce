@@ -4,7 +4,7 @@
 void EnemySystem::Init(int sum, EnemyDataBase* data){
     this->data = data;
     enemys.resize(sum);
-    moveGroups.reserve(sum);
+    moveGroups.resize(100, 0);
 }
 
 // ren dich
@@ -72,6 +72,54 @@ void EnemySystem::Move(Enemy* enemy, float deltaTime)
                enemy->rect.x += cos(t * 1.2f) * 150.0f * deltaTime;
                enemy->rect.y += sin(t * 1.2f) * 150.0f * deltaTime;}
 
+// dan 2 hang
+   else if(moveGroups[enemy->groupId] == 7)
+           {
+               enemy->rect.y = enemy->rect.y + enemy->data->speed/1.5f * deltaTime;
+               enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
+               if(enemy->rect.y >= 150) moveGroups[enemy->groupId] = 9;
+           }
+   else if(moveGroups[enemy->groupId] == 8)
+           {
+               enemy->rect.y = enemy->rect.y + enemy->data->speed/1.5f * deltaTime;
+               enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
+               if(enemy->rect.y >= 250) moveGroups[enemy->groupId] = 10;
+           }
+   else if(moveGroups[enemy->groupId] == 9)
+           {
+               float t = SDL_GetTicks() / 1000.0f;
+               enemy->rect.x += sin(t * 2.0f) * 80.0f * deltaTime;
+           }
+   else if(moveGroups[enemy->groupId] == 10)
+           {
+               float t = SDL_GetTicks() / 1000.0f;
+               enemy->rect.x += cos(t * 2.0f) * 80.0f * deltaTime;
+           }
+
+    // =========================================================================
+    // 1. GIỮ ENEMY TRONG MÀN HÌNH (Không vượt viền TRÊN, TRÁI, PHẢI)
+    // =========================================================================
+    if(enemy->rect.y < 0) enemy->rect.y = 0;
+    if(enemy->rect.x < 0) enemy->rect.x = 0;
+    if(enemy->rect.x + enemy->rect.w > SCREEN_WIDTH) enemy->rect.x = SCREEN_WIDTH - enemy->rect.w;
+
+    // =========================================================================
+    // 2. CHỐNG ĐỨNG TRÙNG VỊ TRÍ (Tự đẩy nhau ra khi chạm vào nhau)
+    // =========================================================================
+    for(auto& other : enemys)
+    {
+        if(&other != enemy && other.active)
+        {
+            if(SDL_HasIntersectionF(&enemy->rect, &other.rect))
+            {
+                // Tách theo chiều ngang (X) để tránh chen chúc
+                if(enemy->rect.x < other.rect.x)
+                    enemy->rect.x -= 30.0f * deltaTime;
+                else
+                    enemy->rect.x += 30.0f * deltaTime;
+            }
+        }
+    }
 }
 
 
