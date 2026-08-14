@@ -39,7 +39,7 @@ player.pause = IMG_LoadTexture(renderer,"ResourceManager/Player/Pause.png");
 
 
 // game
-background.sceneryOne = IMG_LoadTexture(renderer,"ResourceManager/BackGround/SceneryOne.jpg");
+background.sceneryOne = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGOne.png");
 background.sceneryTwo = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGTwo.png");
 background.sceneryThree = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGThree.png");
 

@@ -21,7 +21,7 @@
 	"EffectSystem.h"
 	"Music.h"
 
-1786647296 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+1786694915 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -33,7 +33,7 @@
 1785006233 source:d:\bt game\game2 c++\game\main.cpp
 	"Game.h"
 
-1786155178 source:d:\bt game\game2 c++\game\background.cpp
+1786695167 source:d:\bt game\game2 c++\game\background.cpp
 	"BackGround.h"
 
 1785463754 d:\bt game\game2 c++\game\background.h
@@ -166,7 +166,7 @@
 	"Effect.h"
 	"Starship.h"
 
-1786525334 source:d:\bt game\game2 c++\game\selectlevel.cpp
+1786688426 source:d:\bt game\game2 c++\game\selectlevel.cpp
 	"SelectLevel.h"
 
 1786525343 d:\bt game\game2 c++\game\selectlevel.h

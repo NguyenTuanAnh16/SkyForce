@@ -10,7 +10,7 @@ void BackGroundDataBase::Init(BackgroundRes& res)
 
     //hanh tinh
     one.planetTex = res.nibiru;
-    one.planetStart = {900,0,180,180};
+    one.planetStart = {1000,0,180,180};
     one.planetSpeed = 25;
 
     // sao
@@ -30,7 +30,7 @@ void BackGroundDataBase::Init(BackgroundRes& res)
 
     //hanh tinh
     two.planetTex = res.nibiru;
-    two.planetStart = {0,0,180,180};
+    two.planetStart = {900,0,180,180};
     two.planetSpeed = 25;
 
     // sao
@@ -39,6 +39,7 @@ void BackGroundDataBase::Init(BackgroundRes& res)
     two.meteorSpeed = 1000;
     two.meteorVelocityX = 1.0f;
     two.meteorVelocityY = 0.35f;
+    two.meteorAngle = -40;
 
 // man 3
     // nen
@@ -48,7 +49,7 @@ void BackGroundDataBase::Init(BackgroundRes& res)
 
     //hanh tinh
     three.planetTex = res.nibiru;
-    three.planetStart = {0,0,180,180};
+    three.planetStart = {800,0,180,180};
     three.planetSpeed = 25;
 
     // sao
@@ -57,4 +58,5 @@ void BackGroundDataBase::Init(BackgroundRes& res)
     three.meteorSpeed = 1000;
     three.meteorVelocityX = 1.0f;
     three.meteorVelocityY = 0.35f;
+    three.meteorAngle = -40;
 }
