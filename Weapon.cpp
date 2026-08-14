@@ -10,7 +10,7 @@ void WeaponDataBase::Init(WeaponRes& res){
             playerOne.dame = 60;
 
     // dan upgrade
-            playerTwo.texture = (res.playerTwo != nullptr) ? res.playerTwo : res.playerOne;
+            playerTwo.texture = res.playerTwo;
             playerTwo.speed = 1200;
             playerTwo.width = 14;
             playerTwo.height = 28;
