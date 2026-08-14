@@ -3,7 +3,6 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_mixer.h>
 
 // menu
 struct MenuRes
@@ -28,12 +27,6 @@ struct MenuRes
    SDL_Texture* winLogo = nullptr;
    SDL_Texture* lostLogo = nullptr;
    SDL_Texture* retry = nullptr;
-   SDL_Texture* musicOn = nullptr;
-   SDL_Texture* musicOff = nullptr;
-   SDL_Texture* soundOn = nullptr;
-   SDL_Texture* soundOff = nullptr;
-   SDL_Texture* FpsMax = nullptr;
-   SDL_Texture* FpsMin = nullptr;
 };
 
 struct PlayerRes
@@ -77,6 +70,7 @@ struct EnemyRes
 struct WeaponRes
 {
     SDL_Texture* playerOne = nullptr;
+    SDL_Texture* playerTwo = nullptr;
     SDL_Texture* enemyOne = nullptr;
 };
 
@@ -85,16 +79,22 @@ struct EffectRes
     SDL_Texture* one = nullptr;
     SDL_Texture* two = nullptr;
     SDL_Texture* shipOne = nullptr;
+    //hieu ung item
+    SDL_Texture* txtHeal = nullptr;         // Chữ Heal Up
+    SDL_Texture* txtShield = nullptr;       // Chữ Shield Up
+    SDL_Texture* txtChangeBullet = nullptr; // Chữ Change Bullet
+    SDL_Texture* shieldAura = nullptr;
 };
 
-struct MusicRes
+// Tài nguyên Vật phẩm rơi ra
+struct ItemRes
 {
-    Mix_Music* music = nullptr;
-    Mix_Chunk* burst = nullptr;
-    Mix_Chunk* win = nullptr;
-    Mix_Chunk* lost = nullptr;
-    Mix_Chunk* click = nullptr;
+    SDL_Texture* powerup = nullptr;
+    SDL_Texture* changeBullet = nullptr;
+    SDL_Texture* heal = nullptr;
+    SDL_Texture* shield = nullptr;
 };
+
 
 struct ResourceManager {
   MenuRes menu;
@@ -104,9 +104,10 @@ struct ResourceManager {
   EnemyRes enemy;
   WeaponRes weapon;
   EffectRes effect;
-  MusicRes music;
+  ItemRes item;
   void Load(SDL_Renderer* renderer);
   void Free();
 };
+
 
 #endif

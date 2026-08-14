@@ -6,34 +6,28 @@
 #include "EnemySystem.h"
 #include "WeaponSystem.h"
 #include "EffectSystem.h"
-#include "Music.h"
+#include "Item.h"
+#include "ResourceManager.h"
 
-struct CollisionSystem
-{
-    bool Check(const SDL_FRect& a,
-               const SDL_FRect& b);
+struct CollisionSystem {
+    bool Check(const SDL_FRect& a, const SDL_FRect& b);
 
-    void HandlePlayerEnemy(Player& player,
-                           EnemySystem& enemySystem,
-                           EffectSystem& effectSystem,
-                           Music& music);
+    void HandlePlayerEnemy(Player& player, EnemySystem& enemySystem, EffectSystem& effectSystem);
 
-    void HandlePlayerWeapon(Player& player,
-                            WeaponSystem& weaponSystem,
-                            EffectSystem& effectSystem,
-                            Music& music);
+    void HandlePlayerWeapon(Player& player, WeaponSystem& weaponSystem, EffectSystem& effectSystem);
 
-    void HandleEnemyWeapon(Player& player,
-                           EnemySystem& enemySystem,
+    void HandleEnemyWeapon(EnemySystem& enemySystem,
                            WeaponSystem& weaponSystem,
                            EffectSystem& effectSystem,
-                           Music& music);
+                           ItemSystem& itemSystem);
+
+    void HandlePlayerItem(Player& player, ItemSystem& itemSystem, EffectSystem& effectSystem);
 
     void Update(Player& player,
                 EnemySystem& enemySystem,
                 WeaponSystem& weaponSystem,
                 EffectSystem& effectSystem,
-                Music& music);
+                ItemSystem& itemSystem);
 };
 
 #endif
