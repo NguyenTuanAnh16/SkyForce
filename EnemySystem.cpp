@@ -4,7 +4,7 @@
 void EnemySystem::Init(int sum, EnemyDataBase* data){
     this->data = data;
     enemys.resize(sum);
-    moveGroups.reserve(sum);
+    moveGroups.resize(100, 0);
 }
 
 // ren dich
@@ -39,6 +39,9 @@ void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int m
 // di chuyen
 void EnemySystem::Move(Enemy* enemy, float deltaTime)
 {
+    // Khoảng cách an toàn cách mép trái/phải để Player dễ bắn trúng
+    const float PADDING = 30.0f;
+
     if(moveGroups[enemy->groupId] == 0)
       {
         if(enemy->rect.y < 200)   enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
@@ -48,12 +51,14 @@ void EnemySystem::Move(Enemy* enemy, float deltaTime)
            {
             enemy->rect.y = enemy->rect.y + enemy->data->speed/2 * deltaTime;
             enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) moveGroups[enemy->groupId] = 3;}
+            // Đụng mép phải (trừ đi PADDING) thì nảy sang trái
+            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH - PADDING) moveGroups[enemy->groupId] = 3;}
     else if(moveGroups[enemy->groupId] == 3)
            {
             enemy->rect.y = enemy->rect.y + enemy->data->speed/2 * deltaTime;
             enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x <= 0) moveGroups[enemy->groupId] = 2;}
+            // Đụng mép trái (PADDING) thì nảy sang phải
+            if(enemy->rect.x <= PADDING) moveGroups[enemy->groupId] = 2;}
    else if(moveGroups[enemy->groupId] == 4)
           {
            enemy->rect.y += enemy->data->speed * deltaTime;
@@ -72,6 +77,52 @@ void EnemySystem::Move(Enemy* enemy, float deltaTime)
                enemy->rect.x += cos(t * 1.2f) * 150.0f * deltaTime;
                enemy->rect.y += sin(t * 1.2f) * 150.0f * deltaTime;}
 
+// dan 2 hang
+   else if(moveGroups[enemy->groupId] == 7)
+           {
+               enemy->rect.y = enemy->rect.y + enemy->data->speed/1.5f * deltaTime;
+               enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
+               if(enemy->rect.y >= 150) moveGroups[enemy->groupId] = 9;
+           }
+   else if(moveGroups[enemy->groupId] == 8)
+           {
+               enemy->rect.y = enemy->rect.y + enemy->data->speed/1.5f * deltaTime;
+               enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
+               if(enemy->rect.y >= 250) moveGroups[enemy->groupId] = 10;
+           }
+   else if(moveGroups[enemy->groupId] == 9)
+           {
+               float t = SDL_GetTicks() / 1000.0f;
+               enemy->rect.x += sin(t * 2.0f) * 80.0f * deltaTime;
+           }
+   else if(moveGroups[enemy->groupId] == 10)
+           {
+               float t = SDL_GetTicks() / 1000.0f;
+               enemy->rect.x += cos(t * 2.0f) * 80.0f * deltaTime;
+           }
+
+    if(enemy->rect.y < 0) enemy->rect.y = 0;
+
+    if(enemy->rect.x < PADDING)
+        enemy->rect.x = PADDING;
+
+    if(enemy->rect.x + enemy->rect.w > SCREEN_WIDTH - PADDING)
+        enemy->rect.x = SCREEN_WIDTH - enemy->rect.w - PADDING;
+
+
+    for(auto& other : enemys)
+    {
+        if(&other != enemy && other.active)
+        {
+            if(SDL_HasIntersectionF(&enemy->rect, &other.rect))
+            {
+                if(enemy->rect.x < other.rect.x)
+                    enemy->rect.x -= 30.0f * deltaTime;
+                else
+                    enemy->rect.x += 30.0f * deltaTime;
+            }
+        }
+    }
 }
 
 

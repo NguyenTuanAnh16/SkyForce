@@ -97,10 +97,11 @@ void SpawnManager::RandomSpawn()
     if (amount == 1)
         moveType = 0;
     else if (amount <= 3)
-        moveType = 1 + rand() % 3;
-    else if (amount <=4)
-         moveType = 1 + rand() % 4;
-    else moveType = 5;
+        moveType = 1 + rand() % 5;
+    else if (amount <= 4)
+        moveType = 1 + rand() % 8;
+    else
+        moveType = 7;
 
 // Vị trí
 int x = rand() % ( SCREEN_WIDTH - amount * (int)enemyData->rect.w - (amount - 1) * 40 - 10);
