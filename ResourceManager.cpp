@@ -22,6 +22,12 @@ menu.nextLever = IMG_LoadTexture(renderer,"ResourceManager/Menu/NextLever.png");
 menu.winLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/WinLogo.png");
 menu.lostLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/LostLogo.png");
 menu.retry = IMG_LoadTexture(renderer,"ResourceManager/Menu/Retry.png");
+menu.musicOn = IMG_LoadTexture(renderer,"ResourceManager/Menu/MusicOn.png");
+menu.musicOff = IMG_LoadTexture(renderer,"ResourceManager/Menu/MusicOff.png");
+menu.soundOn = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOn.png");
+menu.soundOff = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOff.png");
+menu.FpsMax = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMax.png");
+menu.FpsMin = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMin.png");
 
 // player
 player.score = IMG_LoadTexture(renderer,"ResourceManager/Player/Score.png");
@@ -31,7 +37,7 @@ player.pause = IMG_LoadTexture(renderer,"ResourceManager/Player/Pause.png");
 
 
 // game
-background.sceneryOne = IMG_LoadTexture(renderer,"ResourceManager/BackGround/SceneryOne.jpg");
+background.sceneryOne = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGOne.png");
 background.sceneryTwo = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGTwo.png");
 background.sceneryThree = IMG_LoadTexture(renderer,"ResourceManager/BackGround/BGThree.png");
 
