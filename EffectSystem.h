@@ -13,6 +13,8 @@ struct EffectSystem
 
     std::vector<Effect> blasts;
     std::vector<Effect> engines;
+    std::vector<Effect> notifs; //thông báo nhặt item
+    Effect shieldAura;  // thời gian khiên
 
 
     void Init(EffectDataBase* data);
@@ -26,6 +28,11 @@ struct EffectSystem
     // theo may bay
     void FollowEngine(Starship& starship);
     void ClearEngine();
+
+    // hieu ung item
+    void AddItemNotif(float x, float y, int type, float duration = 1.5f);
+    void FollowShield(Starship& starship, bool hasShield);
+    void FollowNotif(Starship& starship);
 
     void Update(float dt);
     void Reset();
