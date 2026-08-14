@@ -73,14 +73,29 @@ void EffectSystem::ClearEngine()
 // noti
 void EffectSystem::AddItemNotif(float x, float y, int type, float duration)
 {
-    for(auto& notif : notifs)
+    if (!data) return;
+
+    // Lấy thông tin kích thước/texture từ EffectData tương ứng (Type 4, 5, 6)
+    EffectData effData = data->Effect(type);
+
+    for (auto& eff : notifs)
     {
-        if(!notif.active)
+        if (!eff.active)
         {
-            notif.active = true;
-            notif.type = type;
-            notif.timer = 0;
-            notif.maxDuration = duration;
+            eff.type = type;
+            eff.timer = 0.0f;
+            eff.maxDuration = duration; // Gán thời gian hiển thị
+
+            // Nạp kích thước chuẩn từ EffectData
+            eff.rect.w = static_cast<float>(effData.width);
+            eff.rect.h = static_cast<float>(effData.height);
+
+            // Tính toán tọa độ hiển thị căn giữa
+            eff.rect.x = x - eff.rect.w / 2.0f;
+            eff.rect.y = y - eff.rect.h;
+
+            // Bật active sau cùng để không bị nháy vị trí cũ
+            eff.active = true;
             return;
         }
     }
@@ -258,9 +273,9 @@ void EffectSystem::Render(SDL_Renderer* renderer)
             // DỰ PHÒNG CHẮC CHẮN HIỆN: Vẽ ô màu tương ứng trôi lên trên đầu phi thuyền
             else
             {
-                if (notif.type == 4)      SDL_SetRenderDrawColor(renderer, 0, 255, 120, 255); // Type 4: Heal (Xanh lá)
-                else if (notif.type == 5) SDL_SetRenderDrawColor(renderer, 0, 180, 255, 255); // Type 5: Shield (Xanh dương)
-                else if (notif.type == 6) SDL_SetRenderDrawColor(renderer, 255, 215, 0, 255); // Type 6: Bullet (Vàng)
+                if (notif.type == 4)      SDL_SetRenderDrawColor(renderer, 0, 255, 120, 255); // Type 4: Heal
+                else if (notif.type == 5) SDL_SetRenderDrawColor(renderer, 0, 180, 255, 255); // Type 5: Shield
+                else if (notif.type == 6) SDL_SetRenderDrawColor(renderer, 255, 215, 0, 255); // Type 6: Bullet
 
                 SDL_RenderFillRectF(renderer, &notif.rect);
             }
