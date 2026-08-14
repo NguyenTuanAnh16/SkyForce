@@ -75,7 +75,7 @@ void Game::Init(){
     enemysystem.Init(100,&enemy);
     spawnmanager.Init(&enemysystem);
 
-    // item (SỬA TÊN BIẾN DÒNG NÀY THÀNH itemDataBase)
+    // item 
     itemDataBase.Init(resource.item);
     itemSystem.Init(&resource.item, &itemDataBase);
 
