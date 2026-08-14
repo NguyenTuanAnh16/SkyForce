@@ -1,6 +1,8 @@
 # SkyForce
 Sky Force là một tựa game 2D thuộc thể loại bắn máy bay không gian (Shoot 'em up) cổ điển, lấy cảm hứng từ lối chơi huyền thoại của Chicken Invaders. Người chơi sẽ điều khiển phi thuyền không gian chiến đấu chống lại các đợt tấn công từ phe kẻ thù, thu thập các vật phẩm hỗ trợ và chinh phục các thử thách qua từng màn chơi.
+
 Tính năng nổi bật:
+
 1, Hệ thống phi thuyền đa dạng: Người chơi có thể lựa chọn nhiều mẫu chiến hạm với chỉ số và ngoại hình khác nhau trước khi ra trận.
 
 2, Hệ thống Item & Vật phẩm phong phú:
