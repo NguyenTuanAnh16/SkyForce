@@ -29,7 +29,10 @@ struct CollisionSystem {
                            ItemSystem& itemSystem,
                            Music& music);
 
-    void HandlePlayerItem(Player& player, ItemSystem& itemSystem, EffectSystem& effectSystem);
+    void HandlePlayerItem(Player& player,
+                          ItemSystem& itemSystem,
+                          EffectSystem& effectSystem,
+                          Music& music);
 
     void Update(Player& player,
                 EnemySystem& enemySystem,
