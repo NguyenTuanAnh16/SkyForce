@@ -1,5 +1,5 @@
 #include "ResourceManager.h"
-
+#include <iostream>
 void ResourceManager:: Load(SDL_Renderer* renderer){
 // menu
 menu.backGround = IMG_LoadTexture(renderer,"ResourceManager/Menu/BackGround.png");
@@ -22,6 +22,14 @@ menu.nextLever = IMG_LoadTexture(renderer,"ResourceManager/Menu/NextLever.png");
 menu.winLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/WinLogo.png");
 menu.lostLogo = IMG_LoadTexture(renderer,"ResourceManager/Menu/LostLogo.png");
 menu.retry = IMG_LoadTexture(renderer,"ResourceManager/Menu/Retry.png");
+menu.musicOn = IMG_LoadTexture(renderer,"ResourceManager/Menu/MusicOn.png");
+menu.musicOff = IMG_LoadTexture(renderer,"ResourceManager/Menu/MusicOff.png");
+menu.soundOn = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOn.png");
+menu.soundOff = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOff.png");
+menu.FpsMax = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMax.png");
+menu.FpsMin = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMin.png");
+
+
 
 // player
 player.score = IMG_LoadTexture(renderer,"ResourceManager/Player/Score.png");
@@ -60,8 +68,14 @@ weapon.enemyOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Enemy/One.png
 effect.one = IMG_LoadTexture(renderer,"ResourceManager/Effect/One.png");
 effect.two = IMG_LoadTexture(renderer,"ResourceManager/Effect/Two.png");
 effect.shipOne = IMG_LoadTexture(renderer,"ResourceManager/Effect/ShipOne.png");
-}
 
+music.music = Mix_LoadMUS("ResourceManager/Music/Music.mp3");
+music.burst = Mix_LoadWAV("ResourceManager/Music/Burst.wav");
+music.win = Mix_LoadWAV("ResourceManager/Music/Win.wav");
+music.lost = Mix_LoadWAV("ResourceManager/Music/Lost.wav");
+music.click = Mix_LoadWAV("ResourceManager/Music/Click.wav");
+
+}
 void ResourceManager::Free()
 {
     // menu

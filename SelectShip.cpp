@@ -70,7 +70,7 @@ void SelectShip::DrawBar(SDL_Renderer* renderer, int value, int maxValue, float 
 }
 
 
-void SelectShip::HandleEvent(SDL_Event& e, GameState& state)
+void SelectShip::HandleEvent(SDL_Event& e, GameState& state, Music& musicValue)
 {
 
      if(e.type == SDL_MOUSEBUTTONDOWN)
@@ -83,11 +83,13 @@ void SelectShip::HandleEvent(SDL_Event& e, GameState& state)
                  {  selectedShip++;
                     if(selectedShip > 3)
                     selectedShip = 1;
+                    musicValue.PlayClick();
                  }
             if(leftShip.hover)
                  {  selectedShip--;
                     if(selectedShip < 1)
                     selectedShip = 3;
+                    musicValue.PlayClick();
                  }
         }
     }

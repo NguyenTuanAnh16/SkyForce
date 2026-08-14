@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 // menu
 struct MenuRes
@@ -27,6 +28,12 @@ struct MenuRes
    SDL_Texture* winLogo = nullptr;
    SDL_Texture* lostLogo = nullptr;
    SDL_Texture* retry = nullptr;
+   SDL_Texture* musicOn = nullptr;
+   SDL_Texture* musicOff = nullptr;
+   SDL_Texture* soundOn = nullptr;
+   SDL_Texture* soundOff = nullptr;
+   SDL_Texture* FpsMax = nullptr;
+   SDL_Texture* FpsMin = nullptr;
 };
 
 struct PlayerRes
@@ -80,6 +87,15 @@ struct EffectRes
     SDL_Texture* shipOne = nullptr;
 };
 
+struct MusicRes
+{
+    Mix_Music* music = nullptr;
+    Mix_Chunk* burst = nullptr;
+    Mix_Chunk* win = nullptr;
+    Mix_Chunk* lost = nullptr;
+    Mix_Chunk* click = nullptr;
+};
+
 struct ResourceManager {
   MenuRes menu;
   PlayerRes player;
@@ -88,6 +104,7 @@ struct ResourceManager {
   EnemyRes enemy;
   WeaponRes weapon;
   EffectRes effect;
+  MusicRes music;
   void Load(SDL_Renderer* renderer);
   void Free();
 };

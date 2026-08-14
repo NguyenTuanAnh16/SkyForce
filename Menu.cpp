@@ -51,8 +51,8 @@ void Menu::Init(MenuRes& res){
         select.texture = res.selectShip;
         select.rect = {(SCREEN_WIDTH - 292) / 2, 425, 292, 60};
 
-        settings.texture = res.settings;
-        settings.rect = {(SCREEN_WIDTH - 292) / 2, 500, 292, 60};
+        setting.texture = res.settings;
+        setting.rect = {(SCREEN_WIDTH - 292) / 2, 500, 292, 60};
 
         exit.texture = res.exit;
         exit.rect = {(SCREEN_WIDTH - 292) / 2 , 575, 292, 60};
@@ -68,7 +68,7 @@ void Menu::Update(float deltaTime)
 
     play.Update(deltaTime, mouseX, mouseY);
     select.Update(deltaTime, mouseX, mouseY);
-    settings.Update(deltaTime, mouseX, mouseY);
+    setting.Update(deltaTime, mouseX, mouseY);
     exit.Update(deltaTime, mouseX, mouseY);
 
 }
@@ -86,6 +86,8 @@ void Menu::HandleEvent(SDL_Event& e, GameState& state)
                 state = GameState::SELECT_SHIP;
             else if(exit.hover)
                 state = GameState::EXIT;
+            else if(setting.hover)
+                state = GameState::SETTING;
 
         }
     }
@@ -98,6 +100,6 @@ void Menu::Render(SDL_Renderer* renderer)
     SDL_RenderCopyF(renderer,logo,nullptr,&rectLG);
     play.Render(renderer);
     select.Render(renderer);
-    settings.Render(renderer);
+    setting.Render(renderer);
     exit.Render(renderer);
 }

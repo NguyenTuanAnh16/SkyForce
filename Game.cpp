@@ -27,6 +27,10 @@ void Game::Init(){
     SCREEN_HEIGHT
     );
 
+    // tao kenh nhac
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+
     // tai nguyen
     resource.Load(renderer);
 
@@ -56,6 +60,9 @@ void Game::Init(){
     // doi man
     selectlevel.Init(resource.menu);
 
+    // setting
+    setting.Init(resource.menu);
+
     // pause
     pause.Init(resource.menu);
 
@@ -63,11 +70,15 @@ void Game::Init(){
     //weapon.Init(resource.weapon);
     weapon.Init(resource.weapon);
     weaponSystem.Init(100,&weapon);
+
     // dich
     enemy.Init(resource.enemy);
     enemysystem.Init(100,&enemy);
     spawnmanager.Init(&enemysystem);
 
+    // nhac
+    music.Init(resource.music);
+    music.PlayMusic();
 }
 
 void Game::InitLevel()
@@ -88,37 +99,58 @@ void Game::Run()
            frameStart = SDL_GetTicks();
            while(SDL_PollEvent(&event)){
                  if(event.type == SDL_QUIT || state == GameState::EXIT)  running = false;
-                 else if(state == GameState::MENU) menu.HandleEvent(event,state);
+                 else if(state == GameState::MENU)
+                        {  menu.HandleEvent(event,state);
+                           if(state != GameState::MENU) music.PlayClick();
+                        }
                  else if(state == GameState::SELECT_SHIP)
                         {
-                            selectShip.HandleEvent(event,state);
-                            if(state == GameState::SELECT_LEVEL) player.ChangeStarship(selectShip,starship,effectSystem);
+                            selectShip.HandleEvent(event,state,music);
+                            if(state != GameState::SELECT_SHIP)
+                              {  player.ChangeStarship(selectShip,starship,effectSystem);
+                                  music.PlayClick();}
                         }
                  else if(state == GameState::SELECT_LEVEL)
                         {
                             selectlevel.HandleEvent(event,state);
-                            if(state == GameState::PLAYING)   InitLevel();
+                            if(state != GameState::SELECT_LEVEL) music.PlayClick();
+                            if(state == GameState::PLAYING)
+                                { InitLevel();
+                                  player.ChangeStarship(selectShip,starship,effectSystem); }
                         }
                  else if(state == GameState::PLAYING)
                         {
                             player.HandleEvent(event,state);
-                            if(player.starship->hpNow <= 0) state = GameState::LOST;
+                            if(state != GameState::PLAYING) music.PlayClick();
                         }
-                 else if(state == GameState::PAUSE)    pause.HandleEvent(event,state);
+                 else if(state == GameState::PAUSE)
+                        { pause.HandleEvent(event,state);
+                          if(state != GameState::PAUSE) music.PlayClick();
+                        }
                  else if(state == GameState::WIN)
                         {
                             pause.HandleEvent(event,state);
+                            if(state != GameState::WIN) music.PlayClick();
                             if(state == GameState::PLAYING)
                               {   selectlevel.level ++; if(selectlevel.level++ >=3) selectlevel.level = 3;
                                   InitLevel();
+                                  player.ChangeStarship(selectShip,starship,effectSystem);
                               }
 
                         }
                 else if(state == GameState::LOST)
                 {
                     pause.HandleEvent(event,state);
-                    if(state == GameState::PLAYING)  InitLevel();
-
+                    if(state != GameState::LOST) music.PlayClick();
+                    if(state == GameState::PLAYING)
+                      {  InitLevel();
+                         player.ChangeStarship(selectShip,starship,effectSystem);
+                      }
+                }
+                else if(state == GameState::SETTING)
+                {
+                    setting.HandleEvent(event,state, music);
+                    if(state != GameState::SETTING) music.PlayClick();
                 }
 
                  }
@@ -164,7 +196,7 @@ void Game::Render()
         effectSystem.Render(renderer);
         pause.Render(renderer,state);
     }
-
+    else if(state == GameState::SETTING) setting.Render(renderer);
     SDL_RenderPresent(renderer);
 }
 
@@ -189,11 +221,23 @@ void Game::Update()
 
         effectSystem.Update(deltaTime);
 
-        collisionSystem.Update(player,enemysystem,weaponSystem,effectSystem);
+        collisionSystem.Update(player,enemysystem,weaponSystem,effectSystem,music);
 
-        if(player.score >= selectlevel.targetScore)  state = GameState::WIN;
+        if((player.score >= selectlevel.targetScore || player.starship->hpNow <= 0) && !waitingResult)
+           {  waitingResult = true;
+              resultTimer = 0.0f;
+
+           }
+
+       if(waitingResult)
+         { resultTimer += deltaTime;
+           if(resultTimer >= 1)
+             {  if(player.starship->hpNow <= 0){state = GameState::LOST; music.PlayLost();}
+                else {state = GameState::WIN;  music.PlayWin();}
+                waitingResult = false;
+             }
+         }
     }
-
     else if(state == GameState::SELECT_SHIP)
     {
         selectShip.Update(deltaTime);
@@ -206,11 +250,12 @@ void Game::Update()
     {
         pause.Update(deltaTime,state);
     }
+    else if(state == GameState::SETTING) setting.Update(deltaTime);
 }
 
 void Game::capFPS()
 {
-    frameDelay = 1000/FPS;
+    frameDelay = 1000/setting.fpsValue;
     frameTime = SDL_GetTicks() - frameStart;
     if (frameTime < frameDelay){
             SDL_Delay(frameDelay - frameTime);
@@ -228,3 +273,4 @@ void Game::Clean()
   SDL_DestroyWindow(window);
   SDL_Quit();
 }
+

@@ -7,7 +7,7 @@
 #include "ResourceManager.h"
 #include "Starship.h"
 #include "Config.h"
-
+#include "Music.h"
 
 struct SelectShip
 {
@@ -39,7 +39,7 @@ struct SelectShip
 
     void DrawBar(SDL_Renderer* renderer, int value, int maxValue, float x, float y);
 
-    void HandleEvent(SDL_Event& e, GameState& state);
+    void HandleEvent(SDL_Event& e, GameState& state, Music& musicValue);
 
     void Render(SDL_Renderer* renderer);
 };

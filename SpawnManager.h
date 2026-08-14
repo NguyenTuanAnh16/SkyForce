@@ -12,6 +12,7 @@ struct SpawnManager
     float spawnTime = 1;
 
     int rateEnemy[3];
+    int rateAmount[6];
     int amountMax;
     int moveType;
 

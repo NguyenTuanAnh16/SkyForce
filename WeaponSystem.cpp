@@ -40,5 +40,4 @@ void WeaponSystem::Render(SDL_Renderer* rerderer){
             SDL_RenderCopyF(rerderer,data->weapon(weapon.type).texture, nullptr, &weapon.rect);
         }
       }
-
 }

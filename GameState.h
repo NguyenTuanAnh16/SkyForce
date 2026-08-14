@@ -10,7 +10,7 @@ enum class GameState
     PAUSE,
     WIN,
     LOST,
-    GAMEOVER,
+    SETTING,
     EXIT
 };
 

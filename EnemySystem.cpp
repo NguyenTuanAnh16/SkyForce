@@ -39,17 +39,39 @@ void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int m
 // di chuyen
 void EnemySystem::Move(Enemy* enemy, float deltaTime)
 {
-    if(moveGroups[enemy->groupId] == 0) enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
-    else if(moveGroups[enemy->groupId] == 1)
-           {
-            enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
-            enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) moveGroups[enemy->groupId] = 2;}
+    if(moveGroups[enemy->groupId] == 0)
+      {
+        if(enemy->rect.y < 200)   enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
+      }
+    else if(moveGroups[enemy->groupId] == 1) enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
     else if(moveGroups[enemy->groupId] == 2)
            {
-            enemy->rect.y = enemy->rect.y + enemy->data->speed/3 * deltaTime;
+            enemy->rect.y = enemy->rect.y + enemy->data->speed/2 * deltaTime;
+            enemy->rect.x = enemy->rect.x + enemy->data->speed/2 * deltaTime;
+            if(enemy->rect.x + enemy->rect.w >= SCREEN_WIDTH) moveGroups[enemy->groupId] = 3;}
+    else if(moveGroups[enemy->groupId] == 3)
+           {
+            enemy->rect.y = enemy->rect.y + enemy->data->speed/2 * deltaTime;
             enemy->rect.x = enemy->rect.x - enemy->data->speed/2 * deltaTime;
-            if(enemy->rect.x <= 0) moveGroups[enemy->groupId] = 1;}
+            if(enemy->rect.x <= 0) moveGroups[enemy->groupId] = 2;}
+   else if(moveGroups[enemy->groupId] == 4)
+          {
+           enemy->rect.y += enemy->data->speed * deltaTime;
+           float time = SDL_GetTicks() / 1000.0f;
+           enemy->rect.x += sin(time * 3.0f) * 300.0f * deltaTime;
+           }
+// 1 kieeu
+   else if(moveGroups[enemy->groupId] == 5)
+           {
+               if(enemy->rect.y < 250)   enemy->rect.y = enemy->rect.y + enemy->data->speed * deltaTime;
+               else moveGroups[enemy->groupId] = 6;
+           }
+   else if(moveGroups[enemy->groupId] == 6)
+           {
+               float t = SDL_GetTicks() / 1000.0f;
+               enemy->rect.x += cos(t * 1.2f) * 150.0f * deltaTime;
+               enemy->rect.y += sin(t * 1.2f) * 150.0f * deltaTime;}
+
 }
 
 

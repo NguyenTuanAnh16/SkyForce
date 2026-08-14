@@ -143,7 +143,7 @@ void Player::Reset()
 void Player::Render(SDL_Renderer* renderer)
 {
 
-    SDL_RenderCopyF(renderer,starship->texture,nullptr,&starship->rect);
+if(starship->hpNow > 0)  SDL_RenderCopyF(renderer,starship->texture,nullptr,&starship->rect);
 
     SDL_RenderCopyF(renderer,scoreTex,nullptr,&scoreRect);
     SDL_RenderCopyF(renderer,hpTex,nullptr,&hpRect);

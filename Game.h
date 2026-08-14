@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "SelectLevel.h"
 #include "SelectShip.h"
+#include "Setting.h"
 #include "Pause.h"
 #include "BackGroundSystem.h"
 #include "Player.h"
@@ -15,7 +16,7 @@
 #include "Weapon.h"
 #include "CollisionSystem.h"
 #include "EffectSystem.h"
-
+#include "Music.h"
 
 struct Game {
 // cua so
@@ -37,6 +38,8 @@ SelectLevel selectlevel;
 // doi may bay
 SelectShip selectShip;
 
+// setting
+Setting setting;
 // pause
 Pause pause;
 
@@ -74,10 +77,13 @@ Uint64 frameStart = 0;
 Uint64 frameTime = 0;
 int frameDelay;
 
+// nhac
+Music music;
+
 // thoi gian
 float deltaTime;
-float shootTimer = 0;
-float shootDelay = 0.15f;
+float resultTimer = 0.0f;
+bool waitingResult = false;
 
 // check
 bool running = true;

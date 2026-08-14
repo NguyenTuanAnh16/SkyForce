@@ -52,6 +52,8 @@
 		<Unit filename="GameState.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="Music.cpp" />
+		<Unit filename="Music.h" />
 		<Unit filename="Pause.cpp" />
 		<Unit filename="Pause.h" />
 		<Unit filename="Player.cpp" />
@@ -62,6 +64,8 @@
 		<Unit filename="SelectLevel.h" />
 		<Unit filename="SelectShip.cpp" />
 		<Unit filename="SelectShip.h" />
+		<Unit filename="Setting.cpp" />
+		<Unit filename="Setting.h" />
 		<Unit filename="SpawnManager.cpp" />
 		<Unit filename="SpawnManager.h" />
 		<Unit filename="Starship.cpp" />

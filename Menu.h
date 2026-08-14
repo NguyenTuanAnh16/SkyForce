@@ -32,7 +32,7 @@ struct Menu
 
     Button play;
     Button select;
-    Button settings;
+    Button setting;
     Button exit;
 
     void Init(MenuRes& res);

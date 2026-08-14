@@ -6,6 +6,7 @@
 #include "EnemySystem.h"
 #include "WeaponSystem.h"
 #include "EffectSystem.h"
+#include "Music.h"
 
 struct CollisionSystem
 {
@@ -14,21 +15,25 @@ struct CollisionSystem
 
     void HandlePlayerEnemy(Player& player,
                            EnemySystem& enemySystem,
-                           EffectSystem& effectSystem);
+                           EffectSystem& effectSystem,
+                           Music& music);
 
     void HandlePlayerWeapon(Player& player,
                             WeaponSystem& weaponSystem,
-                            EffectSystem& effectSystem);
+                            EffectSystem& effectSystem,
+                            Music& music);
 
     void HandleEnemyWeapon(Player& player,
                            EnemySystem& enemySystem,
                            WeaponSystem& weaponSystem,
-                           EffectSystem& effectSystem);
+                           EffectSystem& effectSystem,
+                           Music& music);
 
     void Update(Player& player,
                 EnemySystem& enemySystem,
                 WeaponSystem& weaponSystem,
-                EffectSystem& effectSystem);
+                EffectSystem& effectSystem,
+                Music& music);
 };
 
 #endif
