@@ -7,9 +7,9 @@
 #include "WeaponSystem.h"
 #include "EffectSystem.h"
 #include "Music.h"
+#include "ItemSystem.h"
 
-struct CollisionSystem
-{
+struct CollisionSystem {
     bool Check(const SDL_FRect& a,
                const SDL_FRect& b);
 
@@ -23,16 +23,22 @@ struct CollisionSystem
                             EffectSystem& effectSystem,
                             Music& music);
 
-    void HandleEnemyWeapon(Player& player,
-                           EnemySystem& enemySystem,
+    void HandleEnemyWeapon(EnemySystem& enemySystem,
                            WeaponSystem& weaponSystem,
                            EffectSystem& effectSystem,
+                           ItemSystem& itemSystem,
                            Music& music);
+
+    void HandlePlayerItem(Player& player,
+                          ItemSystem& itemSystem,
+                          EffectSystem& effectSystem,
+                          Music& music);
 
     void Update(Player& player,
                 EnemySystem& enemySystem,
                 WeaponSystem& weaponSystem,
                 EffectSystem& effectSystem,
+                ItemSystem& itemSystem,
                 Music& music);
 };
 

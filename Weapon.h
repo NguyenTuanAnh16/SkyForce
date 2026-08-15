@@ -15,6 +15,7 @@ float dame;
 
 struct WeaponDataBase{
      WeaponData playerOne;
+     WeaponData playerTwo;
      WeaponData enemyOne;
 
      void Init(WeaponRes& res);

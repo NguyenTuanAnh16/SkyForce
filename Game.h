@@ -16,9 +16,12 @@
 #include "Weapon.h"
 #include "CollisionSystem.h"
 #include "EffectSystem.h"
+#include "Item.h"
+#include "ItemSystem.h"
 #include "Music.h"
 
 struct Game {
+
 // cua so
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
@@ -40,16 +43,17 @@ SelectShip selectShip;
 
 // setting
 Setting setting;
+
 // pause
 Pause pause;
 
 // background
 BackGroundDataBase background;
 BackGroundSystem backGroundSystem;
+
 // nguoi choi
 Player player;
 StarshipDataBase starship;
-
 
 // dich
 EnemySystem enemysystem;
@@ -58,12 +62,9 @@ EnemyDataBase enemy;
 // random dich
 SpawnManager spawnmanager;
 
-
-
 // dan
 WeaponDataBase weapon;
 WeaponSystem weaponSystem;
-//WeaponDataBase weapon;
 
 // va cham
 CollisionSystem collisionSystem;
@@ -71,6 +72,10 @@ CollisionSystem collisionSystem;
 // hieu ung
 EffectSystem effectSystem;
 EffectDataBase effect;
+
+// item
+ItemDataBase itemDataBase;
+ItemSystem itemSystem;
 
 // fps
 Uint64 frameStart = 0;
@@ -82,6 +87,10 @@ Music music;
 
 // thoi gian
 float deltaTime;
+float shootTimer = 0;
+float shootDelay = 0.15f;
+
+// thoi gian cho chuyen man
 float resultTimer = 0.0f;
 bool waitingResult = false;
 

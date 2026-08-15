@@ -21,6 +21,7 @@ struct Effect
     SDL_Rect src;
     int frameNow;
     float timer;
+    float maxDuration;
 };
 
 struct EffectDataBase
@@ -28,6 +29,10 @@ struct EffectDataBase
     EffectData one;
     EffectData two;
     EffectData shipOne;
+    //noti và khiên
+    EffectData txtChangeBullet;
+    EffectData shieldAura;
+    EffectData healAura;
     void Init(EffectRes& res);
     EffectData Effect(int type);
 };
