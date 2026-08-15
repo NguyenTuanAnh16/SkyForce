@@ -96,6 +96,12 @@ struct MusicRes
     Mix_Chunk* click = nullptr;
 };
 
+struct ItemRes
+{
+    SDL_Texture* hp = nullptr;
+    SDL_Texture* power = nullptr;
+    SDL_Texture* shield = nullptr;
+};
 struct ResourceManager {
   MenuRes menu;
   PlayerRes player;
@@ -105,6 +111,7 @@ struct ResourceManager {
   WeaponRes weapon;
   EffectRes effect;
   MusicRes music;
+  ItemRes item;
   void Load(SDL_Renderer* renderer);
   void Free();
 };

@@ -69,12 +69,17 @@ effect.one = IMG_LoadTexture(renderer,"ResourceManager/Effect/One.png");
 effect.two = IMG_LoadTexture(renderer,"ResourceManager/Effect/Two.png");
 effect.shipOne = IMG_LoadTexture(renderer,"ResourceManager/Effect/ShipOne.png");
 
+// nhac
 music.music = Mix_LoadMUS("ResourceManager/Music/Music.mp3");
 music.burst = Mix_LoadWAV("ResourceManager/Music/Burst.wav");
 music.win = Mix_LoadWAV("ResourceManager/Music/Win.wav");
 music.lost = Mix_LoadWAV("ResourceManager/Music/Lost.wav");
 music.click = Mix_LoadWAV("ResourceManager/Music/Click.wav");
 
+//item
+item.hp = IMG_LoadTexture(renderer,"ResourceManager/Item/Hp.png");
+item.power = IMG_LoadTexture(renderer,"ResourceManager/Item/power.png");
+item.shield = IMG_LoadTexture(renderer,"ResourceManager/Item/shield.png");
 }
 void ResourceManager::Free()
 {

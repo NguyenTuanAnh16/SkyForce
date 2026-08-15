@@ -21,11 +21,11 @@
 	"EffectSystem.h"
 	"Music.h"
 
-1786694915 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+1786756099 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
-1786647296 d:\bt game\game2 c++\game\resourcemanager.h
+1786756099 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -205,4 +205,8 @@
 1786647351 d:\bt game\game2 c++\game\music.h
 	"ResourceManager.h"
 	<SDL_mixer.h>
+
+1786754481 source:d:\bt game\game2 c++\game\item.cpp
+
+1786754513 source:d:\bt game\game2 c++\game\itemsystem.cpp
 
