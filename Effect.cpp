@@ -1,4 +1,5 @@
 #include "Effect.h"
+#include <iostream>
 
 void EffectDataBase::Init(EffectRes& res)
 {
@@ -19,6 +20,26 @@ void EffectDataBase::Init(EffectRes& res)
     shipOne.width = 100;
     shipOne.height = 105;
     shipOne.frameTime = 0.05f;
+    //noti và khiên
+
+    txtChangeBullet.texture = res.txtChangeBullet;
+    txtChangeBullet.frame = 4;
+    txtChangeBullet.frameTime = 0.05f;
+    txtChangeBullet.width = 500;
+    txtChangeBullet.height = 350;
+    // Hiệu ứng vòng khiên
+    shieldAura.texture = res.shieldAura;
+    shieldAura.frame = 3;
+    shieldAura.frameTime = 0.05f;
+    shieldAura.width = 666;
+    shieldAura.height = 759;
+
+    healAura.texture = res.healAura;
+    healAura.frame = 3;
+    healAura.frameTime = 0.05f;
+    healAura.width = 516;
+    healAura.height = 1329;
+
 }
 
 EffectData EffectDataBase::Effect(int type)
@@ -26,5 +47,8 @@ EffectData EffectDataBase::Effect(int type)
     if(type == 1) return one;
     if(type == 2) return two;
     if(type == 3) return shipOne;
+    if (type == 6) return txtChangeBullet;
+    if (type == 7) return shieldAura;
+    if (type == 8) return healAura;
     return EffectData();
 }

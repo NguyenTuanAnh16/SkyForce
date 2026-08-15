@@ -1,5 +1,5 @@
 #include "ResourceManager.h"
-#include <iostream>
+
 void ResourceManager:: Load(SDL_Renderer* renderer){
 // menu
 menu.backGround = IMG_LoadTexture(renderer,"ResourceManager/Menu/BackGround.png");
@@ -28,8 +28,6 @@ menu.soundOn = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOn.png");
 menu.soundOff = IMG_LoadTexture(renderer,"ResourceManager/Menu/SoundOff.png");
 menu.FpsMax = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMax.png");
 menu.FpsMin = IMG_LoadTexture(renderer,"ResourceManager/Menu/FpsMin.png");
-
-
 
 // player
 player.score = IMG_LoadTexture(renderer,"ResourceManager/Player/Score.png");
@@ -62,25 +60,32 @@ enemy.three = IMG_LoadTexture(renderer,"ResourceManager/Enemy/Three.png");
 
 // dan
 weapon.playerOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Player/One.png");
+weapon.playerTwo = IMG_LoadTexture(renderer, "ResourceManager/Weapon/Player/Two.png");
 weapon.enemyOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Enemy/One.png");
 
 // hieuung
 effect.one = IMG_LoadTexture(renderer,"ResourceManager/Effect/One.png");
 effect.two = IMG_LoadTexture(renderer,"ResourceManager/Effect/Two.png");
 effect.shipOne = IMG_LoadTexture(renderer,"ResourceManager/Effect/ShipOne.png");
+//hieu ung item
+effect.txtChangeBullet = IMG_LoadTexture(renderer, "ResourceManager/Effect/ChangeBulletType.png");
+effect.shieldAura = IMG_LoadTexture(renderer, "ResourceManager/Effect/ShieldAura.png");
+effect.healAura = IMG_LoadTexture(renderer, "ResourceManager/Effect/HealNew.png");
 
-// nhac
 music.music = Mix_LoadMUS("ResourceManager/Music/Music.mp3");
 music.burst = Mix_LoadWAV("ResourceManager/Music/Burst.wav");
 music.win = Mix_LoadWAV("ResourceManager/Music/Win.wav");
 music.lost = Mix_LoadWAV("ResourceManager/Music/Lost.wav");
 music.click = Mix_LoadWAV("ResourceManager/Music/Click.wav");
+music.item = Mix_LoadWAV("ResourceManager/Music/Item.mp3");
 
 //item
-item.hp = IMG_LoadTexture(renderer,"ResourceManager/Item/Hp.png");
-item.power = IMG_LoadTexture(renderer,"ResourceManager/Item/power.png");
-item.shield = IMG_LoadTexture(renderer,"ResourceManager/Item/shield.png");
+item.changeBullet = IMG_LoadTexture(renderer, "ResourceManager/Item/ChangeBullet.png");
+item.heal = IMG_LoadTexture(renderer, "ResourceManager/Item/Heal.png");
+item.shield = IMG_LoadTexture(renderer, "ResourceManager/Item/Shield.png");
+
 }
+
 void ResourceManager::Free()
 {
     // menu
@@ -109,8 +114,18 @@ void ResourceManager::Free()
 
     // weapon
     SDL_DestroyTexture(weapon.playerOne);
+    SDL_DestroyTexture(weapon.playerTwo);
     SDL_DestroyTexture(weapon.enemyOne);
 
+    // item
+    SDL_DestroyTexture(item.changeBullet);
+    SDL_DestroyTexture(item.heal);
+    SDL_DestroyTexture(item.shield);
+
+    //efect hieu ung
+    SDL_DestroyTexture(effect.txtChangeBullet);
+    SDL_DestroyTexture(effect.shieldAura);
+    SDL_DestroyTexture(effect.healAura);
 
     // menu (sau thêm ảnh thì thêm ở đây)
 }
