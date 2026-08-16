@@ -1,5 +1,5 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef _MENU_H
+#define _MENU_H
 
 #include <SDL.h>
 #include "Config.h"

@@ -1,5 +1,5 @@
-#ifndef _EnemySystem_H
-#define _EnemySystem_H
+#ifndef _ENEMYSYSTEM_H
+#define _ENEMYSYSTEM_H
 
 #include <SDL.h>
 #include <vector>
@@ -14,8 +14,8 @@ struct EnemySystem
     std::vector<Enemy> enemys;
     std::vector<int> moveGroups;
     int idGround  = 0;
-    void Init(int sum,EnemyDataBase* data);
-    void Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType);
+    void Init(EnemyDataBase* data);
+    void Spawn(float x, float y,EnemyType type, int amount, int moveType);
     void Move (Enemy* enemy, float deltaTime);
     void Update(float deltatime,WeaponSystem* weaponSystem);
     void Reset();

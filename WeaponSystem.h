@@ -1,5 +1,5 @@
-#ifndef _WeaponSystem_H
-#define _WeaponSystem_H
+#ifndef _WEAPONSYSTEM_H
+#define _WEAPONSYSTEM_H
 
 #include <SDL.h>
 #include <vector>
@@ -9,8 +9,8 @@ struct WeaponSystem
 {
     WeaponDataBase* data;
     std::vector<Weapon> weapons;
-    void Init(int sum,WeaponDataBase* data);
-    void Shoot(float x, float y, int type, char owner);
+    void Init(WeaponDataBase* data);
+    void Shoot(float x, float y, WeaponType type, char owner);
     void Update(float dt);
     void Reset();
     void Render(SDL_Renderer* renderer);

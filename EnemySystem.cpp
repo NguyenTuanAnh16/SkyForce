@@ -1,14 +1,14 @@
 #include "EnemySystem.h"
 #include <cmath>
 
-void EnemySystem::Init(int sum, EnemyDataBase* data){
+void EnemySystem::Init(EnemyDataBase* data){
     this->data = data;
-    enemys.resize(sum);
-    moveGroups.reserve(sum);
+    enemys.resize(200);
+    moveGroups.reserve(20);
 }
 
 // ren dich
-void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int moveType){
+void EnemySystem::Spawn(float x, float y,EnemyType type, int amount, int moveType){
     int sumenemy = 0;
     idGround++;
     if(idGround > 99) idGround = 0;
@@ -16,11 +16,11 @@ void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int m
      if(!enemy.active){
        enemy.groupId = idGround;
        enemy.active = true;
-       enemy.data = enemyData;
-       enemy.rect = {x + sumenemy*(40 + enemyData->rect.w),
+       enemy.data = data->Get(type);
+       enemy.rect = {x + sumenemy*(40 + data->Get(type)->rect.w),
                      y,
-                     enemyData->rect.w,
-                     enemyData->rect.h};
+                     data->Get(type)->rect.w,
+                     data->Get(type)->rect.h};
        moveGroups[enemy.groupId] = moveType;
        enemy.rectHpMax = {enemy.rect.x,
                        enemy.rect.y - enemy.rect.h/10,
@@ -28,7 +28,7 @@ void EnemySystem::Spawn(float x, float y,EnemyData* enemyData, int amount, int m
                        enemy.rect.h/10};
 
        enemy.rectHp = enemy.rectHpMax;
-       enemy.hpNow = enemyData->hpMax;
+       enemy.hpNow = data->Get(type)->hpMax;
        sumenemy ++;
       }
     if(sumenemy == amount) return;
@@ -93,7 +93,7 @@ void EnemySystem::Update(float deltatime, WeaponSystem* weaponSystem){
             weaponSystem->Shoot(
                 enemy.rect.x + gun.x,
                 enemy.rect.y + gun.y,
-                enemy.data->weaponType,
+                WeaponType::ENEMY_ONE,
                 'E');
         }
             enemy.shoottime = 0;

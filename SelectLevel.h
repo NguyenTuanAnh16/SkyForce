@@ -5,7 +5,7 @@
 #include "Menu.h"
 #include "Config.h"
 
-// Giao diện chọn level
+
 struct SelectLevel
 {
     SDL_Texture* backGround = nullptr;

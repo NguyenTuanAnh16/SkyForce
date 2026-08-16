@@ -1,9 +1,18 @@
-#ifndef _Weapon_H
-#define _Weapon_H
+#ifndef _WEAPON_H
+#define _WEAPON_H
 
 #include<SDL.h>
 #include "Config.h"
 #include "ResourceManager.h"
+
+
+enum class WeaponType
+{
+    PLAYER_ONE,
+    PLAYER_TWO,
+    ENEMY_ONE
+};
+
 
 struct WeaponData{
 
@@ -13,21 +22,27 @@ float speed;
 float dame;
 };
 
+
+struct Weapon{
+WeaponData* data = nullptr;
+bool active = false;
+SDL_FRect rect;
+char owner;
+};
+
+
 struct WeaponDataBase{
      WeaponData playerOne;
+     WeaponData playerTwo;
      WeaponData enemyOne;
 
      void Init(WeaponRes& res);
-     WeaponData weapon(int type);
+     WeaponData* Get(WeaponType type);
+
 
 };
 
-struct Weapon{
-bool active = false;
-SDL_FRect rect;
-int type;
-char owner;
-};
+
 
 
 #endif

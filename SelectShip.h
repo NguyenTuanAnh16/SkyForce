@@ -1,5 +1,5 @@
-#ifndef SELECTSHIP_H
-#define SELECTSHIP_H
+#ifndef _SELECTSHIP_H
+#define _SELECTSHIP_H
 
 #include <SDL.h>
 #include "GameState.h"

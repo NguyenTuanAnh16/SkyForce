@@ -1,20 +1,20 @@
 #include "WeaponSystem.h"
 
-void WeaponSystem::Init(int sum,WeaponDataBase* data){
+void WeaponSystem::Init(WeaponDataBase* data){
     this->data = data;
-    weapons.resize(sum);
+    weapons.resize(100);
 }
 
-void WeaponSystem::Shoot(float x, float y, int type, char owner){
+void WeaponSystem::Shoot(float x, float y, WeaponType type, char owner){
    for(auto& weapon : weapons){
      if(!weapon.active){
        weapon.active = true;
-       weapon.type = type;
+       weapon.data = data->Get(type);
        weapon.owner = owner;
-       weapon.rect.x = x;
-       weapon.rect.y = y;
-       weapon.rect.w = data->weapon(type).width;
-       weapon.rect.h = data->weapon(type).height;
+       weapon.rect.w = weapon.data->width;
+       weapon.rect.h = weapon.data->height;
+       weapon.rect.x = x - weapon.rect.w / 2;
+       weapon.rect.y = y - weapon.rect.h / 2;
        return;
       }
    }
@@ -23,7 +23,7 @@ void WeaponSystem::Shoot(float x, float y, int type, char owner){
 void WeaponSystem::Update(float deltaTime){
   for(auto& weapon : weapons){
     if(weapon.active){
-        weapon.rect.y = weapon.rect.y - data->weapon(weapon.type).speed * deltaTime;
+        weapon.rect.y = weapon.rect.y - weapon.data->speed * deltaTime;
         if(weapon.rect.y < - 50 || weapon.rect.y > 810) weapon.active = false;
     }
   }
@@ -37,7 +37,7 @@ void WeaponSystem::Reset()
 void WeaponSystem::Render(SDL_Renderer* rerderer){
       for(auto& weapon : weapons){
         if(weapon.active){
-            SDL_RenderCopyF(rerderer,data->weapon(weapon.type).texture, nullptr, &weapon.rect);
+            SDL_RenderCopyF(rerderer,weapon.data->texture, nullptr, &weapon.rect);
         }
       }
 }

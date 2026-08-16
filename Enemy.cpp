@@ -7,7 +7,7 @@ void EnemyDataBase::Init(EnemyRes& res){
           one.hpMax = 30;
           one.rect = {0,0,48,54};
           one.weaponType = 2;
-          one.guns = {{21,55}};
+          one.guns = {{24,55}};
           one.shootDelay = 0.5f;
           one.score = 1;
     // two
@@ -15,7 +15,7 @@ void EnemyDataBase::Init(EnemyRes& res){
           two.speed = 400;
           two.hpMax = 50;
           two.rect = {0,0,56,60};
-          two.guns = {{25,62}};
+          two.guns = {{28,62}};
           two.weaponType = 2;
           two.shootDelay = 0.4f;
           two.score = 2;
@@ -24,9 +24,22 @@ void EnemyDataBase::Init(EnemyRes& res){
           three.speed = 500;
           three.hpMax = 80;
           three.rect = {0,0,66,70};
-          three.guns = {{30,72}};
+          three.guns = {{33,72}};
           three.weaponType = 2;
           three.shootDelay = 0.3f;
           three.score = 3;
 }
 
+EnemyData* EnemyDataBase::Get(EnemyType type)
+{
+    if (type == EnemyType::ONE)
+        return &one;
+
+    if (type == EnemyType::TWO)
+        return &two;
+
+    if (type == EnemyType::THREE)
+        return &three;
+
+    return nullptr;
+}

@@ -1,22 +1,27 @@
-#ifndef _Game_H
-#define _Game_H
+#ifndef _GAME_H
+#define _GAME_H
 
 #include "ResourceManager.h"
 #include "GameState.h"
+
+#include "Config.h"
+#include "Music.h"
+
 #include "Menu.h"
 #include "SelectLevel.h"
 #include "SelectShip.h"
 #include "Setting.h"
-#include "Pause.h"
+#include "GameOverlay.h"
+
 #include "BackGroundSystem.h"
 #include "Player.h"
 #include "EnemySystem.h"
 #include "SpawnManager.h"
 #include "WeaponSystem.h"
-#include "Weapon.h"
 #include "CollisionSystem.h"
 #include "EffectSystem.h"
-#include "Music.h"
+#include "ItemSystem.h"
+
 
 struct Game {
 // cua so
@@ -31,31 +36,23 @@ GameState state = GameState::MENU;
 
 // menu
 Menu menu;
-
-// doi man
 SelectLevel selectlevel;
-
-// doi may bay
 SelectShip selectShip;
-
-// setting
 Setting setting;
-// pause
-Pause pause;
+GameOverlay gameOverlay;
 
 // background
 BackGroundDataBase background;
 BackGroundSystem backGroundSystem;
+
 // nguoi choi
 Player player;
 StarshipDataBase starship;
 
 
 // dich
-EnemySystem enemysystem;
 EnemyDataBase enemy;
-
-// random dich
+EnemySystem enemysystem;
 SpawnManager spawnmanager;
 
 
@@ -63,38 +60,47 @@ SpawnManager spawnmanager;
 // dan
 WeaponDataBase weapon;
 WeaponSystem weaponSystem;
-//WeaponDataBase weapon;
+
 
 // va cham
 CollisionSystem collisionSystem;
 
 // hieu ung
-EffectSystem effectSystem;
 EffectDataBase effect;
+EffectSystem effectSystem;
+
+// item
+ItemDataBase item;
+ItemSystem itemSystem;
+
+// nhac
+Music music;
+
 
 // fps
 Uint64 frameStart = 0;
 Uint64 frameTime = 0;
 int frameDelay;
 
-// nhac
-Music music;
-
 // thoi gian
 float deltaTime;
 float resultTimer = 0.0f;
 bool waitingResult = false;
 
-// check
+// game
 bool running = true;
 
 void Init();
 void InitLevel();
+
 void Run();
-void Render();
+
 void Update();
+void Render();
+
 void capFPS();
+
 void Clean();
 };
 
-#endif // _Game_H
+#endif // x

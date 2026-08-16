@@ -1,27 +1,29 @@
 #include "EffectSystem.h"
-#include "iostream"
+
 
 void EffectSystem::Init(EffectDataBase* data)
 {
     this->data = data;
     blasts.resize(500);
     engines.resize(20);
+    items.resize(50);
 }
 
-void EffectSystem::AddBlast(float x, float y, int type,float effectSize)
+void EffectSystem::AddBlast(float x, float y, EffectType type, float effectSize)
 {
     for(auto& blast : blasts)
     {
         if(!blast.active)
         {
             blast.active = true;
-            blast.type = type;
+            blast.data = data->Get(type);
             blast.rect = {x - effectSize/2,
-                          y - (data->Effect(type).height/(data->Effect(type).width/effectSize))/2,
+                          y - (blast.data->height/(blast.data->width/effectSize))/2,
                           effectSize,
-                          data->Effect(type).height/(data->Effect(type).width/effectSize)};
+                          blast.data->height/(blast.data->width/effectSize)};
             blast.frameNow = 0;
             blast.timer = 0;
+
             return;
         }
 
@@ -29,18 +31,19 @@ void EffectSystem::AddBlast(float x, float y, int type,float effectSize)
 }
 
 
-void EffectSystem::AddEngine(int type,float effectSize)
+void EffectSystem::AddEngine(EffectType type,float effectSize)
 {
     for(auto& engine : engines)
     {
         if(!engine.active)
         {
             engine.active = true;
-            engine.type = type;
+            engine.data = data->Get(type);
             engine.rect.w = effectSize;
-            engine.rect.h = data->Effect(type).height/(data->Effect(type).width/effectSize);
+            engine.rect.h = engine.data->height/(engine.data->width/effectSize);
             engine.frameNow = 0;
             engine.timer = 0;
+
             return;
         }
 
@@ -48,7 +51,39 @@ void EffectSystem::AddEngine(int type,float effectSize)
 }
 
 
-void EffectSystem::FollowEngine(Starship& starship)
+void EffectSystem::AddItem(EffectType type,float effectSize)
+{
+// xem co hieu ung chua
+      for (auto& item : items)
+    {
+        if (item.active && item.data == data->Get(type))
+        { // đã có effect này → reset lại
+            item.frameNow = 0;
+            item.timer = 0;
+
+            return;
+        }
+    }
+// hieu ung moi
+    for(auto& item : items)
+    {
+        if(!item.active)
+        {
+            item.active = true;
+            item.data = data->Get(type);
+            item.rect.w = effectSize;
+            item.rect.h = item.data->height/(item.data->width/effectSize);
+            item.frameNow = 0;
+            item.timer = 0;
+
+            return;
+        }
+
+    }
+}
+
+
+void EffectSystem::FollowStarship(Starship& starship)
 {
     for(int i = 0; i < starship.engines.size(); i++)
     {
@@ -58,7 +93,18 @@ void EffectSystem::FollowEngine(Starship& starship)
             engines[i].rect.y = starship.rect.y + starship.engines[i].y;
         }
     }
+
+
+    for (auto& item : items)
+    {
+        if (item.active)
+        {
+            item.rect.x = starship.rect.x + starship.rect.w / 2 - item.rect.w / 2;
+            item.rect.y = starship.rect.y + starship.rect.h / 2 - item.rect.h / 2;
+        }
+    }
 }
+
 
 
 void EffectSystem::ClearEngine()
@@ -70,48 +116,83 @@ void EffectSystem::ClearEngine()
 }
 
 
+void EffectSystem::ClearItem(EffectType type)
+{
+    for(auto& item : items)
+    {
+        if(item.active && item.data == data->Get(type)) item.active = false;
+    }
+}
+
+
+
 void EffectSystem::Update(float deltaTime)
 {
+// no
     for(auto& blast : blasts)
     {
         if(blast.active)
         {
             blast.timer = blast.timer + deltaTime;
-            if(blast.timer >= data->Effect(blast.type).frameTime)
+            if(blast.timer >= blast.data->frameTime)
             {
                 blast.timer = 0;
-                blast.src =   { blast.frameNow * data->Effect(blast.type).width,
+                blast.src =   { blast.frameNow * blast.data->width,
                                  0,
-                                 data->Effect(blast.type).width,
-                                 data->Effect(blast.type).height};
-                if(blast.frameNow >= data->Effect(blast.type).frame)
+                                 blast.data->width,
+                                 blast.data->height};
+                blast.frameNow ++;
+                if(blast.frameNow >= blast.data->frame)
                 {
                     blast.active = false;
                 }
-                blast.frameNow ++;
+
             }
         }
     }
 
-
+// dong co
     for(auto& engine : engines)
     {
         if(engine.active)
         {
             engine.timer = engine.timer + deltaTime;
-            if(engine.timer >= data->Effect(engine.type).frameTime)
+            if(engine.timer >= engine.data->frameTime)
             {
                 engine.timer = 0;
 
-                engine.src =   { engine.frameNow * data->Effect(engine.type).width,
+                engine.src =   { engine.frameNow * engine.data->width,
                                  0,
-                                 data->Effect(engine.type).width,
-                                 data->Effect(engine.type).height};
+                                 engine.data->width,
+                                 engine.data->height};
                 engine.frameNow ++;
-                 if(engine.frameNow >= data->Effect(engine.type).frame )
+                 if(engine.frameNow >= engine.data->frame )
                 {
                   engine.frameNow = 0;
                 }
+            }
+        }
+    }
+
+// khien
+    for(auto& item : items)
+    {
+        if(item.active)
+        {
+            item.timer = item.timer + deltaTime;
+            if(item.timer >= item.data->frameTime)
+            {
+                item.timer = 0;
+                item.src =   { item.frameNow * item.data->width,
+                                 0,
+                                 item.data->width,
+                                 item.data->height};
+                item.frameNow ++;
+                if(item.frameNow >= item.data->frame)
+                {
+                    item.frameNow = 0;
+                }
+
             }
         }
     }
@@ -120,6 +201,8 @@ void EffectSystem::Update(float deltaTime)
 void EffectSystem::Reset()
 {
     for(auto& blast : blasts)  blast.active = false;
+    ClearItem(EffectType::HP);
+    ClearItem(EffectType::SHIELD);
 }
 
 void EffectSystem::Render(SDL_Renderer* renderer)
@@ -131,12 +214,13 @@ void EffectSystem::Render(SDL_Renderer* renderer)
 
             SDL_RenderCopyF(
                 renderer,
-                data->Effect(blast.type).texture,
+                blast.data->texture,
                 &blast.src,
                 &blast.rect);
         }
     }
 
+// dong co
 
     for(auto& engine : engines)
     {
@@ -144,9 +228,23 @@ void EffectSystem::Render(SDL_Renderer* renderer)
         {
             SDL_RenderCopyF(
                 renderer,
-                data->Effect(engine.type).texture,
+                engine.data->texture,
                 &engine.src,
                 &engine.rect);
+        }
+    }
+
+// item
+     for(auto& item : items)
+    {
+        if(item.active)
+        {
+
+            SDL_RenderCopyF(
+                renderer,
+                item.data->texture,
+                &item.src,
+                &item.rect);
         }
     }
 }

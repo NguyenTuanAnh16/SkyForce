@@ -1,5 +1,5 @@
-#ifndef _Player_H
-#define _Player_H
+#ifndef _PLAYER_H
+#define _PLAYER_H
 
 #include <SDL.h>
 #include "ResourceManager.h"
@@ -31,6 +31,10 @@ struct Player
     SDL_FRect hpRect;
     SDL_FRect hpMaxRect;
     SDL_FRect hpNowRect;
+
+    // khien
+    bool shieldActive = false;
+    int  shieldValue = 0;
 
     // dung game
     Button pause;

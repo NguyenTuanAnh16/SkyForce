@@ -1,9 +1,18 @@
-#ifndef _Enemy_H
-#define _Enemy_H
+#ifndef _ENEMY_H
+#define _ENEMY_H
 
 #include<SDL.h>
 #include<vector>
-#include "Weapon.h"
+#include "ResourceManager.h"
+
+
+enum class EnemyType
+{
+    ONE,
+    TWO,
+    THREE
+};
+
 
 struct GunPointEnemy
 {
@@ -62,6 +71,7 @@ struct EnemyDataBase
     EnemyData two;
     EnemyData three;
     void Init(EnemyRes& res);
+    EnemyData* Get(EnemyType type);
 };
 
 

@@ -1,5 +1,4 @@
 #include "SelectShip.h"
-#include "iostream"
 
 void SelectShip::Init(MenuRes& res, StarshipDataBase* starship)
 {

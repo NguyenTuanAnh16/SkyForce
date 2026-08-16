@@ -63,16 +63,16 @@ void SpawnManager::RandomSpawn()
     // Chọn loại địch
     int random = rand() % 100;
 
-    EnemyData* enemyData;
+    EnemyType type;
 
     if (random < rateEnemy[0])
-        enemyData = &enemySystem->data->one;
+    type = EnemyType::ONE;
 
     else if (random < rateEnemy[0] + rateEnemy[1])
-        enemyData = &enemySystem->data->two;
+    type = EnemyType::TWO;
 
     else
-        enemyData = &enemySystem->data->three;
+    type = EnemyType::THREE;
 
 
     // Số lượng
@@ -103,17 +103,17 @@ void SpawnManager::RandomSpawn()
     else moveType = 5;
 
 // Vị trí
-int x = rand() % ( SCREEN_WIDTH - amount * (int)enemyData->rect.w - (amount - 1) * 40 - 10);
+int x = rand() % ( SCREEN_WIDTH - amount * (int)enemySystem->data->Get(type)->rect.w - (amount - 1) * 40 - 10);
 
-if(amount >= 4)  x =  100+ rand() % ( SCREEN_WIDTH - amount * (int)enemyData->rect.w - (amount - 1) * 40 - 200);
+if(amount >= 4)  x =  100+ rand() % ( SCREEN_WIDTH - amount * (int)enemySystem->data->Get(type)->rect.w - (amount - 1) * 40 - 200);
 
-if(amount >= 5)  x =  200+ rand() % ( SCREEN_WIDTH - amount * (int)enemyData->rect.w - (amount - 1) * 40 - 400);
+if(amount >= 5)  x =  200+ rand() % ( SCREEN_WIDTH - amount * (int)enemySystem->data->Get(type)->rect.w - (amount - 1) * 40 - 400);
 
 // render dich
     enemySystem->Spawn(
         x,
         -50,
-        enemyData,
+        type,
         amount,
         moveType
     );

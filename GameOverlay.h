@@ -1,11 +1,11 @@
-#ifndef _PAUSE_H
-#define _PAUSE_H
+#ifndef _GAMEOVERLAY_H
+#define _GAMEOVERLAY_H
 
 #include <SDL.h>
 #include "Menu.h"
 #include "Config.h"
 
-struct Pause
+struct GameOverlay
 {
     SDL_Texture* boxTex = nullptr;
     SDL_FRect boxRect;

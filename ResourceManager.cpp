@@ -68,6 +68,9 @@ weapon.enemyOne = IMG_LoadTexture(renderer,"ResourceManager/Weapon/Enemy/One.png
 effect.one = IMG_LoadTexture(renderer,"ResourceManager/Effect/One.png");
 effect.two = IMG_LoadTexture(renderer,"ResourceManager/Effect/Two.png");
 effect.shipOne = IMG_LoadTexture(renderer,"ResourceManager/Effect/ShipOne.png");
+effect.shield = IMG_LoadTexture(renderer,"ResourceManager/Effect/Shield.png");
+effect.hp = IMG_LoadTexture(renderer,"ResourceManager/Effect/Hp.png");
+
 
 // nhac
 music.music = Mix_LoadMUS("ResourceManager/Music/Music.mp3");
@@ -78,8 +81,9 @@ music.click = Mix_LoadWAV("ResourceManager/Music/Click.wav");
 
 //item
 item.hp = IMG_LoadTexture(renderer,"ResourceManager/Item/Hp.png");
-item.power = IMG_LoadTexture(renderer,"ResourceManager/Item/power.png");
-item.shield = IMG_LoadTexture(renderer,"ResourceManager/Item/shield.png");
+item.power = IMG_LoadTexture(renderer,"ResourceManager/Item/Power.png");
+item.shield = IMG_LoadTexture(renderer,"ResourceManager/Item/Shield.png");
+
 }
 void ResourceManager::Free()
 {

@@ -27,9 +27,10 @@ void Player::ChangeStarship(SelectShip& ship, StarshipDataBase& data, EffectSyst
     if(ship.selectedShip == 3) starship = &data.three;
 
     effectSystem.ClearEngine();
+    starship->defaultWeaponType = starship->weaponType;
     for(auto& engine : starship->engines)
 {
-    effectSystem.AddEngine(3,starship->engineSize);
+    effectSystem.AddEngine(EffectType::SHIP_ONE,starship->engineSize);
 }
 }
 
@@ -59,7 +60,7 @@ void Player::Update(float deltaTime, WeaponSystem& weaponSystem, EffectSystem& e
             starship->rect.y = SCREEN_HEIGHT - starship->rect.h;}
 
 // dong co
-   effectSystem.FollowEngine(*starship);
+   effectSystem.FollowStarship(*starship);
 
 // mau
     hpNowRect.w = (starship->hpNow / starship->hpMax) * hpMaxRect.w;
@@ -76,13 +77,12 @@ void Player::Update(float deltaTime, WeaponSystem& weaponSystem, EffectSystem& e
             weaponSystem.Shoot(
                 starship->rect.x + gun.x,
                 starship->rect.y + gun.y,
-                starship->gunType,
+                starship->weaponType,
                 'P');
         }
 
         shoottime = 0;
     }
-
 
 // dung game
     int mouseX, mouseY;

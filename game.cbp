@@ -5,6 +5,7 @@
 		<Option title="game" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="BackGround/;Weapon/;Effect/;Enemy/;Item/;Menu/;System/;Main/;Player/;Starship/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/game" prefix_auto="1" extension_auto="1" />
@@ -32,49 +33,147 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="BackGround.cpp" />
-		<Unit filename="BackGround.h" />
-		<Unit filename="BackGroundSystem.cpp" />
-		<Unit filename="BackGroundSystem.h" />
-		<Unit filename="CollisionSystem.cpp" />
-		<Unit filename="CollisionSystem.h" />
-		<Unit filename="Config.h" />
-		<Unit filename="Effect.cpp" />
-		<Unit filename="Effect.h" />
-		<Unit filename="EffectSystem.cpp" />
-		<Unit filename="EffectSystem.h" />
-		<Unit filename="Enemy.cpp" />
-		<Unit filename="Enemy.h" />
-		<Unit filename="EnemySystem.cpp" />
-		<Unit filename="EnemySystem.h" />
-		<Unit filename="Game.cpp" />
-		<Unit filename="Game.h" />
-		<Unit filename="GameState.h" />
-		<Unit filename="Menu.cpp" />
-		<Unit filename="Menu.h" />
-		<Unit filename="Music.cpp" />
-		<Unit filename="Music.h" />
-		<Unit filename="Pause.cpp" />
-		<Unit filename="Pause.h" />
-		<Unit filename="Player.cpp" />
-		<Unit filename="Player.h" />
-		<Unit filename="ResourceManager.cpp" />
-		<Unit filename="ResourceManager.h" />
-		<Unit filename="SelectLevel.cpp" />
-		<Unit filename="SelectLevel.h" />
-		<Unit filename="SelectShip.cpp" />
-		<Unit filename="SelectShip.h" />
-		<Unit filename="Setting.cpp" />
-		<Unit filename="Setting.h" />
-		<Unit filename="SpawnManager.cpp" />
-		<Unit filename="SpawnManager.h" />
-		<Unit filename="Starship.cpp" />
-		<Unit filename="Starship.h" />
-		<Unit filename="Weapon.cpp" />
-		<Unit filename="Weapon.h" />
-		<Unit filename="WeaponSystem.cpp" />
-		<Unit filename="WeaponSystem.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="BackGround.cpp">
+			<Option virtualFolder="BackGround/" />
+		</Unit>
+		<Unit filename="BackGround.h">
+			<Option virtualFolder="BackGround/" />
+		</Unit>
+		<Unit filename="BackGroundSystem.cpp">
+			<Option virtualFolder="BackGround/" />
+		</Unit>
+		<Unit filename="BackGroundSystem.h">
+			<Option virtualFolder="BackGround/" />
+		</Unit>
+		<Unit filename="CollisionSystem.cpp">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="CollisionSystem.h">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="Config.h">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="Effect.cpp">
+			<Option virtualFolder="Effect/" />
+		</Unit>
+		<Unit filename="Effect.h">
+			<Option virtualFolder="Effect/" />
+		</Unit>
+		<Unit filename="EffectSystem.cpp">
+			<Option virtualFolder="Effect/" />
+		</Unit>
+		<Unit filename="EffectSystem.h">
+			<Option virtualFolder="Effect/" />
+		</Unit>
+		<Unit filename="Enemy.cpp">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="Enemy.h">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="EnemySystem.cpp">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="EnemySystem.h">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="Game.cpp">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="Game.h">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="GameOverlay.cpp">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="GameOverlay.h">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="GameState.h">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="Item.cpp">
+			<Option virtualFolder="Item/" />
+		</Unit>
+		<Unit filename="Item.h">
+			<Option virtualFolder="Item/" />
+		</Unit>
+		<Unit filename="ItemSystem.cpp">
+			<Option virtualFolder="Item/" />
+		</Unit>
+		<Unit filename="ItemSystem.h">
+			<Option virtualFolder="Item/" />
+		</Unit>
+		<Unit filename="Menu.cpp">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="Menu.h">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="Music.cpp">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="Music.h">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="Player.cpp">
+			<Option virtualFolder="Player/" />
+		</Unit>
+		<Unit filename="Player.h">
+			<Option virtualFolder="Player/" />
+		</Unit>
+		<Unit filename="ResourceManager.cpp">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="ResourceManager.h">
+			<Option virtualFolder="System/" />
+		</Unit>
+		<Unit filename="SelectLevel.cpp">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="SelectLevel.h">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="SelectShip.cpp">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="SelectShip.h">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="Setting.cpp">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="Setting.h">
+			<Option virtualFolder="Menu/" />
+		</Unit>
+		<Unit filename="SpawnManager.cpp">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="SpawnManager.h">
+			<Option virtualFolder="Enemy/" />
+		</Unit>
+		<Unit filename="Starship.cpp">
+			<Option virtualFolder="Starship/" />
+		</Unit>
+		<Unit filename="Starship.h">
+			<Option virtualFolder="Starship/" />
+		</Unit>
+		<Unit filename="Weapon.cpp">
+			<Option virtualFolder="Weapon/" />
+		</Unit>
+		<Unit filename="Weapon.h">
+			<Option virtualFolder="Weapon/" />
+		</Unit>
+		<Unit filename="WeaponSystem.cpp">
+			<Option virtualFolder="Weapon/" />
+		</Unit>
+		<Unit filename="WeaponSystem.h">
+			<Option virtualFolder="Weapon/" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option virtualFolder="Main/" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -7,7 +7,16 @@ void WeaponDataBase::Init(WeaponRes& res){
             playerOne.speed = 1000;
             playerOne.width = 8;
             playerOne.height = 16;
-            playerOne.dame = 30;
+            playerOne.dame = 20;
+
+
+
+            playerTwo.texture = res.playerOne;
+            playerTwo.speed = 1000;
+            playerTwo.width = 15;
+            playerTwo.height = 30;
+            playerTwo.dame = 40;
+
 
     // dan dich
             enemyOne.texture = res.enemyOne;
@@ -18,10 +27,15 @@ void WeaponDataBase::Init(WeaponRes& res){
 
 }
 
-WeaponData WeaponDataBase::weapon(int type){
-    if(type == 1) return playerOne;
-    if(type == 2) return enemyOne;
-    return WeaponData();
+WeaponData* WeaponDataBase::Get(WeaponType type)
+{
+    if (type == WeaponType::PLAYER_ONE)
+        return &playerOne;
+    else if(type == WeaponType::PLAYER_TWO)
+        return &playerTwo;
+    else if (type == WeaponType::ENEMY_ONE)
+        return &enemyOne;
 
+    return nullptr;
 }
 

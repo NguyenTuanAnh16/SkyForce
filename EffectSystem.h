@@ -1,5 +1,5 @@
-#ifndef _EffectSystem_H
-#define _EffectSystem_H
+#ifndef _EFFECTSYSTEM_H
+#define _EFFECTSYSTEM_H
 
 #include <SDL.h>
 #include <vector>
@@ -13,21 +13,26 @@ struct EffectSystem
 
     std::vector<Effect> blasts;
     std::vector<Effect> engines;
-
+    std::vector<Effect> items;
 
     void Init(EffectDataBase* data);
 
     // hieu ung no
-    void AddBlast(float x, float y, int type,float effectSize);
+    void AddBlast(float x, float y, EffectType type, float effectSize);
 
     // hieu ung dong co
-    void AddEngine(int type,float effectSize);
+    void AddEngine(EffectType type,float effectSize);
+
+    void AddItem (EffectType type, float effectSize);
 
     // theo may bay
-    void FollowEngine(Starship& starship);
+    void FollowStarship(Starship& starship);
+
     void ClearEngine();
 
-    void Update(float dt);
+    void ClearItem(EffectType type);
+
+    void Update(float detalTime);
     void Reset();
     void Render(SDL_Renderer* renderer);
 };

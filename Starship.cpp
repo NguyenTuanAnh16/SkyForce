@@ -26,9 +26,9 @@ void StarshipDataBase::Init(StarshipRes& res)
     one.hpMax = 500;
 
   // vu khi
-    one.guns = {{(145-13) / 2, -25}};
+    one.guns = {{73, -25}};
     one.shootdelay = 0.15f;
-    one.gunType = 1;
+    one.weaponType = WeaponType::PLAYER_ONE;
   // dong co
     one.engineSize = 55;
     one.engines = {{one.rect.w /2,112}};
@@ -55,9 +55,10 @@ void StarshipDataBase::Init(StarshipRes& res)
     two.hpMax = 800;
 
     // vu khi
-    two.guns ={{53, -25},{97, -25}};
+    two.guns ={{59, -25},{103, -25}};
     two.shootdelay = 0.18f;
-    two.gunType = 1;
+    two.weaponType = WeaponType::PLAYER_ONE;
+
 
     // dong co
     two.engineSize = 38;
@@ -92,9 +93,9 @@ void StarshipDataBase::Init(StarshipRes& res)
     three.hpMax = 1000;
 
     // sung
-    three.guns ={{50, -25 + 17},{83, -25},{115, -25 + 17}};
+    three.guns ={{56, -25 + 17},{89, -25},{121, -25 + 17}};
     three.shootdelay = 0.22f;
-    three.gunType = 1;
+    three.weaponType = WeaponType::PLAYER_ONE;
 
     three.engineSize = 40;
     three.engines = {{52,114},{124,114}};

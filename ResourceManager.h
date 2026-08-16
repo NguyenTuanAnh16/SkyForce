@@ -1,5 +1,6 @@
-#ifndef _ResourceManager_H
-#define _ResourceManager_H
+#ifndef _RESOURCEMANAGER_H
+#define _RESOURCEMANAGER_H
+
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -85,6 +86,8 @@ struct EffectRes
     SDL_Texture* one = nullptr;
     SDL_Texture* two = nullptr;
     SDL_Texture* shipOne = nullptr;
+    SDL_Texture* shield  = nullptr;
+    SDL_Texture* hp = nullptr;
 };
 
 struct MusicRes

@@ -1,8 +1,17 @@
-#ifndef _Effect_H
-#define _Effect_H
+#ifndef _EFFECT_H
+#define _EFFECT_H
 
 #include <SDL.h>
 #include "ResourceManager.h"
+
+enum class EffectType
+{
+    ONE,
+    TWO,
+    SHIP_ONE,
+    SHIELD,
+    HP
+};
 
 struct EffectData
 {
@@ -15,8 +24,8 @@ struct EffectData
 
 struct Effect
 {
+    EffectData* data = nullptr;
     bool active = false;
-    int type;
     SDL_FRect rect;
     SDL_Rect src;
     int frameNow;
@@ -28,8 +37,10 @@ struct EffectDataBase
     EffectData one;
     EffectData two;
     EffectData shipOne;
+    EffectData shield;
+    EffectData hp;
     void Init(EffectRes& res);
-    EffectData Effect(int type);
+    EffectData* Get(EffectType type);
 };
 #endif
 

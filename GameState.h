@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef _GAMESTATE_H
+#define _GAMESTATE_H
 
 enum class GameState
 {

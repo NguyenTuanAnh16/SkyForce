@@ -1,212 +1,226 @@
 # depslib dependency file v1.0
-1786650690 source:d:\bt game\game2 c++\game\game.cpp
-	"Game.h"
-	<string>
+1786695167 source:d:\bt game\game2 c++\game\background.cpp
+	"BackGround.h"
 
-1786645921 d:\bt game\game2 c++\game\game.h
+1786848999 d:\bt game\game2 c++\game\background.h
+	<SDL.h>
+	"Config.h"
 	"ResourceManager.h"
-	"GameState.h"
-	"Menu.h"
-	"SelectLevel.h"
-	"SelectShip.h"
-	"Setting.h"
-	"Pause.h"
-	"BackGroundSystem.h"
-	"Player.h"
-	"EnemySystem.h"
-	"SpawnManager.h"
-	"WeaponSystem.h"
-	"Weapon.h"
-	"CollisionSystem.h"
-	"EffectSystem.h"
-	"Music.h"
 
-1786756099 source:d:\bt game\game2 c++\game\resourcemanager.cpp
-	"ResourceManager.h"
-	<iostream>
+1786848999 d:\bt game\game2 c++\game\config.h
 
-1786756099 d:\bt game\game2 c++\game\resourcemanager.h
+1786848999 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 
-1785006233 source:d:\bt game\game2 c++\game\main.cpp
-	"Game.h"
+1786846724 source:d:\bt game\game2 c++\game\backgroundsystem.cpp
+	"BackGroundSystem.h"
 
-1786695167 source:d:\bt game\game2 c++\game\background.cpp
+1786848999 d:\bt game\game2 c++\game\backgroundsystem.h
+	<SDL.h>
 	"BackGround.h"
 
-1785463754 d:\bt game\game2 c++\game\background.h
+1786842741 source:d:\bt game\game2 c++\game\collisionsystem.cpp
+	"CollisionSystem.h"
+
+1786848999 d:\bt game\game2 c++\game\collisionsystem.h
 	<SDL.h>
-	"Config.h"
+	"Player.h"
+	"EnemySystem.h"
+	"WeaponSystem.h"
+	"EffectSystem.h"
+	"ItemSystem.h"
+	"Music.h"
+
+1786848999 d:\bt game\game2 c++\game\player.h
+	<SDL.h>
 	"ResourceManager.h"
-
-1786616465 d:\bt game\game2 c++\game\config.h
-
-1786526800 source:d:\bt game\game2 c++\game\starship.cpp
 	"Starship.h"
+	"WeaponSystem.h"
+	"SelectShip.h"
+	"EffectSystem.h"
+	"Menu.h"
 
-1786356592 d:\bt game\game2 c++\game\starship.h
+1786848999 d:\bt game\game2 c++\game\starship.h
 	<SDL.h>
 	<vector>
 	"Config.h"
 	"ResourceManager.h"
-
-1784509317 source:d:\bt game\game2 c++\game\bullet.cpp
-	"Bullet.h"
-
-1784508670 d:\bt game\game2 c++\game\bullet.h
-	<SDL.h>
-	"Config.h"
-
-1786643616 source:d:\bt game\game2 c++\game\player.cpp
-	"Player.h"
-
-1786649516 source:d:\bt game\game2 c++\game\weapon.cpp
-	"Weapon.h"
-
-1785004895 d:\bt game\game2 c++\game\weapon.h
-	<SDL.h>
-	"Config.h"
-	"ResourceManager.h"
-
-1786650359 source:d:\bt game\game2 c++\game\weaponsystem.cpp
 	"WeaponSystem.h"
 
-1786504087 d:\bt game\game2 c++\game\weaponsystem.h
+1786848999 d:\bt game\game2 c++\game\weaponsystem.h
 	<SDL.h>
 	<vector>
 	"Weapon.h"
 
-1786649543 source:d:\bt game\game2 c++\game\enemy.cpp
+1786848999 d:\bt game\game2 c++\game\weapon.h
+	<SDL.h>
+	"Config.h"
+	"ResourceManager.h"
+
+1786848999 d:\bt game\game2 c++\game\selectship.h
+	<SDL.h>
+	"GameState.h"
+	"Menu.h"
+	"ResourceManager.h"
+	"Starship.h"
+	"Config.h"
+	"Music.h"
+
+1786848999 d:\bt game\game2 c++\game\gamestate.h
+
+1786848999 d:\bt game\game2 c++\game\menu.h
+	<SDL.h>
+	"Config.h"
+	"ResourceManager.h"
+	"GameState.h"
+
+1786647351 d:\bt game\game2 c++\game\music.h
+	"ResourceManager.h"
+	<SDL_mixer.h>
+
+1786848679 d:\bt game\game2 c++\game\effectsystem.h
+	<SDL.h>
+	<vector>
+	"Effect.h"
+	"Starship.h"
+
+1786848627 d:\bt game\game2 c++\game\effect.h
+	<SDL.h>
+	"ResourceManager.h"
+
+1786848753 d:\bt game\game2 c++\game\enemysystem.h
+	<SDL.h>
+	<vector>
+	"ResourceManager.h"
+	"Enemy.h"
+	"WeaponSystem.h"
+
+1786848699 d:\bt game\game2 c++\game\enemy.h
+	<SDL.h>
+	<vector>
+	"ResourceManager.h"
+
+1786848999 d:\bt game\game2 c++\game\itemsystem.h
+	"Item.h"
+	<vector>
+	"Player.h"
+	"EffectSystem.h"
+
+1786848999 d:\bt game\game2 c++\game\item.h
+	<SDL.h>
+	"ResourceManager.h"
+
+1786786869 source:d:\bt game\game2 c++\game\effect.cpp
+	"Effect.h"
+
+1786848656 source:d:\bt game\game2 c++\game\effectsystem.cpp
+	"EffectSystem.h"
+
+1786770053 source:d:\bt game\game2 c++\game\enemy.cpp
 	"Enemy.h"
 
-1786687707 source:d:\bt game\game2 c++\game\enemysystem.cpp
+1786848337 source:d:\bt game\game2 c++\game\enemysystem.cpp
 	"EnemySystem.h"
 	<cmath>
 
-1786610266 d:\bt game\game2 c++\game\enemysystem.h
-	<SDL.h>
-	<vector>
+1786851083 source:d:\bt game\game2 c++\game\game.cpp
+	"Game.h"
+	<string>
+
+1786849492 d:\bt game\game2 c++\game\game.h
 	"ResourceManager.h"
-	"Enemy.h"
-	"WeaponSystem.h"
-
-1786608721 d:\bt game\game2 c++\game\enemy.h
-	<SDL.h>
-	<vector>
-	"Weapon.h"
-
-1786688365 source:d:\bt game\game2 c++\game\spawnmanager.cpp
-	"SpawnManager.h"
-	<cstdlib>
-
-1786654430 d:\bt game\game2 c++\game\spawnmanager.h
-	"EnemySystem.h"
+	"GameState.h"
 	"Config.h"
-
-1786525206 d:\bt game\game2 c++\game\player.h
-	<SDL.h>
-	"ResourceManager.h"
-	"Starship.h"
-	"WeaponSystem.h"
-	"SelectShip.h"
-	"EffectSystem.h"
+	"Music.h"
 	"Menu.h"
-
-1786651627 source:d:\bt game\game2 c++\game\collisionsystem.cpp
-	"CollisionSystem.h"
-
-1786643692 d:\bt game\game2 c++\game\collisionsystem.h
-	<SDL.h>
+	"SelectLevel.h"
+	"SelectShip.h"
+	"Setting.h"
+	"GameOverlay.h"
+	"BackGroundSystem.h"
 	"Player.h"
 	"EnemySystem.h"
+	"SpawnManager.h"
 	"WeaponSystem.h"
+	"CollisionSystem.h"
 	"EffectSystem.h"
-	"Music.h"
+	"ItemSystem.h"
 
-1786616169 source:d:\bt game\game2 c++\game\menu.cpp
-	"Menu.h"
-
-1786616139 d:\bt game\game2 c++\game\menu.h
-	<SDL.h>
-	"Config.h"
-	"ResourceManager.h"
-	"GameState.h"
-
-1786615970 d:\bt game\game2 c++\game\gamestate.h
-
-1786648813 d:\bt game\game2 c++\game\selectship.h
-	<SDL.h>
-	"GameState.h"
-	"Menu.h"
-	"ResourceManager.h"
-	"Starship.h"
-	"Config.h"
-	"Music.h"
-
-1786648818 source:d:\bt game\game2 c++\game\selectship.cpp
-	"SelectShip.h"
-	"iostream"
-
-1786641737 source:d:\bt game\game2 c++\game\effect.cpp
-	"Effect.h"
-
-1785349447 d:\bt game\game2 c++\game\effect.h
-	<SDL.h>
-	"ResourceManager.h"
-
-1786505033 source:d:\bt game\game2 c++\game\effectsystem.cpp
-	"EffectSystem.h"
-	"iostream"
-
-1786503929 d:\bt game\game2 c++\game\effectsystem.h
-	<SDL.h>
-	<vector>
-	"Effect.h"
-	"Starship.h"
-
-1786688426 source:d:\bt game\game2 c++\game\selectlevel.cpp
-	"SelectLevel.h"
-
-1786525343 d:\bt game\game2 c++\game\selectlevel.h
+1786844202 d:\bt game\game2 c++\game\selectlevel.h
 	<SDL.h>
 	"Menu.h"
 	"Config.h"
-
-1786160515 source:d:\bt game\game2 c++\game\backgroundsystem.cpp
-	"BackGroundSystem.h"
-	<iostream>
-
-1786450649 d:\bt game\game2 c++\game\backgroundsystem.h
-	<SDL.h>
-	"BackGround.h"
-
-1786607107 source:d:\bt game\game2 c++\game\pause.cpp
-	"Pause.h"
-	"iostream"
-
-1786603495 d:\bt game\game2 c++\game\pause.h
-	<SDL.h>
-	"Menu.h"
-	"Config.h"
-
-1786648737 source:d:\bt game\game2 c++\game\setting.cpp
-	"Setting.h"
 
 1786640353 d:\bt game\game2 c++\game\setting.h
 	<SDL.h>
 	"Menu.h"
 	"Music.h"
 
+1786848337 d:\bt game\game2 c++\game\pause.h
+	<SDL.h>
+	"Menu.h"
+	"Config.h"
+
+1786848753 d:\bt game\game2 c++\game\spawnmanager.h
+	"EnemySystem.h"
+	"Config.h"
+
+1786842553 source:d:\bt game\game2 c++\game\item.cpp
+	"Item.h"
+
+1786842904 source:d:\bt game\game2 c++\game\itemsystem.cpp
+	"ItemSystem.h"
+
+1785006233 source:d:\bt game\game2 c++\game\main.cpp
+	"Game.h"
+
+1786616169 source:d:\bt game\game2 c++\game\menu.cpp
+	"Menu.h"
+
 1786647970 source:d:\bt game\game2 c++\game\music.cpp
 	"Music.h"
 
-1786647351 d:\bt game\game2 c++\game\music.h
+1786607107 source:d:\bt game\game2 c++\game\pause.cpp
+	"Pause.h"
+	"iostream"
+
+1786777813 source:d:\bt game\game2 c++\game\player.cpp
+	"Player.h"
+
+1786787512 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
-	<SDL_mixer.h>
+	<iostream>
 
-1786754481 source:d:\bt game\game2 c++\game\item.cpp
+1786844084 source:d:\bt game\game2 c++\game\selectlevel.cpp
+	"SelectLevel.h"
 
-1786754513 source:d:\bt game\game2 c++\game\itemsystem.cpp
+1786648818 source:d:\bt game\game2 c++\game\selectship.cpp
+	"SelectShip.h"
+	"iostream"
+
+1786648737 source:d:\bt game\game2 c++\game\setting.cpp
+	"Setting.h"
+
+1786844147 source:d:\bt game\game2 c++\game\spawnmanager.cpp
+	"SpawnManager.h"
+	<cstdlib>
+
+1786780235 source:d:\bt game\game2 c++\game\starship.cpp
+	"Starship.h"
+
+1786787706 source:d:\bt game\game2 c++\game\weapon.cpp
+	"Weapon.h"
+
+1786769660 source:d:\bt game\game2 c++\game\weaponsystem.cpp
+	"WeaponSystem.h"
+
+1786851111 source:d:\bt game\game2 c++\game\gameoverlay.cpp
+	"GameOverlay.h"
+
+1786848590 d:\bt game\game2 c++\game\gameoverlay.h
+	<SDL.h>
+	"Menu.h"
+	"Config.h"
 

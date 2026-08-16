@@ -36,11 +36,11 @@ void SelectLevel::Update(float deltaTime)
 
 void SelectLevel::SetTargetScore()
 {
-    if(level == 1)
+    if (level == 1)
         targetScore = 100;
-    else if(level == 2)
+    else if (level == 2)
         targetScore = 150;
-    else if(level == 3)
+    else if (level == 3)
         targetScore = 200;
 }
 

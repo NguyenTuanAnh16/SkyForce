@@ -1,5 +1,5 @@
 #include "BackGroundSystem.h"
-#include <iostream>
+
 
 void BackGroundSystem::Init(BackGroundDataBase* data)
 {
@@ -10,18 +10,20 @@ void BackGroundSystem::Init(BackGroundDataBase* data)
     backGround.meteorRect = {0,0,0,0};
 }
 
-void BackGroundSystem::Set(int type)
+void BackGroundSystem::Set(int level)
 {
 
-    if(type == 1) backGround.data = &data->one;
-    else if(type == 2) backGround.data = &data->two;
-    else if(type == 3) backGround.data = &data->three;
+    if(level == 1) backGround.data = &data->one;
+    else if(level == 2) backGround.data = &data->two;
+    else  backGround.data = &data->three;
+
 
     backGround.sceneryRectOne = backGround.data->sceneryStart;
     backGround.sceneryRectTwo = backGround.data->sceneryStart;
     backGround.sceneryRectTwo.y = - backGround.sceneryRectOne.h;
     backGround.planetRect = backGround.data->planetStart;
     backGround.meteorRect = backGround.data->meteorStart;
+    time = 0;
 
 }
 
@@ -30,11 +32,9 @@ void BackGroundSystem::Update(float deltaTime)
 {
     // cuon nen
     backGround.sceneryRectOne.y = backGround.sceneryRectOne.y + backGround.data->scenerySpeed * deltaTime;
-    backGround.sceneryRectTwo.y = backGround.sceneryRectOne.y - backGround.sceneryRectOne.h;
-    if(backGround.sceneryRectOne.y >= SCREEN_HEIGHT)
-        {  backGround.sceneryRectOne.y = 0;
-           backGround.sceneryRectTwo.y = - backGround.sceneryRectOne.h;
-           }
+    backGround.sceneryRectTwo.y = backGround.sceneryRectTwo.y + backGround.data->scenerySpeed * deltaTime;
+    if(backGround.sceneryRectOne.y >= SCREEN_HEIGHT)  backGround.sceneryRectOne.y = backGround.sceneryRectTwo.y - backGround.sceneryRectOne.h;
+    if(backGround.sceneryRectTwo.y >= SCREEN_HEIGHT)  backGround.sceneryRectTwo.y = backGround.sceneryRectOne.y - backGround.sceneryRectTwo.h;
 
     // cuon hanh tinh
     backGround.planetRect.y = backGround.planetRect.y + backGround.data->planetSpeed * deltaTime;

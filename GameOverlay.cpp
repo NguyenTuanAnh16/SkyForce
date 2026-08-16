@@ -1,7 +1,6 @@
-#include "Pause.h"
-#include "iostream"
+#include "GameOverlay.h"
 
-void Pause::Init(MenuRes& res)
+void GameOverlay::Init(MenuRes& res)
 {
 
     boxTex = res.box;
@@ -38,7 +37,7 @@ void Pause::Init(MenuRes& res)
 }
 
 
-void Pause::Update(float deltaTime, GameState& state)
+void GameOverlay::Update(float deltaTime, GameState& state)
 {
     int mouseX, mouseY;
 
@@ -52,7 +51,7 @@ else if(state == GameState::LOST) retry.Update(deltaTime, mouseX, mouseY);
 }
 
 
-void Pause::HandleEvent(SDL_Event& e, GameState& state)
+void GameOverlay::HandleEvent(SDL_Event& e, GameState& state)
 {
 
      if(e.type == SDL_MOUSEBUTTONDOWN)
@@ -69,7 +68,7 @@ void Pause::HandleEvent(SDL_Event& e, GameState& state)
 }
 
 
-void Pause::Render(SDL_Renderer* renderer, GameState& state)
+void GameOverlay::Render(SDL_Renderer* renderer, GameState& state)
 {
     SDL_RenderCopyF(renderer,boxTex,nullptr,&boxRect);
 

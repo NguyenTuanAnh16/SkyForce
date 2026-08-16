@@ -1,21 +1,29 @@
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef _ITEM_H
+#define _ITEM_H
 
 #include <SDL.h>
 #include "ResourceManager.h"
 
+enum class ItemType
+{
+    HP,
+    POWER,
+    SHIELD
+};
+
 struct ItemData
 {
     SDL_Texture* texture = nullptr;
-    float speed;
-    SDL_FRect rect;
-    int value;
-    float time;
+    float width, height;
+    float speed = 0;
+    int value = 0;
+    float time = 0;
 };
 
 struct Item
 {
     ItemData* data = nullptr;
+    bool active = false;
     SDL_FRect rect;
 };
 
@@ -26,6 +34,8 @@ struct ItemDataBase
     ItemData shield;
 
     void Init(ItemRes& res);
+
+    ItemData* Get(ItemType type);
 };
 
 #endif

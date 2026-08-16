@@ -1,6 +1,5 @@
-#ifndef _Spawnmanager_H
-#define _Spawnmanager_H
-
+#ifndef _SPAWNMANAGER_H
+#define _SPAWNMANAGER_H
 #include "EnemySystem.h"
 #include "Config.h"
 
@@ -17,7 +16,7 @@ struct SpawnManager
     int moveType;
 
     void Init(EnemySystem* enemySystem);
-    void Set(int type);
+    void Set(int level);
     void RandomSpawn();
     void Update(float deltaTime);
 };

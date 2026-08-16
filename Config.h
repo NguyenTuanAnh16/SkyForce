@@ -1,5 +1,5 @@
-#ifndef _Config_H
-#define _Config_H
+#ifndef _CONFIG_H
+#define _CONFIG_H
 
 const int SCREEN_WIDTH = 1440;
 const int SCREEN_HEIGHT = 810;

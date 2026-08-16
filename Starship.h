@@ -1,10 +1,11 @@
-#ifndef _Starship_H
-#define _Starship_H
+#ifndef _STARSHIP_H
+#define _STARSHIP_H
 
 #include <SDL.h>
 #include <vector>
 #include "Config.h"
 #include "ResourceManager.h"
+#include "WeaponSystem.h"
 
 struct Offset
 {
@@ -29,7 +30,8 @@ struct Starship
     // vu khi
     std::vector<Offset> guns;
     float shootdelay;
-    int gunType;
+    WeaponType weaponType;        // loại đạn đang bắn
+    WeaponType defaultWeaponType; // loại đạn gốc của máy bay
 
     // dong co
     std::vector<Offset> engines;
