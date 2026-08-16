@@ -17,8 +17,8 @@ void GameOverlay::Init(MenuRes& res)
     winLogoTex = res.winLogo;
     winLogoRect = {boxRect.x + (boxRect.w - 214) / 2, boxRect.y  + 40, 214, 114};
 
-    nextLever.texture = res.nextLever;
-    nextLever.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 150, 244, 50};
+    nextLevel.texture = res.nextLevel;
+    nextLevel.rect = {boxRect.x + (boxRect.w -244) / 2, boxRect.y  + 150, 244, 50};
 
 // lost
 
@@ -43,7 +43,7 @@ void GameOverlay::Update(float deltaTime, GameState& state)
 
     SDL_GetMouseState(&mouseX,&mouseY);
 if(state == GameState::PAUSE)    continueBt.Update(deltaTime, mouseX, mouseY);
-else if(state == GameState::WIN) nextLever.Update(deltaTime, mouseX, mouseY);
+else if(state == GameState::WIN) nextLevel.Update(deltaTime, mouseX, mouseY);
 else if(state == GameState::LOST) retry.Update(deltaTime, mouseX, mouseY);
     goBack.Update(deltaTime, mouseX, mouseY);
     exit.Update(deltaTime,mouseX,mouseY);
@@ -59,7 +59,7 @@ void GameOverlay::HandleEvent(SDL_Event& e, GameState& state)
         if(e.button.button == SDL_BUTTON_LEFT)
         {
             if(state == GameState::PAUSE && continueBt.hover) state = GameState::PLAYING;
-            else if(state == GameState::WIN && nextLever.hover) state = GameState::PLAYING;
+            else if(state == GameState::WIN && nextLevel.hover) state = GameState::PLAYING;
             else if(state == GameState::LOST && retry.hover) state = GameState::PLAYING;
             if(goBack.hover) state = GameState::MENU;
             if(exit.hover) state = GameState::EXIT;
@@ -80,7 +80,7 @@ if(state == GameState::PAUSE)
 else if (state == GameState::WIN)
 {
     SDL_RenderCopyF(renderer,winLogoTex,nullptr,&winLogoRect);
-    nextLever.Render(renderer);
+    nextLevel.Render(renderer);
 }
 
 else if (state == GameState::LOST)

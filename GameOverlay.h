@@ -21,7 +21,7 @@ struct GameOverlay
     SDL_Texture* winLogoTex = nullptr;
     SDL_FRect winLogoRect;
 
-    Button nextLever;
+    Button nextLevel;
 
 // lost
 

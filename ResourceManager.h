@@ -9,32 +9,47 @@
 // menu
 struct MenuRes
 {
+   // chung
    SDL_Texture* backGround = nullptr;
    SDL_Texture* logo = nullptr;
+   SDL_Texture* goBack = nullptr;
+   SDL_Texture* exit = nullptr;
+   SDL_Texture* box = nullptr;
+
+   // menu
    SDL_Texture* playGame = nullptr;
    SDL_Texture* selectShip = nullptr;
    SDL_Texture* settings = nullptr;
-   SDL_Texture* exit = nullptr;
-   SDL_Texture* goBack = nullptr;
+
+   // doi may bay
    SDL_Texture* right = nullptr;
    SDL_Texture* left = nullptr;
    SDL_Texture* shipInfo = nullptr;
+
+   // doi level
    SDL_Texture* levelOne = nullptr;
    SDL_Texture* levelTwo = nullptr;
    SDL_Texture* levelThree = nullptr;
-   SDL_Texture* box = nullptr;
-   SDL_Texture* pauseLogo = nullptr;
-   SDL_Texture* continues = nullptr;
-   SDL_Texture* nextLever = nullptr;
-   SDL_Texture* winLogo = nullptr;
-   SDL_Texture* lostLogo = nullptr;
-   SDL_Texture* retry = nullptr;
+
+   // setting
+   SDL_Texture* FpsMax = nullptr;
+   SDL_Texture* FpsMin = nullptr;
    SDL_Texture* musicOn = nullptr;
    SDL_Texture* musicOff = nullptr;
    SDL_Texture* soundOn = nullptr;
    SDL_Texture* soundOff = nullptr;
-   SDL_Texture* FpsMax = nullptr;
-   SDL_Texture* FpsMin = nullptr;
+
+   // pause
+   SDL_Texture* pauseLogo = nullptr;
+   SDL_Texture* continues = nullptr;
+
+   // win
+   SDL_Texture* nextLevel = nullptr;
+   SDL_Texture* winLogo = nullptr;
+
+   // lost
+   SDL_Texture* lostLogo = nullptr;
+   SDL_Texture* retry = nullptr;
 };
 
 struct PlayerRes

@@ -9,7 +9,7 @@
 
 1786848999 d:\bt game\game2 c++\game\config.h
 
-1786848999 d:\bt game\game2 c++\game\resourcemanager.h
+1786853096 d:\bt game\game2 c++\game\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -59,7 +59,7 @@
 	"Config.h"
 	"ResourceManager.h"
 
-1786848999 d:\bt game\game2 c++\game\selectship.h
+1786852596 d:\bt game\game2 c++\game\selectship.h
 	<SDL.h>
 	"GameState.h"
 	"Menu.h"
@@ -189,16 +189,15 @@
 1786777813 source:d:\bt game\game2 c++\game\player.cpp
 	"Player.h"
 
-1786787512 source:d:\bt game\game2 c++\game\resourcemanager.cpp
+1786853047 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
 1786844084 source:d:\bt game\game2 c++\game\selectlevel.cpp
 	"SelectLevel.h"
 
-1786648818 source:d:\bt game\game2 c++\game\selectship.cpp
+1786852609 source:d:\bt game\game2 c++\game\selectship.cpp
 	"SelectShip.h"
-	"iostream"
 
 1786648737 source:d:\bt game\game2 c++\game\setting.cpp
 	"Setting.h"
@@ -216,10 +215,10 @@
 1786769660 source:d:\bt game\game2 c++\game\weaponsystem.cpp
 	"WeaponSystem.h"
 
-1786851111 source:d:\bt game\game2 c++\game\gameoverlay.cpp
+1786853035 source:d:\bt game\game2 c++\game\gameoverlay.cpp
 	"GameOverlay.h"
 
-1786848590 d:\bt game\game2 c++\game\gameoverlay.h
+1786853019 d:\bt game\game2 c++\game\gameoverlay.h
 	<SDL.h>
 	"Menu.h"
 	"Config.h"
