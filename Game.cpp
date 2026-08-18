@@ -232,7 +232,7 @@ void Game::Update()
     if(waitingResult)
         {
             resultTimer += deltaTime;
-            if(resultTimer >= 1)
+            if(resultTimer >= 0.5)
                 {
                     if(player.starship->hpNow <= 0){state = GameState::LOST; music.PlayLost();}
                     else {state = GameState::WIN;  music.PlayWin();}

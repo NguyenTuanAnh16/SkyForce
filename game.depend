@@ -125,7 +125,7 @@
 	"EnemySystem.h"
 	<cmath>
 
-1786851083 source:d:\bt game\game2 c++\game\game.cpp
+1787061024 source:d:\bt game\game2 c++\game\game.cpp
 	"Game.h"
 	<string>
 
@@ -186,14 +186,14 @@
 	"Pause.h"
 	"iostream"
 
-1786777813 source:d:\bt game\game2 c++\game\player.cpp
+1787059589 source:d:\bt game\game2 c++\game\player.cpp
 	"Player.h"
 
 1786853047 source:d:\bt game\game2 c++\game\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
-1786844084 source:d:\bt game\game2 c++\game\selectlevel.cpp
+1787061057 source:d:\bt game\game2 c++\game\selectlevel.cpp
 	"SelectLevel.h"
 
 1786852609 source:d:\bt game\game2 c++\game\selectship.cpp
